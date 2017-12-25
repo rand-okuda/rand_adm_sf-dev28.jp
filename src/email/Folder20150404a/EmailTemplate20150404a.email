@@ -1,0 +1,4 @@
+スタンバイ引当完了通知：{!JuchuData__c.CreatedBy}さん：伝票番号{!JuchuData__c.DenpyoNo__c}の引当が成功しました。
+
+以下を確認してください。
+{!JuchuData__c.Link}

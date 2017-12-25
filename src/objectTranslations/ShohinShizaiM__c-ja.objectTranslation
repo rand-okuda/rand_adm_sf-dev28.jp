@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>商品資材マスタ</value>
+    </caseValues>
+    <fields>
+        <help><!-- チェック有り　で　本商品は取引先単価マスタを持たない取引先でも受注登録可能と成ります。
+通常は備品などをチェック有りにします。 --></help>
+        <label><!-- 取引先条件不要フラグ --></label>
+        <name>AccountTankaMHuyouFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- 数量倍率C/S --></label>
+        <name>BaiRitsuCS__c</name>
+    </fields>
+    <fields>
+        <label><!-- 数量倍率C/T --></label>
+        <name>BaiRitsuCT__c</name>
+    </fields>
+    <fields>
+        <label><!-- 備考 --></label>
+        <name>Biko__c</name>
+    </fields>
+    <fields>
+        <help><!-- 発注明細登録時にカートン数を自動的に設定する。 --></help>
+        <label><!-- 発注カートン自動入力 --></label>
+        <name>HachuSuryoCTAuto__c</name>
+    </fields>
+    <fields>
+        <help><!-- 標準の仕入先を商品別に固定する場合に指定。
+例）一括発注作成時の仕入先設定の自動化（予定）。 --></help>
+        <label><!-- 標準仕入先 --></label>
+        <name>Hachusaki__c</name>
+        <relationshipLabel><!-- 商品資材マスタ（発注先） --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 出荷時に標準で担保される消費期限日数の残り日数。
+消費期限日数　の　30%　が標準値。 --></help>
+        <label><!-- 販売期限日数 --></label>
+        <name>HanbaiKanriKigenNissu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 発注確定時に在庫データを自動的に入庫させる場合ON。
+例：発注数量と入庫数量が食い違うことのない商品資材など。 --></help>
+        <label><!-- 発注自動入庫 --></label>
+        <name>HatchuJidoNyuko__c</name>
+    </fields>
+    <fields>
+        <help><!-- 優先引当先（倉庫）に存在する、有効な入出庫データの数量の合計。
+出荷引当を行うことができる全ユニットの合計値。 --></help>
+        <label><!-- 引当可能混ユニット数量 --></label>
+        <name>HikiateMachiALLSuryo__c</name>
+    </fields>
+    <fields>
+        <label><!-- 引当可能最長販売期限混ユニット数量 --></label>
+        <name>HikiateMachiSaiChoHambaiKigenALLSuryo__c</name>
+    </fields>
+    <fields>
+        <label><!-- 引当可能最長販売期限単ユニット数量 --></label>
+        <name>HikiateMachiSaiChoHambaiKigenTanSuryo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 優先引当先（倉庫）に存在する、有効な入出庫データの数量。
+出荷引当を行うことができる単ユニット（単一入出庫レコード）の最大値。 --></help>
+        <label><!-- 引当可能単ユニット数量 --></label>
+        <name>HikiateMachiTanSuryo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当可能フラグ＝TRUEの全ての在庫データの在庫数量の合計。
+受注引当実行時に「ロット混在フラグ＝TRUE」の場合に引当可能な最大数。 --></help>
+        <label><!-- 標準混ユニット数量 --></label>
+        <name>HyojunALLSuryo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 標準売価　-　標準原価 --></help>
+        <label><!-- 標準粗利額 --></label>
+        <name>HyojunArariGaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 標準粗利額　/　標準売価 --></help>
+        <label><!-- 標準粗利率 --></label>
+        <name>HyojunArariRitsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 取引先条件マスタが存在しない場合に採用される商品の販売単価。 --></help>
+        <label><!-- 標準売価 --></label>
+        <name>HyojunBaika__c</name>
+    </fields>
+    <fields>
+        <help><!-- 原価計算のための単価 --></help>
+        <label><!-- 標準原価 --></label>
+        <name>HyojunGenka__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当可能フラグ＝TRUEの在庫データのなかで最大数（MAX）を持つ在庫データの在庫数量。
+受注引当実行時に「ロット混在フラグ＝FALES」の場合に引当可能な最大数。 --></help>
+        <label><!-- 標準単ユニット数量 --></label>
+        <name>HyojunTanSuryo__c</name>
+    </fields>
+    <fields>
+        <label><!-- ＪＡＮコード --></label>
+        <name>JanCode__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注実績などの元日付に対して何年分シフトさせるかの年数。
+例：前年同日＝１
+例：一昨年同日＝２ --></help>
+        <label><!-- 実績反映年数 --></label>
+        <name>JissekiHaneiNensu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注実績などの元日付に対して何日分シフトさせるかの日数。
+例：前週同曜日＝７
+例：前日＝１ --></help>
+        <label><!-- 実績反映日数 --></label>
+        <name>JissekiHaneiNissu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注実績などの元日付に対して何ヶ月分シフトさせるかの月数。
+例：前月同日＝１
+例：前四半期同日＝３ --></help>
+        <label><!-- 実績反映月数 --></label>
+        <name>JissekiHaneiTsukisu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注明細登録時にケース数を自動的に設定する。 --></help>
+        <label><!-- 受注ケース自動入力 --></label>
+        <name>JuchuKesuJido__c</name>
+    </fields>
+    <fields>
+        <label><!-- 安全在庫警告フィード --></label>
+        <name>KeppinKeikokuFeed__c</name>
+    </fields>
+    <fields>
+        <label><!-- 安全在庫警告（予定込） --></label>
+        <name>KeppinKeikokuSeisanchukomiYotei__c</name>
+    </fields>
+    <fields>
+        <label><!-- 安全在庫警告フィード（予定込） --></label>
+        <name>KeppinKeikokuYoteiFeed__c</name>
+    </fields>
+    <fields>
+        <label><!-- 安全在庫警告 --></label>
+        <name>KeppinKeikoku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 在庫の数量が閾値を割りこんだ場合にアラートされます。
+例：安全在庫数
+例：生産ロット数
+例：仕入最小単位数 --></help>
+        <label><!-- 安全在庫閾値 --></label>
+        <name>KeppinShikiichi__c</name>
+    </fields>
+    <fields>
+        <help><!-- カクテルの商品名２がこれにあたる --></help>
+        <label><!-- 規格 --></label>
+        <name>Kikaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 現在出荷可能な在庫では既に出荷見込の数量を支えきれない事を表す。
+
+標準混ユニット数量　-　予測対象消費数量　＜　0　の場合ON。 --></help>
+        <label><!-- 緊急仕入フラグ --></label>
+        <name>KinkyuShiireFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注明細データへの商品資材マスタ登録時に重複排除を行わない場合ON。
+重複が許可されるが引当を行うことは出来ないため、受注明細データの引当無はONが設定される。
+
+例）明細を書換えて使用する汎用商品。
+例）繰り返し販売することが予め分かっている商品。 --></help>
+        <label><!-- 明細重複許可フラグ --></label>
+        <name>MeisaiChofukuKyokaFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 発注書出力時に記載される入数。
+例：10枚入り --></help>
+        <label><!-- 内容量 --></label>
+        <name>Naiyoryo__c</name>
+    </fields>
+    <fields>
+        <label><!-- 入荷リードタイム日数 --></label>
+        <name>NyukaLeadTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- 最長販売期限混ユニット数量 --></label>
+        <name>SaiChoHambaiKigenALLSuryo__c</name>
+    </fields>
+    <fields>
+        <label><!-- 最長販売期限日付 --></label>
+        <name>SaiChoHambaiKigenHizuke__c</name>
+    </fields>
+    <fields>
+        <label><!-- 最長販売期限単ユニット数量 --></label>
+        <name>SaiChoHambaiKigenTanSuryo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 消費期限を超過した日付で納品が必要となっている消費期限日。
+新たな商品の入荷時に必要な消費期限日。 --></help>
+        <label><!-- 消費期限超過受注日付 --></label>
+        <name>ShohiKigenChokaHizuke__c</name>
+    </fields>
+    <fields>
+        <help><!-- 消費期限を超過した日付で納品が必要となっている数量。
+新たな商品の入荷が必要な数量。 --></help>
+        <label><!-- 消費期限超過受注数量 --></label>
+        <name>ShohiKigenChokaSuryo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 在庫データの作成時に自動的に消費期限を代入する場合ON。
+例：自社製造品：OFF
+例：仕入品：ON --></help>
+        <label><!-- 消費期限自動入力 --></label>
+        <name>ShohiKigenJidoFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商品資材コード --></label>
+        <name>ShohinShizaiCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商品資材標準名 --></label>
+        <name>ShohinShizaiHyojunMei__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商品資材区分 --></label>
+        <name>ShohinShizaiKubun__c</name>
+        <picklistValues>
+            <masterLabel>半製品_仕入</masterLabel>
+            <translation><!-- 半製品_仕入 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>半製品_自社</masterLabel>
+            <translation><!-- 半製品_自社 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>原料</masterLabel>
+            <translation><!-- 原料 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>完成品_仕入</masterLabel>
+            <translation><!-- 完成品_仕入 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>完成品_自社</masterLabel>
+            <translation><!-- 完成品_自社 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>工程</masterLabel>
+            <translation><!-- 工程 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>技能者</masterLabel>
+            <translation><!-- 技能者 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>機械</masterLabel>
+            <translation><!-- 機械 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>経費</masterLabel>
+            <translation><!-- 経費 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>製造ライン</masterLabel>
+            <translation><!-- 製造ライン --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>資材</masterLabel>
+            <translation><!-- 資材 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- 商品資材名表示 --></label>
+        <name>ShohinShizaimeiHyoji__c</name>
+    </fields>
+    <fields>
+        <help><!-- ここに値が入っている場合、各トランザクションデータの消費税率の初期値はこの値となる。 --></help>
+        <label><!-- 消費税率 --></label>
+        <name>Shohizeiritsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 製品が製造完了後に正常に消費（使用)出来る期間。
+例：食品であれば賞味期限など。
+例：機械部品であれば保証期間など。 --></help>
+        <label><!-- 消費期限日数 --></label>
+        <name>ShomiKigenNissu__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_終売フラグ --></label>
+        <name>ShubaiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 取引先条件マスタを終売日に自動的に無効化する場合に入力。
+商品の販売が終了する日付を入力。 --></help>
+        <label><!-- 終売日 --></label>
+        <name>Shubaibi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 単位C/S --></label>
+        <name>TaniCS__c</name>
+    </fields>
+    <fields>
+        <label><!-- 単位C/T --></label>
+        <name>TaniCT__c</name>
+    </fields>
+    <fields>
+        <label><!-- 単位PC --></label>
+        <name>TaniPC__c</name>
+    </fields>
+    <fields>
+        <help><!-- 前年同月同日の受注数量に対する予測値の係数です。
+例：前年よりも売行好調1.05。
+例：前年よりも売行不調0.95。 --></help>
+        <label><!-- 予測係数 --></label>
+        <name>YosokuKeisu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 予測対象消費数量 --></label>
+        <name>YosokuKikannaiShohisu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 本日を除く明日以降の何日間分を欠品発生の予測期間とするかを表す日数です。
+例：入荷や生産のリードタイム＋１日。 --></help>
+        <label><!-- 予測日数 --></label>
+        <name>YosokuNisu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 安全在庫不足数量（予定込） --></label>
+        <name>YosokuTaishoFusokuSuryoYotei__c</name>
+    </fields>
+    <fields>
+        <label><!-- 安全在庫不足数量 --></label>
+        <name>YosokuTaishoFusokuSuryo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明日（本日日付＋1日） --></help>
+        <label><!-- 予測対象期間から --></label>
+        <name>YosokuTaishoKara__c</name>
+    </fields>
+    <fields>
+        <help><!-- 予測対象期間から　＋　予測日数 --></help>
+        <label><!-- 予測対象期間まで --></label>
+        <name>YosokuTaishoMade__c</name>
+    </fields>
+    <fields>
+        <label><!-- 予測対象在庫数量（予定込） --></label>
+        <name>YosokuTaishoSuryoYotei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 標準混ユニット数量 --></help>
+        <label><!-- 予測対象在庫数量 --></label>
+        <name>YosokuTaishoSuryo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 予定入庫フラグONの入出庫データは確実な入庫が保証される場合OK。
+最長販売期限日付に影響有り。
+引当処理の検索対象に影響有り。
+例）物品ではなくライセンスなどの無形商品。
+例）仕入直送など入庫予定数量や入庫日を無視できる商品。 --></help>
+        <label><!-- 予定入庫保証 --></label>
+        <name>YukoZaikoYotei__c</name>
+    </fields>
+    <layouts>
+        <layout>商品資材マスタレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- システム処理用 --></label>
+            <section>システム処理用</section>
+        </sections>
+        <sections>
+            <label><!-- レポート情報 --></label>
+            <section>レポート情報</section>
+        </sections>
+        <sections>
+            <label><!-- 予測基準 --></label>
+            <section>予測基準</section>
+        </sections>
+        <sections>
+            <label><!-- 予測結果 --></label>
+            <section>予測結果</section>
+        </sections>
+        <sections>
+            <label><!-- 価格情報 --></label>
+            <section>価格情報</section>
+        </sections>
+        <sections>
+            <label><!-- 備考情報 --></label>
+            <section>備考情報</section>
+        </sections>
+        <sections>
+            <label><!-- 単位情報 --></label>
+            <section>単位情報</section>
+        </sections>
+        <sections>
+            <label><!-- 受注情報 --></label>
+            <section>受注情報</section>
+        </sections>
+        <sections>
+            <label><!-- 在庫情報 --></label>
+            <section>在庫情報</section>
+        </sections>
+        <sections>
+            <label><!-- 期限情報 --></label>
+            <section>期限情報</section>
+        </sections>
+        <sections>
+            <label><!-- 製造原価情報（子） --></label>
+            <section>製造原価情報（子）</section>
+        </sections>
+        <sections>
+            <label><!-- 製造原価情報（親） --></label>
+            <section>製造原価情報（親）</section>
+        </sections>
+        <sections>
+            <label><!-- 購買情報 --></label>
+            <section>購買情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- J02_SyohinIkkatsuTouroku --></label>
+        <name>J02_SyohinIkkatsuTouroku</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Y01_ZaikoKeppinKeikokuButton --></label>
+        <name>Y01_ZaikoKeppinKeikokuButton</name>
+    </webLinks>
+    <workflowTasks>
+        <description><!-- 欠品警告が発令されました。
+商品資材の追加発注を検討してください。 --></description>
+        <name>ShohinShizaiMKeppinKeikoku</name>
+        <subject><!-- 07. 商品資材マスタ欠品警告Todo --></subject>
+    </workflowTasks>
+</CustomObjectTranslation>

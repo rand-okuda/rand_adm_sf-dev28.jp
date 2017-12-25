@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>出荷明細データ</value>
+    </caseValues>
+    <fields>
+        <help><!-- 取引先条件マスタが関連付けられている場合、取引先条件マスタの価格
+取引先条件マスタが関連付けられていない場合、商品資材マスタの価格 --></help>
+        <label><!-- ￥￥_商品売単価算出 --></label>
+        <name>BaiTankaSanshutsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 備考 --></label>
+        <name>Biko__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_金額集計除外フラグ --></label>
+        <name>DenpatsuJogai__c</name>
+    </fields>
+    <fields>
+        <help><!-- 行原価　×　受注数 --></help>
+        <label><!-- 明細別粗利 --></label>
+        <name>GyoArari__c</name>
+    </fields>
+    <fields>
+        <help><!-- 商品原価×受注数量 --></help>
+        <label><!-- 明細別原価 --></label>
+        <name>GyoGenka__c</name>
+    </fields>
+    <fields>
+        <help><!-- 赤伝票＝ONの場合。
+→標準売価×納品数量×-1
+
+明細金額ゼロフラグ＝ONの場合。
+→０：ゼロ
+
+赤伝票OFF＆明細金額ゼロフラグ＝OFF
+→標準売価×納品数量 --></help>
+        <label><!-- 明細別金額 --></label>
+        <name>GyoKingaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 取引先条件マスタが設定される事による値引率。 --></help>
+        <label><!-- 明細条件値引 --></label>
+        <name>GyoNebikiRitsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明細金額×消費税率（小数点以下切捨て） --></help>
+        <label><!-- 明細別税額 --></label>
+        <name>GyoZeigaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明細金額＋明細税額（小数点以下切捨て） --></help>
+        <label><!-- 明細別税込 --></label>
+        <name>GyoZeikomi__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_行数超過フラグ --></label>
+        <name>GyosuChokaFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当処理を行わないお場合にON。
+例）入出庫を伴わない受注。
+例）返品や赤伝票。 --></help>
+        <label><!-- 引当無 --></label>
+        <name>HikiateFuyoFig__c</name>
+    </fields>
+    <fields>
+        <label><!-- 受注出荷データ --></label>
+        <name>JuchuData__c</name>
+        <relationshipLabel><!-- 出荷明細データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_受注明細データ名算出 --></label>
+        <name>JuchuMeisaiDataNameSanshutsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- C/S数 --></label>
+        <name>JuchuSuryoCS__c</name>
+    </fields>
+    <fields>
+        <label><!-- C/T数 --></label>
+        <name>JuchuSuryoCT__c</name>
+    </fields>
+    <fields>
+        <label><!-- PC数 --></label>
+        <name>JuchuSuryoPC__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注数量の値を受注数量親や受注数量祖をもとに計算する数式項目 --></help>
+        <label><!-- ￥￥_受注数量算出 --></label>
+        <name>JuchuSuryoSanshutsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 受注数 --></label>
+        <name>JuchuSuryo__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_品番 --></label>
+        <name>KariNohinshoHinban__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_品名 --></label>
+        <name>KariNohinshoHinmei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 備考に記入がある場合は備考内容を出力。
+
+　でなければ
+
+引当未完了の場合は荷姿参考を出力。
+　または
+引当完了後は空白を出力。 --></help>
+        <label><!-- ￥_納品書_備考 --></label>
+        <name>KariNohinshoKikakuBiko__c</name>
+    </fields>
+    <fields>
+        <help><!-- ・明細金額マイナスフラグ＝TRUE　＝＞　行金額＝行金額×(-1)　行税込＝行税込×(-1)　行税額＝行税額×(-1)　
+・明細金額マイナスフラグ＝FALSE　＝＞　何もしない --></help>
+        <label><!-- 赤伝票 --></label>
+        <name>KingakuMinus__c</name>
+    </fields>
+    <fields>
+        <help><!-- ・明細金額ゼロフラグ＝TRUE　＝＞　行金額＝0　行税込＝0　行税額＝0　
+・明細金額ゼロフラグ＝FALSE　＝＞　何もしない --></help>
+        <label><!-- 金額０ --></label>
+        <name>KingakuZero__c</name>
+    </fields>
+    <fields>
+        <help><!-- 数量が0個の明細と積上げ集計で選別するために使用。 --></help>
+        <label><!-- ￥￥_明細数量不正フラグ --></label>
+        <name>MeisaiFuseiFlagNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求書の明細に表示しない場合にON。 --></help>
+        <label><!-- 請求隠 --></label>
+        <name>MeisaiJyogai__c</name>
+    </fields>
+    <fields>
+        <help><!-- ・引当成功完了＝ON　→　０：ゼロ
+・納品予定日＝本日　かつ　受注データのロット混在フラグ＝OFF　→　引当可能単ユニット数量
+・納品予定日＝本日　かつ　受注データのロット混在フラグ＝ON　→　引当可能混ユニット数量
+・納品予定日＞本日　かつ　受注データのロット混在フラグ＝OFF　→　引当可能最長販売期限単ロット数量
+・納品予定日＞本日　かつ　受注データのロット混在フラグ＝ON　→　引当可能最長販売期限単ロット数量
+・納品予定日＞最長販売期限日付　→　０：ゼロ --></help>
+        <label><!-- 目安残数量 --></label>
+        <name>MeyasuHikakuTaishoSuryo__c</name>
+    </fields>
+    <fields>
+        <help><!-- ・受注データの引当成功完了＝ON　→　引当済
+・受注データの引当スタンバイ＝ON　→　予約済
+・消費期限照会＞最長販売期限日付　→　期限超過
+・受注数量＞目安残数量　→　×
+・受注数量≦目安残数量　→　○ --></help>
+        <label><!-- 目安残 --></label>
+        <name>MeyasuZan__c</name>
+    </fields>
+    <fields>
+        <help><!-- 一覧編集画面のソート順及び、帳票のソート順で使用するソートキー。
+WFRで書き込まれる。 --></help>
+        <label><!-- ￥￥_明細ソートキー生値 --></label>
+        <name>NarabiJunNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 一覧編集画面のソート順及び、帳票のソート順で使用するソートキー。 --></help>
+        <label><!-- ￥￥_明細ソートキー --></label>
+        <name>NarabiJun__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_要混ロットフラグ生値 --></label>
+        <name>NeedAllLotFlgNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当成功完了＝OFF　かつ　受注数量　＞　目安残数量　かつ　受注データのロット混在フラグ＝OFF　の場合ON。 --></help>
+        <label><!-- 要混ロット --></label>
+        <name>NeedAllLot__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_要数量減フラグ生値 --></label>
+        <name>NeedReductionFlgNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当成功完了＝OFF　かつ　受注数量　＞　目安残数量　かつ　受注データのロット混在フラグ＝ON　の場合ON。 --></help>
+        <label><!-- 要数量減 --></label>
+        <name>NeedReduction__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注出荷データのロット混在と消費期限混在フラグが共にOFFの場合はC/S数とC/T数の組合せで出荷数を表記する。
+
+混在ONの場合はPC数で表記する。 --></help>
+        <label><!-- 荷姿参考 --></label>
+        <name>NisugataSanko__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_納品除外判定 --></label>
+        <name>NohinJogaiHantei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 納品書の明細に表示しない場合にON。 --></help>
+        <label><!-- 納品隠 --></label>
+        <name>NohinJogai__c</name>
+    </fields>
+    <fields>
+        <label><!-- 納品数 --></label>
+        <name>NohinSuryo__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_請求書対象外 --></label>
+        <name>SeikyuShoTaishoGai__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_明細備考 --></label>
+        <name>SeikyushoMeisaiBiko__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_明細規格 --></label>
+        <name>SeikyushoMeisaiKikaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_明細金額 --></label>
+        <name>SeikyushoMeisaiKingaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_明細商品コード --></label>
+        <name>SeikyushoMeisaiShohinCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_明細商品名 --></label>
+        <name>SeikyushoMeisaiShohinMei__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_明細数量 --></label>
+        <name>SeikyushoMeisaiSuryo__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_明細単位 --></label>
+        <name>SeikyushoMeisaiTani__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_明細単価 --></label>
+        <name>SeikyushoMeisaiTanka__c</name>
+    </fields>
+    <fields>
+        <help><!-- 商品1個当たりの納品単価 --></help>
+        <label><!-- 商品売単価 --></label>
+        <name>ShohinBaika__c</name>
+    </fields>
+    <fields>
+        <help><!-- 商品1個当たりの標準原価 --></help>
+        <label><!-- 商品原単価 --></label>
+        <name>ShohinGenka__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商品資材 --></label>
+        <name>ShohinShizaiM__c</name>
+        <relationshipLabel><!-- 出荷明細データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 各種帳票の明細に表記される。
+空白保存で商品資材マスターの標準名称にリセットされる。 --></help>
+        <label><!-- 商品資材名称 --></label>
+        <name>ShohinShizaiMeisho__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商品資材名 --></label>
+        <name>ShohinShizaiMmei__c</name>
+    </fields>
+    <fields>
+        <label><!-- 消費税率 --></label>
+        <name>Shohizeiritsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_消費期限照会生値 --></label>
+        <name>ShomiKigenShokaiNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 出荷引当を行う際に在庫の消費期限を検索する日付。
+・納品予定日に取引先条件マスタの賞味期限確保日数を加算した日付。
+・取引先条件マスタが存在しない場合は、商品資材マスタの販売期限日数を加算した日付。
+・受注データの販売管理期限シフトが設定されている場合は日数を加算（減算）。 --></help>
+        <label><!-- 消費期限照会 --></label>
+        <name>ShomiKigenShokai__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_C/S数量倍率 --></label>
+        <name>SuryoBairitsuCS__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_C/T数量倍率 --></label>
+        <name>SuryoBairitsuCT__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_数量転記制御フラグ --></label>
+        <name>SuryoTenkiSeigyoFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- C/S数入力用の倍率表記。 --></help>
+        <label><!-- 単位C/S --></label>
+        <name>TaniCS__c</name>
+    </fields>
+    <fields>
+        <help><!-- C/T数入力用の倍率表記。 --></help>
+        <label><!-- 単位C/T --></label>
+        <name>TaniCT__c</name>
+    </fields>
+    <fields>
+        <label><!-- 単位PC --></label>
+        <name>TaniPC__c</name>
+    </fields>
+    <fields>
+        <help><!-- 該当する取引先の該当商品資材マスターに設定された条件マスタが存在する場合に設定される。
+受注データの日付（納品予定日/売上計上日）により、売掛データの期間設定が考慮され設定される。 --></help>
+        <label><!-- 取引先条件 --></label>
+        <name>TorihikisakiTanka__c</name>
+        <relationshipLabel><!-- 出荷明細データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 消費期限照会　＞　最長販売期限日付　の場合ON。 --></help>
+        <label><!-- ￥￥_在庫無納品日フラグ --></label>
+        <name>ZaikoNashiNohimbiFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_在庫無納品日フラグ生値 --></label>
+        <name>ZaikoNashiNohimbiNamachi__c</name>
+    </fields>
+    <layouts>
+        <layout>受注明細データレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- システム処理用 --></label>
+            <section>システム処理用</section>
+        </sections>
+        <sections>
+            <label><!-- 備考 --></label>
+            <section>備考</section>
+        </sections>
+        <sections>
+            <label><!-- 受注情報 --></label>
+            <section>受注情報</section>
+        </sections>
+        <sections>
+            <label><!-- 引当情報 --></label>
+            <section>引当情報</section>
+        </sections>
+        <sections>
+            <label><!-- 明細情報 --></label>
+            <section>明細情報</section>
+        </sections>
+        <sections>
+            <label><!-- 納品情報 --></label>
+            <section>納品情報</section>
+        </sections>
+        <sections>
+            <label><!-- 荷姿情報 --></label>
+            <section>荷姿情報</section>
+        </sections>
+        <sections>
+            <label><!-- 複製情報 --></label>
+            <section>複製情報</section>
+        </sections>
+        <sections>
+            <label><!-- 金額情報 --></label>
+            <section>金額情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- 出荷明細データ入力規則：明細の備考に半角カタカナは使用しないで下さい。 --></errorMessage>
+        <name>RemarksCharacterRestriction</name>
+    </validationRules>
+</CustomObjectTranslation>

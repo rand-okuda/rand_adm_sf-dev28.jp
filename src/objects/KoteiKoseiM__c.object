@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Biko__c</fullName>
+        <externalId>false</externalId>
+        <label>備考</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>JuchuMeisaiTsuikaGaido__c</fullName>
+        <externalId>false</externalId>
+        <formula>OR(
+  KumiawaseOKFlg__c ,
+  KumiawaseNGFlg__c 
+)</formula>
+        <inlineHelpText>受注明細データ追加時のガイド表示用の場合ON。
+ON条件：構成工程マスタ：組合NGフラグ　あるいは　構成工程マスタ：組合示唆フラグ　がON。</inlineHelpText>
+        <label>￥￥_受注明細データ追加ガイド</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>KoShohiSuryoTani__c</fullName>
+        <externalId>false</externalId>
+        <formula>OyaShohinShizaiM__r.TaniPC__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>子消費数量単位</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KoShohiSuryo__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>親商品資材側の製造数量に必要な子商品資材の消費数量。
+例：親5000個の製造には子が21000kg必要。
+例：親1個の製造には子が3個必要。</inlineHelpText>
+        <label>子消費数量</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KoShohinShizaiKubun__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(KoShohinShizaiM__r.ShohinShizaiKubun__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>子商品資材区分</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KoShohinShizaiM__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>子商品資材マスタ</label>
+        <referenceTo>ShohinShizaiM__c</referenceTo>
+        <relationshipName>KoteiKoseiM_KoShohinShizaiM</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>KoShohinShizaiMmei__c</fullName>
+        <externalId>false</externalId>
+        <formula>KoShohinShizaiM__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>子商品資材マスタ名</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KoteiKoseiKaisetsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( 
+ AND(
+ NOT( KumiawaseNGFlg__c ) ,
+ KumiawaseOKFlg__c  ) ,
+
+ OyaShohinShizaiMmei__c 
++ &quot; には　&quot; + 
+ KoShohinShizaiMmei__c 
++ &quot; を推奨&quot;
+,
+
+IF ( 
+ KumiawaseNGFlg__c  ,
+
+ OyaShohinShizaiMmei__c 
++ &quot;　に　&quot; + 
+ KoShohinShizaiMmei__c 
++ &quot; は禁止&quot;
+,
+
+IF ( 
+ AND(
+ NOT( KumiawaseNGFlg__c ) ,
+ NOT( KumiawaseOKFlg__c ) ) ,
+
+&quot;解説： &quot; + 
+ OyaShohinShizaiKubun__c 
++ &quot; &quot; + 
+ OyaShohinShizaiMmei__c
++ &quot; &quot; + 
+ TEXT(OyaSeizoSuryo__c / OyaSeizoSuryo__c ) 
++ &quot;&quot; + 
+ OyaSeizoSuryoTani__c
++ &quot; 当たり　&quot; + 
+ KoShohinShizaiKubun__c 
++ &quot; &quot; + 
+ KoShohinShizaiMmei__c
++ &quot; &quot; + 
+ TEXT( ROUND(KoShohiSuryo__c / OyaSeizoSuryo__c,2) ) 
++ &quot;&quot; + 
+ KoShohiSuryoTani__c
++ &quot; が必要&quot;
+,
+
+Biko__c
+)))</formula>
+        <inlineHelpText>組合示唆フラグOFF、組合NGフラグOFF：単品当たり製造消費量を表示。
+組合示唆フラグON、組合NGフラグOFF：必要な組合せを表示。
+組合NGフラグOFF：禁止の組合せを表示。</inlineHelpText>
+        <label>構成工程解説</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KumiawaseNGFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>禁止したい商品の組合せ（排他商品/競合商品）を表す場合はON。
+通常の組合せ商品（セット商品/部品表）を表す場合はOFF。</inlineHelpText>
+        <label>組合NGフラグ</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>KumiawaseOKFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>セット商品などの組み合わせ登録をアラートする場合にON。</inlineHelpText>
+        <label>組合示唆フラグ</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>OyaSeizoSuryoTani__c</fullName>
+        <externalId>false</externalId>
+        <formula>OyaShohinShizaiM__r.TaniPC__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>親製造数量単位</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OyaSeizoSuryo__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>親商品資材側の製造数量。
+例：標準製造バッチ数量
+例：時間辺り製造数量</inlineHelpText>
+        <label>親製造数量</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OyaShohinShizaiKubun__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( OyaShohinShizaiM__r.ShohinShizaiKubun__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>親商品資材区分</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OyaShohinShizaiM__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>親商品資材マスタ</label>
+        <referenceTo>ShohinShizaiM__c</referenceTo>
+        <relationshipName>KoteiKoseiM_OyaShohinShizaiM</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>OyaShohinShizaiMmei__c</fullName>
+        <externalId>false</externalId>
+        <formula>OyaShohinShizaiM__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>親商品資材マスタ名</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>構成工程マスタ</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>KoteiKoseiKaisetsu__c</columns>
+        <columns>KoShohinShizaiM__c</columns>
+        <columns>OyaShohinShizaiM__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>すべて選択</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160513a</fullName>
+        <columns>NAME</columns>
+        <columns>OyaShohinShizaiM__c</columns>
+        <columns>OyaShohinShizaiKubun__c</columns>
+        <columns>OyaSeizoSuryo__c</columns>
+        <columns>KoShohinShizaiM__c</columns>
+        <columns>KoShohinShizaiKubun__c</columns>
+        <columns>KoShohiSuryo__c</columns>
+        <columns>KumiawaseNGFlg__c</columns>
+        <columns>KumiawaseOKFlg__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>JuchuMeisaiTsuikaGaido__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>．レシピ原価</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160513b</fullName>
+        <columns>NAME</columns>
+        <columns>KumiawaseNGFlg__c</columns>
+        <columns>KumiawaseOKFlg__c</columns>
+        <columns>KoShohinShizaiM__c</columns>
+        <columns>OyaShohinShizaiM__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>JuchuMeisaiTsuikaGaido__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>．示唆警告</label>
+    </listViews>
+    <nameField>
+        <displayFormat>構成工程-{00000000}</displayFormat>
+        <label>構成工程番号</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <searchLayouts>
+        <customTabListAdditionalFields>KoteiKoseiKaisetsu__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>KumiawaseNGFlg__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>KumiawaseOKFlg__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>OyaShohinShizaiMmei__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>KoShohinShizaiMmei__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>KoShohinShizaiKubun__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>OyaShohinShizaiMmei__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>KoShohinShizaiMmei__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>KoShohinShizaiKubun__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>KoShohinShizaiMmei__c</searchFilterFields>
+        <searchFilterFields>OyaShohinShizaiMmei__c</searchFilterFields>
+        <searchResultsAdditionalFields>OyaShohinShizaiMmei__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>KoShohinShizaiMmei__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>KoShohinShizaiKubun__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

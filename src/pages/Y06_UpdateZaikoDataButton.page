@@ -1,0 +1,5 @@
+<apex:page title="ボタンアクション" standardController="ZaikoData__c" extensions="Y06_ZaikoControllerExtension" recordSetVar="records" action="{!init}">
+    
+    <apex:outputlink value="/apexpages/setup/listAsyncApexJobs.apexp">処理中です。ジョブの確認はコチラ。</apex:outputlink>
+    
+</apex:page>

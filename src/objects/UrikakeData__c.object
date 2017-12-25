@@ -1,0 +1,1914 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>DempyoTitle__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>売掛データ名に反映されます。 
+80文字以下で入力して下さい</inlineHelpText>
+        <label>伝票タイトル</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DenpyoMaisu__c</fullName>
+        <externalId>false</externalId>
+        <label>伝票枚数</label>
+        <summaryFilterItems>
+            <field>JuchuData__c.DenpyoKingakuKei__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </summaryFilterItems>
+        <summaryForeignKey>JuchuData__c.UrikakeData__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>DenpyoNo__c</fullName>
+        <displayFormat>1{0000000}</displayFormat>
+        <externalId>false</externalId>
+        <label>伝票番号</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>DenpyoZeikomiUrikakeKei__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>伝票単位で税計算した結果の合計</inlineHelpText>
+        <label>￥￥_伝票税込売掛計</label>
+        <summarizedField>JuchuData__c.DenpyoZeikomi__c</summarizedField>
+        <summaryFilterItems>
+            <field>JuchuData__c.JuchuUriageKakuteiFlg__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>JuchuData__c.UrikakeData__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>FurikaeSeikyuFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND(
+ NOT( TsudoSeikyuFlg__c ) ,
+ SeikyuAccount__r.KozaShiyoKanoFlg__c 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>売掛データを振替請求をする場合にON。
+
+締請求（都度請求フラグOFF）かつ取引先の振替可能フラグONの場合にON。</inlineHelpText>
+        <label>振替請求フラグ</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HizukeMaruchiKensaku__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot; &quot; +
+
+ TEXT( SeikyuKaishuKigen__c )
+
++ &quot; &quot; + 
+
+RIGHT( TEXT(SeikyuKaishuKigen__c), 5) 
+
++ &quot; &quot; + 
+
+ SUBSTITUTE(TEXT(SeikyuKaishuKigen__c), &quot;-&quot;, &quot;/&quot;)
+
++ &quot; &quot; + 
+
+RIGHT( SUBSTITUTE(TEXT(SeikyuKaishuKigen__c), &quot;-&quot;, &quot;/&quot;), 5) 
+
++ &quot; &quot; + 
+
+ SUBSTITUTE(TEXT(SeikyuKaishuKigen__c), &quot;-&quot;, &quot;&quot;) 
+
++ &quot; &quot; + 
+
+RIGHT( SUBSTITUTE(TEXT(SeikyuKaishuKigen__c), &quot;-&quot;, &quot;&quot;), 4)
+
++ &quot; &quot; + 
+
+RIGHT( TEXT(SeikyuKaishuKigen__c), 2)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>ハイフン区切り
+例）2016/12/01→2016-12-01
+例）2016/12/01→12-01
+スラッシュ区切り
+例）2016/12/01→2016/12/01
+例）2016/12/01→12/01
+区切り無
+例）2016/12/01→20161201
+例）2016/12/01→1201
+日付部分
+例）2016/12/01→01</inlineHelpText>
+        <label>￥￥_日付マルチ検索</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HyojunKaishuKijitsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( TsudoSeikyuFlg__c , 
+
+IF ( ISBLANK(SeikyuAccount__r.TorihikiSiteNissu__c) , 
+ ShimeKikanMadeShudo__c, 
+ ShimeKikanMadeShudo__c  +  SeikyuAccount__r.TorihikiSiteNissu__c 
+) 
+,
+IF( SeikyuAccount__r.Kijitsu__c = 99, 
+
+IF(
+    MONTH(ShimeKikanMadeNamachi__c)+SeikyuAccount__r.TorihikiSiteTsukisu__c+1&gt;12,
+    DATE(YEAR(ShimeKikanMadeNamachi__c)+1,MONTH(ShimeKikanMadeNamachi__c)+SeikyuAccount__r.TorihikiSiteTsukisu__c+1-12,1),
+    DATE(YEAR(ShimeKikanMadeNamachi__c)  ,MONTH(ShimeKikanMadeNamachi__c)+SeikyuAccount__r.TorihikiSiteTsukisu__c+1   ,1)
+)-1
+,
+IF(
+    MONTH(ShimeKikanMadeNamachi__c)+SeikyuAccount__r.TorihikiSiteTsukisu__c&gt;12,
+    DATE(YEAR(ShimeKikanMadeNamachi__c)+1,MONTH(ShimeKikanMadeNamachi__c)+SeikyuAccount__r.TorihikiSiteTsukisu__c-12,SeikyuAccount__r.Kijitsu__c),
+    DATE(YEAR(ShimeKikanMadeNamachi__c)  ,MONTH(ShimeKikanMadeNamachi__c)+SeikyuAccount__r.TorihikiSiteTsukisu__c   ,SeikyuAccount__r.Kijitsu__c)
+)
+
+)
+
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>取引先マスタの取引債渡月数および期日と期日から自動算出。 
+
+期日＝９９
+　締期間まで＋取引債渡月数の月　の　最終日
+
+期日≠９９
+　締期間まで＋取引債渡月数の月　の　期日
+
+都度請求TRUE
+　締期間まで＋取引先の都度払債渡日数</inlineHelpText>
+        <label>標準回収期日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>KahenSeikyuFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>売掛データ作成時に任意の請求締期間を設定する場合はON。
+取引先マスタの可変請求フラグから反映される。</inlineHelpText>
+        <label>可変締期間フラグ</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>KaishuKanryoBiNamachi__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>回収完了日を、ワークフロールールでコピー</inlineHelpText>
+        <label>￥￥_回収完了日生値</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>KaishuKanryoBi__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( KaishuKanryoFlg__c ,
+ SaishuNyukinBi__c ,
+ null
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>回収完了フラグがONの場合に　最終入金日　を回収完了日として算出。</inlineHelpText>
+        <label>回収完了日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>KaishuKanryoFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND(
+ SeikyuKakuteiFlg__c ,
+ KekuteiMiKaishuZandaka__c  = 0,
+ SaishuSeikyuKingaku__c  &gt; 0
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>ON条件。
+請求確定フラグ＝ON
+　かつ
+未入金売掛残高＝０円
+　かつ
+最終請求金額＞０円</inlineHelpText>
+        <label>回収完了フラグ</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>KaishuKigenShift__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>請求回収期限を前倒しする日数。
+
+例）先払時など先行して請求入金を行う場合。
+例）締め期間が長い場合やサイト期間が長い場合。</inlineHelpText>
+        <label>回収前倒日数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KakuteiDenpyoMaisu__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>納品確定しているレコード（納品確定フラグ＝True）　かつ
+伝票金額がゼロでないレコード（伝票金額ゼロフラグ＝False）　をカウント</inlineHelpText>
+        <label>確定伝票枚数</label>
+        <summaryFilterItems>
+            <field>JuchuData__c.DenpyoKingakuZeroFlg__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>JuchuData__c.JuchuUriageKakuteiFlg__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>JuchuData__c.UrikakeData__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>KakuteiKaishuNebikiGaku__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>確定済の入金消込（値引）の合計額。</inlineHelpText>
+        <label>確定回収値引額</label>
+        <summarizedField>KeshikomiData__c.KeshikomiKingaku__c</summarizedField>
+        <summaryFilterItems>
+            <field>KeshikomiData__c.SeikyuMeisaiFlgNamachi__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>KeshikomiData__c.UrikakeData__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>KekuteiMiKaishuZandaka__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuKakuteiFlg__c ,
+
+ SaishuSeikyuKingaku__c  -  KakuteiKaishuNebikiGaku__c,
+ 0
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>請求確定フラグOFFの場合　￥０固定
+
+請求確定フラグONの場合　確定請求金額－値引回収済金額</inlineHelpText>
+        <label>確定未回収残高</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>KeshikomiTaishoFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND(
+ KekuteiMiKaishuZandaka__c  &lt;&gt; 0,
+ SaishuSeikyuKingaku__c &lt;&gt; 0,
+  SeikyuKakuteiFlg__c 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>消込値引登録画面に表示する対象を表す。
+
+ON条件
+　売掛確定フラグがON。
+　未入金残高が0円以外。
+　最終請求金額が0円以外。</inlineHelpText>
+        <label>消込登録対象</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>KingakuMaruchiKensaku__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot; &quot; + 
+
+TEXT( FLOOR(SaishuSeikyuKingakuNamachi__c/ 10) * 10  ) 
+
+ + &quot; &quot; + 
+
+TEXT( FLOOR( (SaishuSeikyuKingakuNamachi__c -  KakuteiKaishuNebikiGaku__c ) / 10) * 10  )  + &quot; &quot;
+
+ + &quot; &quot; + 
+
+TEXT( FLOOR(SaishuSeikyuKingakuNamachi__c/ 100) * 100  ) 
+
+ + &quot; &quot; + 
+
+TEXT( FLOOR( (SaishuSeikyuKingakuNamachi__c -  KakuteiKaishuNebikiGaku__c ) / 100) * 100  )  + &quot; &quot;
+
+ + &quot; &quot; + 
+
+TEXT( FLOOR(SaishuSeikyuKingakuNamachi__c/ 1000) * 1000  ) 
+
+ + &quot; &quot; + 
+
+TEXT( FLOOR( (SaishuSeikyuKingakuNamachi__c -  KakuteiKaishuNebikiGaku__c ) / 1000) * 1000  )  + &quot; &quot;
+
+ + &quot; &quot; + 
+
+TEXT( SaishuSeikyuKingakuNamachi__c )
+
+ + &quot; &quot; + 
+
+TEXT( SaishuSeikyuKingakuNamachi__c -  KakuteiKaishuNebikiGaku__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>請求金額　未入金売掛残高　を元に検索するための文字列を出力。
+
+1,000円切り捨て
+例）￥25,102　→　25000
+例）￥23,243　→　23000
+100円切り捨て
+例）￥25,102　→　25100
+例）￥23,243　→　23200
+10円切り捨て
+例）￥25,102　→　25100
+例）￥23,243　→　23240</inlineHelpText>
+        <label>￥￥_金額マルチ検索</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MeisaiKingakuHihyojiMode__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>請求書明細の金額を非表示にします。</inlineHelpText>
+        <label>明細金額非表示モード</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MeisaiKosuHihyojiMode__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>請求書明細の個数を非表示にします。</inlineHelpText>
+        <label>明細個数非表示モード</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MeisaibetsuZeigakuFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>明細別に税額を算出した額で請求する場合にON。</inlineHelpText>
+        <label>明細別税額フラグ</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MikomiKaishuNebikiGaku__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>未確定の入金消込（値引）の合計額。</inlineHelpText>
+        <label>予定回収値引額</label>
+        <summarizedField>KeshikomiData__c.KeshikomiKingaku__c</summarizedField>
+        <summaryForeignKey>KeshikomiData__c.UrikakeData__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>MikomiMikaishuZandakaNamachi__c</fullName>
+        <externalId>false</externalId>
+        <label>￥￥_見込未回収額生値</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>MikomiMikaishuZandaka__c</fullName>
+        <externalId>false</externalId>
+        <formula>SaishuSeikyuKingaku__c  -  MikomiKaishuNebikiGaku__c</formula>
+        <inlineHelpText>確定請求金額 － 予定回収値引</inlineHelpText>
+        <label>予定未回収額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>NyukinJutoCounter__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>入金充当リンクによる消込値引データの数。</inlineHelpText>
+        <label>￥￥_入金充当カウンター</label>
+        <summaryFilterItems>
+            <field>KeshikomiData__c.NyukinJutoFlg__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>KeshikomiData__c.UrikakeData__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>NyukinJutoFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>NyukinJutoCounter__c  &gt; 0</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>入金充当リンクによる消込値引データの有無。</inlineHelpText>
+        <label>入金充当フラグ</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SaikenMihasseiFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>商品（サービス）の納品前に請求を行う場合にON。トリガによりONされる。
+受注データの債権未発生フラグONが集約される。</inlineHelpText>
+        <label>先払債権無フラグ</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SaishuNyukinBi__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>入金値引きデータの入金確認日の最大（老番）値。</inlineHelpText>
+        <label>￥￥_最終入金日</label>
+        <summarizedField>KeshikomiData__c.KeshikomiKakuninBi__c</summarizedField>
+        <summaryFilterItems>
+            <field>KeshikomiData__c.SeikyuMeisaiFlgNamachi__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>KeshikomiData__c.UrikakeData__c</summaryForeignKey>
+        <summaryOperation>max</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>SaishuSeikyuKingakuNamachi__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>最終請求金額を、ワークフロールールでコピー（取引先で集計するため）</inlineHelpText>
+        <label>￥￥_確定請求金額生値</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SaishuSeikyuKingaku__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( MeisaibetsuZeigakuFlg__c ,
+  ZeiKomiGakuKei__c ,
+  ShohiZeikomiGaku__c 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>合計額ベースの消費税か明細ベースの消費税の選択結果。
+明細別税額フラグで制御。</inlineHelpText>
+        <label>確定請求金額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SeikyuAccount__c</fullName>
+        <externalId>false</externalId>
+        <label>請求取引先</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>UrikakeData_SeikyuAccount</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>SeikyuJoken__c</fullName>
+        <externalId>false</externalId>
+        <formula>LPAD(TEXT( MONTH(ShimeKikanKara__c) ), 2, &quot;0&quot;) + &quot;月&quot; 
+
++ &quot; &quot; + 
+
+IF ( SaikenMihasseiFlg__c , &quot;先払&quot;,&quot;後払&quot; ) 
+
++ &quot; &quot; + 
+
+IF ( TsudoSeikyuFlg__c , &quot;都度&quot;,&quot;締&quot; ) 
+
++ &quot; &quot; + 
+
+IF ( SeikyuKakuteiFlg__c , IF ( FurikaeSeikyuFlg__c , &quot;振替&quot;,&quot;振込&quot; ) , &quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_請求条件</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyuKaishuKigenSanshutsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>HyojunKaishuKijitsu__c  - KaishuKigenShift__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>回収期日　－　請求入金期限シフト日数　で算出しWFEで請求入金期限に転記。</inlineHelpText>
+        <label>￥￥_請求回収期限算出</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SeikyuKaishuKigen__c</fullName>
+        <description>WFR自動記入</description>
+        <externalId>false</externalId>
+        <inlineHelpText>請求書のお支払い期限に反映。
+任意の日付に書き換え可能。
+
+取引サイト月数と回収前倒日数から算出。</inlineHelpText>
+        <label>請求回収期日</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SeikyuKakuteiFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>請求を締切ってロックする場合ON。
+NOの場合新たな受注データの納品確定が禁止。
+NOの場合請求期間内の受注確定引当が禁止。</inlineHelpText>
+        <label>請求確定フラグ</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SeikyuYoteiMode__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>請求予定（見積）書として表示します。</inlineHelpText>
+        <label>請求予定（見積）モード</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SeikyushoAisatsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;毎度格別のお引立てを賜り厚く御礼申しあげます　下記の通りお見積りさせていただきます&quot;,
+ &quot;毎度格別のお引立てを賜り厚く御礼申しあげます　下記の通りご請求させていただきます&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_あいさつ</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoBikoTitle__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;備　　考&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_備考タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoDenpyoHizukeTitle__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;納品日付&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_伝票日付タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoDenpyoNoTitle__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;納品管理No. &quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_伝票番号タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoGinko1__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;&quot;,
+ SeikyuAccount__r.OfurikomisakiGinko1__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_銀行１</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoGinko2__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;&quot;,
+ SeikyuAccount__r.OfurikomisakiGinko2__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_銀行２</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoGinkoTitle__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+  DempyoTitle__c ,
+ &quot;－－－　お振込先銀行　－－－&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_銀行タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoKingakuTitle__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;金　　額&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_金額タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoLower01Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;&quot;,
+ &quot;①別請求お支払漏れ&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_下段01タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoLower01__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ null,
+ SeikyuAccount__r.SeikyuZumiKaishuGakuSokei__c  -  KekuteiMiKaishuZandaka__c 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_下段01</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SeikyushoLower02Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;①お見積り金額&quot;,
+ &quot;②今回お買上金額&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_下段02タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoLower02__c</fullName>
+        <externalId>false</externalId>
+        <formula>ZeiBetsuGakuKei__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_下段02</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SeikyushoLower03Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;②消費税&quot;,
+ &quot;③今回の消費税&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_下段03タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoLower03__c</fullName>
+        <externalId>false</externalId>
+        <formula>ShohiZeiGaku__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_下段03</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SeikyushoLower04Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;③お値引き&quot;,
+ &quot;④今回控除額&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_下段04タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoLower04__c</fullName>
+        <externalId>false</externalId>
+        <formula>KakuteiKaishuNebikiGaku__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_下段04</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SeikyushoLower05Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;お見積り額①+②-③&quot;,
+ &quot;ご請求額①+②+③-④&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_下段05タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoLower05__c</fullName>
+        <externalId>false</externalId>
+        <formula>SeikyuAccount__r.SeikyuZumiKaishuGakuSokei__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_下段05</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SeikyushoSakuseiJikkoFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND(
+ NOT( SeikyusyoShutsuryokuzumiFlg__c ) ,
+ SeikyuKakuteiFlg__c ,
+ KakuteiDenpyoMaisu__c  &gt; 0
+ )</formula>
+        <inlineHelpText>売掛請求ロックがON　かつ　請求書出力済フラグがOFF　かつ　伝票枚数が１以上　の場合にON。
+ONの場合に請求書PDFが作成される。</inlineHelpText>
+        <label>￥￥_請求書作成実行</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SeikyushoSeikyusakiBusho__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(OR(ISBLANK(Tantosha__c), ISNULL(Tantosha__c)),
+  SeikyuAccount__r.SeishikiMeisho__c + &quot; &quot; + SeikyuAccount__r.Keisho__c,
+  Tantosha__r.Department
+)</formula>
+        <label>￥_請求書_請求先部署</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoSeikyusakiJusho__c</fullName>
+        <externalId>false</externalId>
+        <formula>SeikyuAccount__r.BillingState + SeikyuAccount__r.BillingCity + SeikyuAccount__r.BillingStreet</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_請求先住所</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoSeikyusakiMei__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Tantosha__c),
+  &quot;&quot;,
+   Tantosha__r.Title  + &quot;　&quot; + Tantosha__r.LastName + Tantosha__r.FirstName + &quot;　&quot; + Tantosha__r.Keisho__c 
+)</formula>
+        <label>￥_請求書_請求先名</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoSeikyusakiYubinBango__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;〒&quot; +  SeikyuAccount__r.BillingPostalCode</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_請求先郵便番号</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoShamei__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;&quot;</formula>
+        <label>￥_請求書_社名</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoShohinMeiKikakuTitle__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;商品名／規格&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_商品名規格タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoSuryoTitle__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;数　量&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_数量タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoTaniTitle__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;単位&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_単位タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoTankaTitle__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;&quot;,
+ &quot;単価&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_単価タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoTitle__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;お見積り書&quot;,
+ &quot;ご請求　明細書&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoUpper01Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c , 
+&quot;有効期限&quot;, 
+&quot;対象期間&quot; 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_上段01タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoUpper01__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c , 
+TEXT(YEAR(  ShimeKikanKaraNamachi__c - 1 )) + &quot;/&quot; + 
+TEXT(MONTH( ShimeKikanKaraNamachi__c - 1 )) + &quot;/&quot; +
+TEXT(DAY( ShimeKikanMadeNamachi__c )) , 
+TEXT(YEAR(  ShimeKikanKaraNamachi__c  )) + &quot;/&quot; + 
+TEXT(MONTH( ShimeKikanKaraNamachi__c )) + &quot;/&quot; + 
+TEXT(DAY( ShimeKikanKaraNamachi__c )) + &quot;～&quot; + 
+TEXT(YEAR(  ShimeKikanMadeNamachi__c  )) + &quot;/&quot; + 
+TEXT(MONTH( ShimeKikanMadeNamachi__c )) + &quot;/&quot; + 
+TEXT(DAY( ShimeKikanMadeNamachi__c )) 
+)</formula>
+        <label>￥_請求書_上段01</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoUpper02Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;お支払い予定&quot;,
+ &quot;お支払い期限&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_上段02タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoUpper02__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(YEAR(   SeikyuKaishuKigen__c   )) + &quot;/&quot; + 
+TEXT(MONTH( SeikyuKaishuKigen__c )) + &quot;/&quot; + 
+TEXT(DAY( SeikyuKaishuKigen__c ))</formula>
+        <label>￥_請求書_上段02</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoUpper03Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;納品予定数&quot;,
+ &quot;納品数&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_上段03タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoUpper03__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(KakuteiDenpyoMaisu__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_上段03</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoUpper04Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;&quot;,
+ &quot;請求No.&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_上段04タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoUpper04__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( SeikyuYoteiMode__c ,
+ &quot;&quot;,
+ DenpyoNo__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_上段04</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoUpper05Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;弊社担当者&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_上段05タイトル</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoUpper05__c</fullName>
+        <externalId>false</externalId>
+        <formula>LastModifiedBy.LastName  +  LastModifiedBy.FirstName</formula>
+        <label>￥_請求書_上段05</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyusyoInnsatsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&apos;/apex/N01_Seikyusho?UdId=&apos; + Id, 
+IMAGE( &quot;/resource/SeikyusyoInsatsu&quot; , &quot;請求書印刷&quot; ) 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>請求書印刷</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyusyoShutsuryokuzumiFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>請求書発行を実行でON。</inlineHelpText>
+        <label>請求書出力済フラグ</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ShimeHizuke__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>締め期間算出用の基準となる日付。
+
+本日付を含む形で締期間（請求起算日～請求締日）が算出される。</inlineHelpText>
+        <label>請求起算基準日</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShimeKikanKaraNamachi__c</fullName>
+        <description>締期間からを、ワークフロールールでコピー（数式の文字数制限）</description>
+        <externalId>false</externalId>
+        <inlineHelpText>締期間までを、ワークフロールールでコピー（数式の文字数制限）</inlineHelpText>
+        <label>￥￥_請求起算日生値</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShimeKikanKaraShudo__c</fullName>
+        <externalId>false</externalId>
+        <label>請求起算日（手動）</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShimeKikanKara__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( KahenSeikyuFlg__c, 
+ ShimeKikanKaraShudo__c , 
+
+IF( TsudoSeikyuFlg__c, 
+ ShimeHizuke__c, 
+
+IF( SeikyuAccount__r.Shimebi__c = 99, 
+ DATE( YEAR(ShimeHizuke__c), MONTH(ShimeHizuke__c), 1), 
+
+IF( SeikyuAccount__r.Shimebi__c &lt; DAY( ShimeHizuke__c ),  
+ DATE( YEAR(ShimeHizuke__c), MONTH(ShimeHizuke__c), SeikyuAccount__r.Shimebi__c) + 1, 
+
+ IF(
+    MONTH(ShimeHizuke__c)==1,
+    DATE(YEAR(ShimeHizuke__c)-1,12                                  ,SeikyuAccount__r.Shimebi__c) + 1,
+    DATE(YEAR(ShimeHizuke__c)  ,MONTH(ShimeHizuke__c)-1,SeikyuAccount__r.Shimebi__c) + 1
+ )
+
+))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>売掛データに集計される受注データの計上日範囲。
+
+可変請求ON
+　請求起算日（手動）
+　
+都度請求ON
+　請求起算基準日
+
+締日＝９９
+　締基準日の月　の　同月　の　初日
+
+締日＜締基準日
+　締基準日の月　の　同月　の　締日＋１日
+
+締日≧締基準日
+　締基準日の月　の　前月　の　締日＋１日</inlineHelpText>
+        <label>請求起算日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShimeKikanMadeNamachi__c</fullName>
+        <description>数式の文字数制限対応</description>
+        <externalId>false</externalId>
+        <label>￥￥_請求締日生値</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShimeKikanMadeShudo__c</fullName>
+        <externalId>false</externalId>
+        <label>請求締日（手動）</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShimeKikanMade__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( KahenSeikyuFlg__c, 
+ ShimeKikanMadeShudo__c , 
+
+IF( TsudoSeikyuFlg__c, 
+ ShimeHizuke__c, 
+
+IF( SeikyuAccount__r.Shimebi__c = 99, 
+ IF(
+    MONTH(ShimeKikanKaraNamachi__c)+ShimekikanTsukisu__c&gt;12,
+    DATE(YEAR(ShimeKikanKaraNamachi__c)+1,MONTH(ShimeKikanKaraNamachi__c)+ShimekikanTsukisu__c-12,1),
+    DATE(YEAR(ShimeKikanKaraNamachi__c)  ,MONTH(ShimeKikanKaraNamachi__c)+ShimekikanTsukisu__c   ,1)
+ )-1
+ ,
+ IF(
+    MONTH(ShimeKikanKaraNamachi__c)+ShimekikanTsukisu__c&gt;12,
+    DATE(YEAR(ShimeKikanKaraNamachi__c)+1,MONTH(ShimeKikanKaraNamachi__c)+ShimekikanTsukisu__c-12,SeikyuAccount__r.Shimebi__c),
+    DATE(YEAR(ShimeKikanKaraNamachi__c)  ,MONTH(ShimeKikanKaraNamachi__c)+ShimekikanTsukisu__c   ,SeikyuAccount__r.Shimebi__c)
+ )
+
+)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>売掛データに集計される受注データの計上日範囲。
+
+可変請求ON
+　請求締日（手動）
+　
+都度請求ON
+　請求起算基準日
+
+締日＝９９
+　締期間から＋締期間月数の月－１ヶ月　の　最終日
+
+締日≠９９
+　締期間から＋締期間月数の月　の　締日</inlineHelpText>
+        <label>請求締日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShimekikanTsukisu__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>取引先マスタの締め期間月数から標準値が反映
+１以上をの設定が必須</inlineHelpText>
+        <label>締期間月数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShohiZeiGaku__c</fullName>
+        <externalId>false</externalId>
+        <formula>FLOOR(ZeiBetsuGakuKei__c  *  Shohizeiritsu__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>税別額計×消費税率（少数切捨）</inlineHelpText>
+        <label>消費税額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ShohiZeikomiGaku__c</fullName>
+        <externalId>false</externalId>
+        <formula>FLOOR(ZeiBetsuGakuKei__c + ShohiZeiGaku__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>税別額計＋消費税額（小数切捨）</inlineHelpText>
+        <label>消費税込額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Shohizeiritsu__c</fullName>
+        <defaultValue>$Setup.SystemParam__c.Shohizeiritsu__c</defaultValue>
+        <externalId>false</externalId>
+        <label>消費税率</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShokeiKingakuHihyojiMode__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>請求書明細の伝票単位小計を非表示にします。</inlineHelpText>
+        <label>小計金額非表示モード</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Tantosha__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>請求書出力時の宛先に反映する取引先責任者。</inlineHelpText>
+        <label>請求書宛先担当者</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>UrikakeData_Tantosha</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>TokusokuAlertFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND(
+ SeikyuKaishuKigen__c  &lt;  TODAY() ,
+ NOT( KaishuKanryoFlg__c ) ,
+ KekuteiMiKaishuZandaka__c  &gt;= 1
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>請求入金期限を過ぎ回収完了していない　かつ　先払ではない（債権無フラグOFF）　かつ　未回収残高が￥１円以上　場合にON。</inlineHelpText>
+        <label>督促警告フラグ</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>TokusokuAlertNamachi__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>￥￥_督促アラート生値</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>TsudoSeikyuFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>締請求から独立した請求集計を行う際にONされる。トリガによりONされる。
+受注データの都度請求フラグONが集約される。</inlineHelpText>
+        <label>都度請求フラグ</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>UriageKakuteiFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>OR(
+
+ AND(
+ SaikenMihasseiFlg__c ,
+ SeikyuKakuteiFlg__c ,
+ KaishuKanryoFlg__c ) ,
+
+ AND(
+ NOT(SaikenMihasseiFlg__c)  ,
+ SeikyuKakuteiFlg__c ) 
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>売上確定している場合にONとなる。
+
+先払：売掛確定フラグONかつ回収完了フラグON。
+後払：売掛確定フラグON。</inlineHelpText>
+        <label>売上確定フラグ</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>UriageKeijoTsuki__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( UriageKakuteiFlg__c ,
+
+IF ( SaikenMihasseiFlg__c ,
+
+TEXT(YEAR(   KaishuKanryoBiNamachi__c ))   +&quot;年&quot;+
+IF (4 &lt;= MONTH( KaishuKanryoBiNamachi__c ) , &quot;.&quot;, &quot;&quot;) +
+TEXT(MONTH( KaishuKanryoBiNamachi__c )) +&quot;月&quot;
+,
+TEXT(YEAR(   ShimeKikanMadeNamachi__c ))   +&quot;年&quot;+
+IF (4 &lt;= MONTH( ShimeKikanMadeNamachi__c ) , &quot;.&quot;, &quot;&quot;) +
+TEXT(MONTH( ShimeKikanMadeNamachi__c )) +&quot;月&quot;
+
+) 
+,
+TEXT(YEAR(    SeikyuKaishuKigen__c ))   +&quot;年&quot;+
+IF (4 &lt;= MONTH( SeikyuKaishuKigen__c ) , &quot;.&quot;, &quot;&quot;) +
+TEXT(MONTH( SeikyuKaishuKigen__c )) +&quot;月&quot;
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>先払の場合は、回収完了日。
+後払の場合は、締期間の最終日（締期間まで）。</inlineHelpText>
+        <label>売上計上月</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UrikakeDataNameSanshutsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>LEFT(
+
+ SeikyuAccount__r.Name + &quot; &quot; +
+
+IF ( ISBLANK( DempyoTitle__c ) ,
+
+&quot;&quot;
+ ,
+
+ DempyoTitle__c
+
+)
+
+ + &quot; &quot; +
+
+ SeikyuJoken__c 
+
+ , 80
+
+)</formula>
+        <inlineHelpText>伝票タイトル　に記載が有った場合は　月表を上書き。</inlineHelpText>
+        <label>￥￥_売掛データ名算出</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ZeiBetsuGakuKei__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>明細別の税抜額の合計</inlineHelpText>
+        <label>税別額計</label>
+        <summarizedField>JuchuData__c.DenpyoKingakuKei__c</summarizedField>
+        <summaryFilterItems>
+            <field>JuchuData__c.JuchuUriageKakuteiFlg__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>JuchuData__c.UrikakeData__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>ZeiKomiGakuKei__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>明細別の税込額の合計</inlineHelpText>
+        <label>明細税込額計</label>
+        <summarizedField>JuchuData__c.GyoZeikomiKei__c</summarizedField>
+        <summaryFilterItems>
+            <field>JuchuData__c.JuchuUriageKakuteiFlg__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>JuchuData__c.UrikakeData__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>ZenMeisaiHyoji__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>受注明細データ個別の請求隠を無視してすべての明細を表示します。</inlineHelpText>
+        <label>全明細表示モード</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>売掛データ</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>DenpyoNo__c</columns>
+        <columns>KakuteiDenpyoMaisu__c</columns>
+        <columns>SaishuSeikyuKingaku__c</columns>
+        <columns>KekuteiMiKaishuZandaka__c</columns>
+        <columns>ShimeKikanKara__c</columns>
+        <columns>ShimeKikanMade__c</columns>
+        <columns>SeikyuKakuteiFlg__c</columns>
+        <columns>HyojunKaishuKijitsu__c</columns>
+        <columns>KaishuKanryoFlg__c</columns>
+        <columns>KaishuKanryoBi__c</columns>
+        <columns>UriageKakuteiFlg__c</columns>
+        <columns>UriageKeijoTsuki__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>すべて選択</label>
+    </listViews>
+    <listViews>
+        <fullName>View20150922a</fullName>
+        <columns>NAME</columns>
+        <columns>KeshikomiTaishoFlg__c</columns>
+        <columns>SeikyuKakuteiFlg__c</columns>
+        <columns>SeikyuAccount__c</columns>
+        <columns>SaikenMihasseiFlg__c</columns>
+        <columns>TsudoSeikyuFlg__c</columns>
+        <columns>FurikaeSeikyuFlg__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>KeshikomiTaishoFlg__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>．消込登録対象</label>
+    </listViews>
+    <listViews>
+        <fullName>View20150922b</fullName>
+        <columns>NAME</columns>
+        <columns>KeshikomiTaishoFlg__c</columns>
+        <columns>SeikyuKakuteiFlg__c</columns>
+        <columns>SeikyuAccount__c</columns>
+        <columns>SaikenMihasseiFlg__c</columns>
+        <columns>TsudoSeikyuFlg__c</columns>
+        <columns>FurikaeSeikyuFlg__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>KeshikomiTaishoFlg__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>．消込登録対象外</label>
+    </listViews>
+    <listViews>
+        <fullName>View20151024a</fullName>
+        <columns>NAME</columns>
+        <columns>SeikyuKakuteiFlg__c</columns>
+        <columns>ShimeKikanKara__c</columns>
+        <columns>ShimeKikanMade__c</columns>
+        <columns>SeikyuKaishuKigen__c</columns>
+        <columns>KekuteiMiKaishuZandaka__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>SeikyuKakuteiFlg__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>．請求ロック未確定</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160418a</fullName>
+        <columns>NAME</columns>
+        <columns>SeikyuKakuteiFlg__c</columns>
+        <columns>ShimeKikanKara__c</columns>
+        <columns>ShimeKikanMade__c</columns>
+        <columns>SeikyuKaishuKigen__c</columns>
+        <columns>KekuteiMiKaishuZandaka__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>SeikyuKakuteiFlg__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>．請求ロック確定済</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160514</fullName>
+        <columns>NAME</columns>
+        <columns>KekuteiMiKaishuZandaka__c</columns>
+        <columns>HyojunKaishuKijitsu__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>UriageKakuteiFlg__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>．売上未確定</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160514a</fullName>
+        <columns>NAME</columns>
+        <columns>KekuteiMiKaishuZandaka__c</columns>
+        <columns>HyojunKaishuKijitsu__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>UriageKakuteiFlg__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>．売上確定済</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160517a</fullName>
+        <columns>NAME</columns>
+        <columns>SaishuSeikyuKingaku__c</columns>
+        <columns>KaishuKanryoBi__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>KaishuKanryoFlg__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>．回収完了済</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160517b</fullName>
+        <columns>NAME</columns>
+        <columns>KekuteiMiKaishuZandaka__c</columns>
+        <columns>HyojunKaishuKijitsu__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>KaishuKanryoFlg__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>．回収未完了</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160517c</fullName>
+        <columns>NAME</columns>
+        <columns>SeikyuKakuteiFlg__c</columns>
+        <columns>HyojunKaishuKijitsu__c</columns>
+        <columns>KaishuKanryoFlg__c</columns>
+        <columns>KaishuKanryoBi__c</columns>
+        <columns>UriageKakuteiFlg__c</columns>
+        <columns>UriageKeijoTsuki__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>SaikenMihasseiFlg__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>．債権無（先払）</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160517d</fullName>
+        <columns>NAME</columns>
+        <columns>SeikyuKakuteiFlg__c</columns>
+        <columns>HyojunKaishuKijitsu__c</columns>
+        <columns>UriageKakuteiFlg__c</columns>
+        <columns>UriageKeijoTsuki__c</columns>
+        <columns>KaishuKanryoFlg__c</columns>
+        <columns>KaishuKanryoBi__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>SaikenMihasseiFlg__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>．債権有（後払）</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160518a</fullName>
+        <columns>NAME</columns>
+        <columns>HyojunKaishuKijitsu__c</columns>
+        <columns>SeikyuKaishuKigen__c</columns>
+        <columns>KaishuKanryoBi__c</columns>
+        <columns>UriageKeijoTsuki__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>TsudoSeikyuFlg__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>．請求都度</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160518b</fullName>
+        <columns>NAME</columns>
+        <columns>HyojunKaishuKijitsu__c</columns>
+        <columns>SeikyuKaishuKigen__c</columns>
+        <columns>KaishuKanryoBi__c</columns>
+        <columns>UriageKeijoTsuki__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>TsudoSeikyuFlg__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>．請求締め</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160518c</fullName>
+        <columns>NAME</columns>
+        <columns>DenpyoNo__c</columns>
+        <columns>KakuteiDenpyoMaisu__c</columns>
+        <columns>SaishuSeikyuKingaku__c</columns>
+        <columns>KekuteiMiKaishuZandaka__c</columns>
+        <columns>ShimeKikanKara__c</columns>
+        <columns>ShimeKikanMade__c</columns>
+        <columns>SeikyuKakuteiFlg__c</columns>
+        <columns>HyojunKaishuKijitsu__c</columns>
+        <columns>KaishuKanryoFlg__c</columns>
+        <columns>KaishuKanryoBi__c</columns>
+        <columns>UriageKakuteiFlg__c</columns>
+        <columns>UriageKeijoTsuki__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>TokusokuAlertFlg__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>．督促警告</label>
+    </listViews>
+    <nameField>
+        <label>売掛名</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <searchLayouts>
+        <customTabListAdditionalFields>DenpyoNo__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>DenpyoMaisu__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>KakuteiDenpyoMaisu__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SeikyuKakuteiFlg__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>HyojunKaishuKijitsu__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>KaishuKanryoBi__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>UriageKeijoTsuki__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>TokusokuAlertFlg__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SeikyusyoInnsatsu__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>SeikyuAccount__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>SaishuSeikyuKingaku__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>KakuteiKaishuNebikiGaku__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>KekuteiMiKaishuZandaka__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>SeikyuKakuteiFlg__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ShimeHizuke__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>KakuteiDenpyoMaisu__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>SeikyuAccount__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>SaishuSeikyuKingaku__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>KakuteiKaishuNebikiGaku__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>KekuteiMiKaishuZandaka__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>SeikyuKakuteiFlg__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ShimeHizuke__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>KakuteiDenpyoMaisu__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>SaishuSeikyuKingaku__c</searchFilterFields>
+        <searchFilterFields>SeikyuKakuteiFlg__c</searchFilterFields>
+        <searchFilterFields>ShimeHizuke__c</searchFilterFields>
+        <searchFilterFields>DenpyoNo__c</searchFilterFields>
+        <searchFilterFields>KakuteiKaishuNebikiGaku__c</searchFilterFields>
+        <searchFilterFields>KekuteiMiKaishuZandaka__c</searchFilterFields>
+        <searchResultsAdditionalFields>SeikyuAccount__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SaishuSeikyuKingaku__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>KakuteiKaishuNebikiGaku__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>KekuteiMiKaishuZandaka__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SeikyuKakuteiFlg__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ShimeHizuke__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>KakuteiDenpyoMaisu__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>SeikyushoPrint</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>請求書発行</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/N01_Seikyusho?UdId={!UrikakeData__c.Id}</url>
+    </webLinks>
+</CustomObject>

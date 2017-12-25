@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>資材工数データ</value>
+    </caseValues>
+    <fields>
+        <label><!-- 子入出庫データ --></label>
+        <name>KoZaikoData__c</name>
+        <relationshipLabel><!-- 資材工数データ (子在庫データ) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 工程構成マスタ --></label>
+        <name>KoteiKoseiM__c</name>
+        <relationshipLabel><!-- 資材工数データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 親入出庫データ --></label>
+        <name>OyaZaikoData__c</name>
+        <relationshipLabel><!-- 資材工数データ (親在庫データ) --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>資材作業データレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

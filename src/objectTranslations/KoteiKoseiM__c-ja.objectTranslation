@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>構成工程マスタ</value>
+    </caseValues>
+    <fields>
+        <label><!-- 備考 --></label>
+        <name>Biko__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注明細データ追加時のガイド表示用の場合ON。
+ON条件：構成工程マスタ：組合NGフラグ　あるいは　構成工程マスタ：組合示唆フラグ　がON。 --></help>
+        <label><!-- ￥￥_受注明細データ追加ガイド --></label>
+        <name>JuchuMeisaiTsuikaGaido__c</name>
+    </fields>
+    <fields>
+        <label><!-- 子消費数量単位 --></label>
+        <name>KoShohiSuryoTani__c</name>
+    </fields>
+    <fields>
+        <help><!-- 親商品資材側の製造数量に必要な子商品資材の消費数量。
+例：親5000個の製造には子が21000kg必要。
+例：親1個の製造には子が3個必要。 --></help>
+        <label><!-- 子消費数量 --></label>
+        <name>KoShohiSuryo__c</name>
+    </fields>
+    <fields>
+        <label><!-- 子商品資材区分 --></label>
+        <name>KoShohinShizaiKubun__c</name>
+    </fields>
+    <fields>
+        <label><!-- 子商品資材マスタ --></label>
+        <name>KoShohinShizaiM__c</name>
+        <relationshipLabel><!-- 構成工程マスタ (子商品資材マスタ) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 子商品資材マスタ名 --></label>
+        <name>KoShohinShizaiMmei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 組合示唆フラグOFF、組合NGフラグOFF：単品当たり製造消費量を表示。
+組合示唆フラグON、組合NGフラグOFF：必要な組合せを表示。
+組合NGフラグOFF：禁止の組合せを表示。 --></help>
+        <label><!-- 構成工程解説 --></label>
+        <name>KoteiKoseiKaisetsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 禁止したい商品の組合せ（排他商品/競合商品）を表す場合はON。
+通常の組合せ商品（セット商品/部品表）を表す場合はOFF。 --></help>
+        <label><!-- 組合NGフラグ --></label>
+        <name>KumiawaseNGFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- セット商品などの組み合わせ登録をアラートする場合にON。 --></help>
+        <label><!-- 組合示唆フラグ --></label>
+        <name>KumiawaseOKFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- 親製造数量単位 --></label>
+        <name>OyaSeizoSuryoTani__c</name>
+    </fields>
+    <fields>
+        <help><!-- 親商品資材側の製造数量。
+例：標準製造バッチ数量
+例：時間辺り製造数量 --></help>
+        <label><!-- 親製造数量 --></label>
+        <name>OyaSeizoSuryo__c</name>
+    </fields>
+    <fields>
+        <label><!-- 親商品資材区分 --></label>
+        <name>OyaShohinShizaiKubun__c</name>
+    </fields>
+    <fields>
+        <label><!-- 親商品資材マスタ --></label>
+        <name>OyaShohinShizaiM__c</name>
+        <relationshipLabel><!-- 構成工程マスタ (親商品資材マスタ) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 親商品資材マスタ名 --></label>
+        <name>OyaShohinShizaiMmei__c</name>
+    </fields>
+    <layouts>
+        <layout>工程構成マスタレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- システム処理用 --></label>
+            <section>システム処理用</section>
+        </sections>
+        <sections>
+            <label><!-- 備考情報 --></label>
+            <section>備考情報</section>
+        </sections>
+        <sections>
+            <label><!-- 概略情報 --></label>
+            <section>概略情報</section>
+        </sections>
+        <sections>
+            <label><!-- 構成情報 --></label>
+            <section>構成情報</section>
+        </sections>
+        <sections>
+            <label><!-- 組合情報 --></label>
+            <section>組合情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

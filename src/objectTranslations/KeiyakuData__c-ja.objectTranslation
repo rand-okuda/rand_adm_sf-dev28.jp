@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>契約データ</value>
+    </caseValues>
+    <fields>
+        <help><!-- 次回の契約の開始日。
+
+契約開始日　＋　契約期間月数　の　月初　あるいは　受注先の契約日付を反映。 --></help>
+        <label><!-- 次回契約開始日 --></label>
+        <name>JikaiKeiyakuKaishiBi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 契約番号 --></label>
+        <name>KeiyakuBango__c</name>
+    </fields>
+    <fields>
+        <label><!-- 契約データ（前世代） --></label>
+        <name>KeiyakuData__c</name>
+        <relationshipLabel><!-- 契約データ（ 更新 / 追加・変更 ） --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- WFRにより契約更新日を転記。 --></help>
+        <label><!-- ￥￥_契約開始日生値 --></label>
+        <name>KeiyakuKaishiBiNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 契約が有効となる日付。
+
+起算日の翌月の　月初　あるいは　受注先の契約日付を反映。 --></help>
+        <label><!-- 契約開始日 --></label>
+        <name>KeiyakuKaishiBi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 契約内容の合意でONに設定。
+
+例）契約条件が合意されサービスインの日程が確定した。
+例）契約の定期更新が有効化され再帰的な受注納品請求のサイクルに入った。 --></help>
+        <label><!-- 契約見積確定フラグ --></label>
+        <name>KeiyakuKakuteiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 新規契約、更新、変更追加、各契約の基準日を算出し契約基準日にWFRで記入。
+
+初期契約フラグONの場合、本日（TODAY()）を算出。
+追加変更フラグONの場合、全世代契約データの契約基準日を算出。
+追加変更フラグOFFの場合、全世代契約データの契約終了日を算出。 --></help>
+        <label><!-- ￥￥_契約基準日算出 --></label>
+        <name>KeiyakuKijunBiSanshutsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 契約開始日、終了日、次回契約開始日などの算出用の基準の日付。
+
+
+新規契約時は本日（TODAY()）が自動設定。
+契約更新時は元の契約終了日が自動設定。
+追加変更時は元の契約基準日が自動設定。 --></help>
+        <label><!-- 契約基準日 --></label>
+        <name>KeiyakuKijunBi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 次回契約開始日を算出する　１～12　の値を入力。
+
+例）定期販売周期
+例）契約更新期間 --></help>
+        <label><!-- 契約期間月数 --></label>
+        <name>KeiyakuKikanTsukiSu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 契約更新を実行しない場合ON。 
+
+更新実行予定日は空白となり複製が実行されない。 --></help>
+        <label><!-- 更新対象外フラグ --></label>
+        <name>KeiyakuKoshinCancel__c</name>
+    </fields>
+    <fields>
+        <label><!-- 契約先 --></label>
+        <name>KeiyakuSaki__c</name>
+        <relationshipLabel><!-- 契約データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- WFRにより契約終了日を転記。 --></help>
+        <label><!-- ￥￥_契約終了日生値 --></label>
+        <name>KeiyakuShuryoBiNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 次回解約開始日　の　前日。 --></help>
+        <label><!-- 契約終了日 --></label>
+        <name>KeiyakuShuryoBi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 更新の契約データを作成する場合ON。
+
+・請求依頼予定日が到来。
+・契約見積確定フラグがON。
+・追加変更フラグがOFF。
+・更新対象外フラグがOFF。 --></help>
+        <label><!-- 更新複製フラグ --></label>
+        <name>KoshinFukuseiFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- 先払請求フラグ --></label>
+        <name>SakiBaraiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 契約更新の複製処理を契約更新日から前倒しする日数を設定。
+
+例）月末の複製では事務処理が間に合わない場合。
+例）事前に更新通知を行う場合。 --></help>
+        <label><!-- 請求依頼先行日数 --></label>
+        <name>SeikyuIraiSenkoNissu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 更新請求処理の実行予定日。
+
+次回契約開始日－更新予定繰上日数で算出。
+
+契約更新キャンセルONの場合は空白を出力。 --></help>
+        <label><!-- 請求依頼予定日 --></label>
+        <name>SeikyuIraiYoteiBi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 契約データ（前世代）が空白の場合ON。
+最初に作成された契約データを表す。 --></help>
+        <label><!-- 初回契約フラグ --></label>
+        <name>ShokaiKeiyakuFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 新規契約および契約更新時、契約開始日と契約終了日 から出力。
+追加変更時、追加変更基準日と契約終了日 から出力。 --></help>
+        <label><!-- 契約対象月 --></label>
+        <name>TaishoTsuki__c</name>
+    </fields>
+    <fields>
+        <label><!-- 都度請求フラグ --></label>
+        <name>TsudoSeikyuFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 追加変更基準日が入力済みの場合にON。 --></help>
+        <label><!-- 追加変更フラグ --></label>
+        <name>TsuikaHenkoFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 途中の追加変更の基準日。
+差分月数などの算出の元日付。 --></help>
+        <label><!-- 追加変更基準日 --></label>
+        <name>TsuikaHenkoKijunBi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 変更追加時の差分の契約期間の月数。
+
+契約終了日 － 追加変更基準日 --></help>
+        <label><!-- 追加変更差分月数 --></label>
+        <name>TsuikaHenkoSabunTsukisu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求集計データ --></label>
+        <name>UrikakeData__c</name>
+        <relationshipLabel><!-- 契約データ --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>契約データレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- システム処理用 --></label>
+            <section>システム処理用</section>
+        </sections>
+        <sections>
+            <label><!-- 契約情報 --></label>
+            <section>契約情報</section>
+        </sections>
+        <sections>
+            <label><!-- 更新情報 --></label>
+            <section>更新情報</section>
+        </sections>
+        <sections>
+            <label><!-- 追加変更情報 --></label>
+            <section>追加変更情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

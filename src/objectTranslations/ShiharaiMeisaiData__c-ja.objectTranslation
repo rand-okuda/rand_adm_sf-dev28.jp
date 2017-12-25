@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>支払明細データ</value>
+    </caseValues>
+    <fields>
+        <label><!-- 備考 --></label>
+        <name>Biko__c</name>
+    </fields>
+    <fields>
+        <label><!-- 発注明細データ --></label>
+        <name>HachuMeisaiData__c</name>
+        <relationshipLabel><!-- 支払明細データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 発注時の注文書を表示します。 --></help>
+        <label><!-- 発注伝票番号 --></label>
+        <name>HatchuDempyoBango__c</name>
+    </fields>
+    <fields>
+        <label><!-- 買掛データ --></label>
+        <name>KaikakeData__c</name>
+        <relationshipLabel><!-- 支払明細データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 納価×納品数量 --></help>
+        <label><!-- 明細金額小計 --></label>
+        <name>MeisaiKingaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明細金額小計×消費税率（小数点以下切捨て） --></help>
+        <label><!-- 明細税額小計 --></label>
+        <name>MeisaiZeigaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明細金額小計＋明細税額小計（小数点以下切捨て） --></help>
+        <label><!-- 明細税込小計 --></label>
+        <name>MeisaiZeikomi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 納品数量 --></label>
+        <name>NohinSuryo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 支払計上を行う日付。
+買掛データの締期間に合わせて集計される。 --></help>
+        <label><!-- 計上日 --></label>
+        <name>Nohinbi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 発注明細データ.購入価格 --></help>
+        <label><!-- 支払単価 --></label>
+        <name>ShiharaiKakaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商品資材名 --></label>
+        <name>ShohinShizai__c</name>
+    </fields>
+    <fields>
+        <help><!-- 発注明細データ.消費税率 --></help>
+        <label><!-- 消費税率 --></label>
+        <name>Shohizeiritsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 発注明細データ.単位基本 --></help>
+        <label><!-- 単位基本 --></label>
+        <name>TaniKihon__c</name>
+    </fields>
+    <fields>
+        <help><!-- 発注明細データ.単位親 --></help>
+        <label><!-- 単位親 --></label>
+        <name>TaniOya__c</name>
+    </fields>
+    <fields>
+        <help><!-- 発注明細データ.単位祖 --></help>
+        <label><!-- 単位祖 --></label>
+        <name>TaniSo__c</name>
+    </fields>
+    <layouts>
+        <layout>支払明細データレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- 備考 --></label>
+            <section>備考</section>
+        </sections>
+        <sections>
+            <label><!-- 数量情報 --></label>
+            <section>数量情報</section>
+        </sections>
+        <sections>
+            <label><!-- 金額情報 --></label>
+            <section>金額情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

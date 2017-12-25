@@ -1,0 +1,191 @@
+<apex:page title="在庫移動登録" standardController="ZaikoData__c" extensions="Z04_ZaikoidouTourokuControllerExtension"	recordSetVar="records" action="{!init}">
+    
+    <style type="text/css">
+        span.dateFormat {
+        display: none;
+        }
+        
+        .button_table {
+        width: 960px;
+        margin:auto;
+        vertical-align:middle;
+        }
+        
+        .broad {
+        background-color: MintCream;
+        width: 960px;
+        margin:auto;
+        border: 2px solid lightgray;
+        }
+        
+        .zaiko {
+        background-color: LightYellow;
+        margin:auto;
+        border: 1px solid lightgray;
+        }
+        
+        .zaiko_head {
+        background-color: Seashell;
+        margin:auto;
+        }
+        
+        .zaiko_body {
+        border: 1px solid lightgray;
+        }
+        
+        .allMove {
+        width: 30px;
+        text-align: center;
+        }
+        
+        .name {
+        width: 360px;
+        text-align: left;
+        text-indent: 10px;
+        }
+        
+        .zaikoSuryo {
+        width: 60px;
+        text-align: right;
+        text-indent: 10px;
+        }
+        
+        .idouSuryo {
+        width: 60px;
+        text-align: center;
+        }
+        
+        .idouSaki {
+        width: 150px;
+        text-align: left;
+        text-indent: 10px;
+        }
+        
+        .idouMoto {
+        width: 150px;
+        text-align: left;
+        text-indent: 10px;
+        }
+        
+        .idouYoteibi {
+        width: 100px;
+        text-align: center;
+        }
+        
+        .allMove_title {
+        width: 30px;
+        text-align: center;
+        font-weight: bold;
+        }
+        
+        .name_title {
+        width: 360px;
+        text-align: center;
+        font-weight: bold;
+        text-indent: 10px;
+        }
+        
+        .zaikoSuryo_title {
+        width: 60px;
+        text-align: center;
+        font-weight: bold;
+        text-indent: 10px;
+        }
+        
+        .idouSuryo_title {
+        width: 60px;
+        text-align: center;
+        font-weight: bold;
+        }
+        
+        .idouSaki_title {
+        width: 150px;
+        text-align: center;
+        font-weight: bold;
+        }
+        
+        .idouMoto_title {
+        width: 150px;
+        text-align: left;
+        font-weight: bold;
+        text-indent: 10px;
+        }
+        
+        .idouYoteibi_title {
+        width: 100px;
+        text-align: center;
+        font-weight: bold;
+        text-indent: 10px;
+        }
+        
+    </style>
+
+    <apex:pageMessages />
+    
+    <apex:form >
+        <table class="broad">
+            <tr>
+                <td>
+                    <table class="button_table">
+                        <tr>
+                            <td>
+                                <apex:outputText value="全数移動(一括指定)：" />
+                                <apex:inputCheckbox value="{!allMove}" />
+                            </td>
+                            <td>
+                                <apex:outputText value="移動先(一括指定)：" />
+                                <apex:inputField style="width:110px;" value="{!allSelect.Zaikobasho__c}" />
+                            </td>
+                            <td>
+                                <apex:outputText value="予定日(一括指定)：" />
+                                <apex:inputField style="width:100px;" value="{!allSelect.ZenShukkoNichiji__c}" />
+                            </td>
+                            <td>
+                                <apex:commandButton value="クリア" action="{!clearButton}" />
+                            </td>
+                            <td>
+                                <apex:commandButton value="移動実行" action="{!jikkouButton}" />
+                            </td>
+                            <td>
+                                <apex:commandButton value="キャンセル" action="{!cancelButton}" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="zaiko">
+                        <tr>
+                            <td>
+                                <table class="zaiko_head">
+                                    <tr>
+                                        <td class="allMove_title"><apex:outputText value="除外" /></td>
+                                        <td class="name_title" ><apex:outputText value="{!$ObjectType.ZaikoData__c.Fields.Name.Label}" /></td>
+                                        <td class="zaikoSuryo_title"><apex:outputText value="在庫数" /></td>
+                                        <td class="idouSuryo_title"><apex:outputText value="移動数" /></td>
+                                        <td class="allMove_title"><apex:outputText value="全数" /></td>
+                                        <td class="idouMoto_title"><apex:outputText value="移動元" /></td>
+                                        <td class="idouSaki_title"><apex:outputText value="移動先（個別指定）" /></td>
+                                        <td class="idouYoteibi_title"><apex:outputText value="予定日" /></td>
+                                    </tr>
+                                </table>
+                                <apex:repeat value="{!targetDispZaikoList}" var="dispZaiko">
+                                    <table class="zaiko_body">
+                                        <tr>
+                                            <td class="allMove" ><apex:inputCheckBox value="{!dispZaiko.idouTaisyogai}" /></td>
+                                            <td class="name"><apex:outputField value="{!dispZaiko.oldZaiko.Name}" /></td>
+                                            <td class="zaikoSuryo" ><apex:outputField value="{!dispZaiko.oldZaiko.ZaikoSuryo__c}" /></td>
+                                            <td class="idouSuryo" ><apex:inputText value="{!dispZaiko.idouSuryo}" style="text-align:right; width:40px;" /></td>
+                                            <td class="allMove" ><apex:inputCheckBox value="{!dispZaiko.zensuIdou}" /></td>
+                                            <td class="idouMoto" ><apex:outputField value="{!dispZaiko.oldZaiko.Zaikobasho__r.Name}" /></td>
+                                            <td class="idouSaki" ><apex:inputField value="{!dispZaiko.newZaiko.Zaikobasho__c}" style="width:110px;" /></td>
+                                            <td class="idouYoteibi" ><apex:inputField value="{!dispZaiko.newZaiko.ZenShukkoNichiji__c}" style="width:100px;"  /></td>
+                                        </tr>
+                                    </table>
+                                </apex:repeat>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </apex:form>
+
+</apex:page>

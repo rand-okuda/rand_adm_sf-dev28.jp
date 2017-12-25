@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>DenpyoNo__c</fullName>
+        <displayFormat>4{0000000}</displayFormat>
+        <externalId>false</externalId>
+        <label>伝票番号</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>KaikakeDataNameSanshutsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>LEFT(
+
+ Shiiresaki__r.Name + &quot; &quot; +
+ TEXT(  ShiharaiKijitsu__c  )  + &quot; 期日&quot;
+ , 80
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_買掛データ名算出</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyukakuteiFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>支払完了フラグ</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ShiharaiKanryobi__c</fullName>
+        <externalId>false</externalId>
+        <label>支払完了日</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShiharaiKijitsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Shiiresaki__r.Kijitsu__c = 99, 
+
+IF(
+    MONTH(ShimeKikanMadeNamachi__c)+Shiiresaki__r.TorihikiSiteTsukisu__c+1&gt;12,
+    DATE(YEAR(ShimeKikanMadeNamachi__c)+1,MONTH(ShimeKikanMadeNamachi__c)+Shiiresaki__r.TorihikiSiteTsukisu__c+1-12,1),
+    DATE(YEAR(ShimeKikanMadeNamachi__c)  ,MONTH(ShimeKikanMadeNamachi__c)+Shiiresaki__r.TorihikiSiteTsukisu__c+1   ,1)
+)-1
+,
+IF(
+    MONTH(ShimeKikanMadeNamachi__c)+Shiiresaki__r.TorihikiSiteTsukisu__c&gt;12,
+    DATE(YEAR(ShimeKikanMadeNamachi__c)+1,MONTH(ShimeKikanMadeNamachi__c)+Shiiresaki__r.TorihikiSiteTsukisu__c-12,Shiiresaki__r.Kijitsu__c),
+    DATE(YEAR(ShimeKikanMadeNamachi__c)  ,MONTH(ShimeKikanMadeNamachi__c)+Shiiresaki__r.TorihikiSiteTsukisu__c   ,Shiiresaki__r.Kijitsu__c)
+)
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>取引先マスタの取引債渡月数および期日と期日から自動算出。 
+
+期日＝９９ 
+　締期間まで＋取引債渡月数の月　の　最終日 
+
+期日≠９９ 
+　締期間まで＋取引債渡月数の月　の　期日</inlineHelpText>
+        <label>支払期日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Shiiresaki__c</fullName>
+        <externalId>false</externalId>
+        <label>支払先</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>買掛データ</relationshipLabel>
+        <relationshipName>KaikakeData_Shiiresaki</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>ShimeHizuke__c</fullName>
+        <externalId>false</externalId>
+        <label>￥￥_締基準日</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShimeKikanKaraNamachi__c</fullName>
+        <externalId>false</externalId>
+        <label>￥￥_締期間から生値</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShimeKikanKara__c</fullName>
+        <description>買掛データに集計される支払明細データの計上日範囲。
+
+締日＝９９ 
+　締基準日の月　の　同月　の　初日 
+
+締日＜締基準日 
+　締基準日の月　の　同月　の　締日＋１日 
+
+締日≧締基準日 
+　締基準日の月　の　前月　の　締日＋１日</description>
+        <externalId>false</externalId>
+        <formula>IF(  Shiiresaki__r.Shimebi__c  = 99, 
+ DATE( YEAR(ShimeHizuke__c), MONTH(ShimeHizuke__c), 1), 
+
+    IF( Shiiresaki__r.Shimebi__c &lt; DAY( ShimeHizuke__c ),  
+     DATE( YEAR(ShimeHizuke__c), MONTH(ShimeHizuke__c), Shiiresaki__r.Shimebi__c) + 1, 
+
+        IF(
+           MONTH(ShimeHizuke__c)==1,
+           DATE(YEAR(ShimeHizuke__c)-1,12                                  ,Shiiresaki__r.Shimebi__c) + 1,
+           DATE(YEAR(ShimeHizuke__c)  ,MONTH(ShimeHizuke__c)-1,Shiiresaki__r.Shimebi__c) + 1
+        )
+
+    )
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>締期間から</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShimeKikanMadeNamachi__c</fullName>
+        <description>締期間までを、ワークフロールールでコピー
+支払期日を計算するため
+数式の文字数5000制限</description>
+        <externalId>false</externalId>
+        <label>￥￥_締期間まで生値</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShimeKikanMade__c</fullName>
+        <description>買掛データに集計される支払明細データの計上日範囲。 
+
+締日＝９９ 
+　締期間から＋締期間月数の月－１ヶ月　の　最終日 
+
+締日≠９９ 
+　締期間から＋締期間月数の月　の　締日</description>
+        <externalId>false</externalId>
+        <formula>IF( Shiiresaki__r.Shimebi__c = 99, 
+
+    IF(
+    MONTH(ShimeKikanKaraNamachi__c)+ShimekikanTsukisu__c&gt;12,
+    DATE(YEAR(ShimeKikanKaraNamachi__c)+1,MONTH(ShimeKikanKaraNamachi__c)+ShimekikanTsukisu__c-12,1),
+    DATE(YEAR(ShimeKikanKaraNamachi__c)  ,MONTH(ShimeKikanKaraNamachi__c)+ShimekikanTsukisu__c   ,1)
+    )-1
+    ,
+        IF(
+        MONTH(ShimeKikanKaraNamachi__c)+ShimekikanTsukisu__c&gt;12,
+        DATE(YEAR(ShimeKikanKaraNamachi__c)+1,MONTH(ShimeKikanKaraNamachi__c)+ShimekikanTsukisu__c-12,Shiiresaki__r.Shimebi__c),
+        DATE(YEAR(ShimeKikanKaraNamachi__c)  ,MONTH(ShimeKikanKaraNamachi__c)+ShimekikanTsukisu__c   ,Shiiresaki__r.Shimebi__c)
+        )
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>締期間まで</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShimekikanTsukisu__c</fullName>
+        <description>請求締期間月数に１未満が設定された場合の不具合の回避のため１未満は１とする。</description>
+        <externalId>false</externalId>
+        <formula>IF (  Shiiresaki__r.ShimekikanTsukisu__c &gt;= 1, 
+Shiiresaki__r.ShimekikanTsukisu__c , 
+1 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>取引先マスタの請求締期間月数が反映</inlineHelpText>
+        <label>締期間月数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ZeikomiShiharaiKei__c</fullName>
+        <description>発注明細単位で税計算した結果の合計</description>
+        <externalId>false</externalId>
+        <inlineHelpText>発注明細単位で税計算した結果の合計</inlineHelpText>
+        <label>税込支払計</label>
+        <summarizedField>ShiharaiMeisaiData__c.MeisaiZeikomi__c</summarizedField>
+        <summaryForeignKey>ShiharaiMeisaiData__c.KaikakeData__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <label>買掛データ</label>
+    <listViews>
+        <fullName>ALL</fullName>
+        <columns>NAME</columns>
+        <columns>DenpyoNo__c</columns>
+        <columns>ShimeKikanKara__c</columns>
+        <columns>ShimeKikanMade__c</columns>
+        <columns>ShiharaiKijitsu__c</columns>
+        <columns>ShiharaiKanryobi__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>すべて選択</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160117a</fullName>
+        <columns>NAME</columns>
+        <columns>DenpyoNo__c</columns>
+        <columns>ShimeKikanKara__c</columns>
+        <columns>ShimeKikanMade__c</columns>
+        <columns>ShiharaiKijitsu__c</columns>
+        <columns>ShiharaiKanryobi__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ShiharaiKanryobi__c</field>
+            <operation>equals</operation>
+        </filters>
+        <label>支払未完了</label>
+    </listViews>
+    <nameField>
+        <label>支払名</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <searchLayouts>
+        <customTabListAdditionalFields>DenpyoNo__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Shiiresaki__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ShimeKikanKara__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ShimeKikanMade__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ShiharaiKijitsu__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ShiharaiKanryobi__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>DenpyoNo__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ShiharaiKanryobi__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Shiiresaki__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ShiharaiKijitsu__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ShiharaiKanryobi__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>DenpyoNo__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Shiiresaki__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ShiharaiKijitsu__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ShiharaiKanryobi__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>DenpyoNo__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

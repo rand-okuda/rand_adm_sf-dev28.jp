@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>消込値引データ</value>
+    </caseValues>
+    <fields>
+        <label><!-- ￥￥_備考算出 --></label>
+        <name>BikoSanshutsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 備考 --></label>
+        <name>Biko__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_消込データ名算出 --></label>
+        <name>KeshikomDataNameSanshutsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 消込確認日 --></label>
+        <name>KeshikomiKakuninBi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 消込入金額 --></label>
+        <name>KeshikomiKingaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求調整 --></label>
+        <name>NyukinChosei__c</name>
+        <relationshipLabel><!-- 消込値引データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 入金消込リンクが作成されている場合ON。
+不明入金データから充当されている場合ON。 --></help>
+        <label><!-- 入金充当フラグ --></label>
+        <name>NyukinJutoFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_入金消込カウンター --></label>
+        <name>NyukinKeshikomiCounter__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求調整が空白
+　かつ　消込入金額　が　￥１円以上を判定。
+　かつ　自動消込チェック　が　ON。 --></help>
+        <label><!-- ￥￥_入金消込リンク判定 --></label>
+        <name>NyukinKeshikomiHantei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 入金調整マスタの有効化閾値を売掛データの請求金額が超る場合のみ算出。
+・入金調整マスタのパーセント歩引が未設定の場合：固定金額。
+・入金調整マスタのパーセント歩引が入力済の場合：消費税込額×パーセント歩引（％）。 --></help>
+        <label><!-- ￥￥_調整マスタ消込額算出 --></label>
+        <name>NyukingakuSanshutsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_パーセント歩引 --></label>
+        <name>PasentoBubiki__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_済請求書消込明細有効生値 --></label>
+        <name>SeikyuMeisaiFlgNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 入金確認日が入力済かつ￥￥_入金額算出が0：ゼロではない場合ON。 --></help>
+        <label><!-- ￥￥_済請求書消込明細有効 --></label>
+        <name>SeikyuMeisaiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- トリガ処理用　請求先ID　の取得用 --></help>
+        <label><!-- ￥￥_請求先ID --></label>
+        <name>SeikyuSakiID__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_消込日付 --></label>
+        <name>SeikyushoNyukinHizuke__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_値引金額 --></label>
+        <name>SeikyushoNyukinKingaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_値引商品名 --></label>
+        <name>SeikyushoNyukinShohinMei__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_初期確定 --></label>
+        <name>ShokiKakutei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 消込データを自動消込フラグONで作成した場合の処理。
+・不明入金残額計　＝　￥０　→　見込未回収額
+・予定未回収額　≦　不明入金最小額　→　予定未回収額
+・予定未回収額　≦　不明入金最大額　→　不明入金最小額
+・予定未回収額　≧　不明入金最大額　→　不明入金最大額 --></help>
+        <label><!-- ￥￥_即時消込額算出 --></label>
+        <name>SokuKeshikomiNyukingakuSanshutsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求集計の未回収残高に合わせた　消込値引データを自動作成する　チェックボックス。
+
+自動作成させる場合は消込入金額を　￥０円　とした状態でONする。 --></help>
+        <label><!-- ￥￥_自動消込チェック --></label>
+        <name>SokuKeshikomi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求集計データ --></label>
+        <name>UrikakeData__c</name>
+        <relationshipLabel><!-- 消込値引データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_有効期限 --></label>
+        <name>YukoKigen__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_有効化閾値 --></label>
+        <name>YukokaShikiichi__c</name>
+    </fields>
+    <fields>
+        <help><!-- WFR 全額即消込備考記入 転記用 --></help>
+        <label><!-- ￥￥_全額即消込備考 --></label>
+        <name>ZengakuSokuKeshikomiBiko__c</name>
+    </fields>
+    <layouts>
+        <layout>入金データレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- 備考 --></label>
+            <section>備考</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

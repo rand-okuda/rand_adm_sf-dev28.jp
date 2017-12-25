@@ -1,0 +1,298 @@
+<apex:page controller="K01_HachushoController" showHeader="false" applyHtmlTag="false" renderAs="pdf">
+    <html>
+        <head>
+            <style>
+                @page {
+                size: 11.69in 8.27in; /* A4 横サイズ */
+                margin: 30px 30px 70px 30px; @ bottom-right { content : counter( page)
+                " / " counter( pages) " ページ";
+                font-size: 25px;
+                font-family: Arial Unicode MS;
+                }
+                
+                }
+                html {
+                color: #000;
+                background: #FFF;
+                }
+                
+                body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td
+                {
+                margin: 0;
+                padding: 0;
+                }
+                
+                table {
+                border-collapse: collapse;
+                border-spacing: 0;
+                }
+                
+                fieldset,img {
+                border: 0;
+                }
+                
+                address,caption,cite,code,dfn,em,strong,th,var {
+                font-style: normal;
+                font-weight: normal;
+                }
+                
+                li {
+                list-style: none;
+                }
+                
+                caption,th {
+                text-align: left;
+                }
+                
+                h1,h2,h3,h4,h5,h6 {
+                font-size: 100%;
+                font-weight: normal;
+                }
+                
+                q:before,q:after {
+                content: '';
+                }
+                
+                abbr,acronym {
+                border: 0;
+                font-variant: normal;
+                }
+                
+                sup {
+                vertical-align: text-top;
+                }
+                
+                sub {
+                vertical-align: text-bottom;
+                }
+                
+                input,textarea,select {
+                font-family: inherit;
+                font-size: inherit;
+                font-weight: inherit;
+                }
+                
+                input,textarea,select {
+                *font-size: 100%;
+                }
+                
+                legend {
+                color: #000;
+                }
+                
+                body {
+                font-family: Arial Unicode MS;
+                }
+                
+                div.main {
+                font-size: 12px;
+                }
+                
+                div.header table {
+                width: 100%;
+                table-layout: fixed;
+                border-collapse: collapse;
+                cellspacing: 0px;
+                border: none;
+                }
+                
+                div.header td {
+                vertical-align: middle;
+                text-align: left;
+                font-size: 14px;
+                border-bottom: solid #000000 1px;
+                padding: 2px 0px 0px 2px;
+                }
+                
+                div.data {
+                font-size: 11px;
+                }
+                
+                div.data table {
+                width: 100%;
+                table-layout: fixed;
+                border-collapse: collapse;
+                cellspacing: 0px;
+                }
+                
+                div.data td {
+                vertical-align: middle;
+                text-align: left;
+                font-size: 14px;
+                border: solid #000000 1px;
+                padding: 2px 0px 0px 2px;
+                }
+                
+                div.bottom {
+                border-top: solid #000000 1px;
+                width: 100%;
+                text-align: center;
+                position: fixed;
+                top: 1049px;
+                clear: both;
+                }
+                
+                div.memo table {
+                width: 100%;
+                table-layout: fixed;
+                }
+                
+                div.memo td {
+                width: 100%;
+                vertical-align: top;
+                text-align: left;
+                font-size: 14px;
+                border: solid #000000 1px;
+                padding: 2px 2px 2px 2px;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                }
+            </style>
+        </head>
+        
+        <apex:variable value="{!0}" var="rowNumber" />
+        <apex:repeat value="{!pageDatas}" var="pageData">
+            
+            <body>
+                <div class="main">
+                    <!--ヘッダ部分-->
+                    <div class="header">
+                        <table>
+                            <tr style="height: 50px;">
+                                <td
+                                    style="width: 100%; font-size: 40px; text-align: center; border: 0px;">{!pageData.headData.HachushoTitle__c}</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr style="height: 28px">
+                                <td style="width: 37%;">{!pageData.headData.HachushoShiiresakiMei__c}</td>
+                                <td style="width: 26%; border-style: none;"></td>
+                                <td style="width: 8%;">発注No.</td>
+                                <td style="width: 29%;">{!pageData.headData.HachushoDenpyoNo__c}</td>
+                            </tr>
+                            <tr style="height: 28px">
+                                <td style="border-style: none;"></td>
+                                <td style="border-style: none;"></td>
+                                <td>発行日</td>
+                                <td>{!pageData.headData.HachushoHakkobi__c}</td>
+                            </tr>
+                            <tr style="height: 28px">
+                                <td style="border-style: none;"></td>
+                                <td style="border-style: none;"></td>
+                                <td>希望納期</td>
+                                <td>{!pageData.headData.HachushoNoki__c}</td>
+                            </tr>
+                            <tr style="height: 28px">
+                                <td style="border-style: none;"></td>
+                                <td style="border-style: none;"></td>
+                                <td>仕入担当</td>
+                                <td>{!pageData.headData.HachushoTantoshaMei__c}</td>
+                            </tr>
+                        </table>
+                        
+                        
+                        <table style="margin-top: 20px;">
+                            <tr style="height: 22px">
+                                <td style="width: 7%; vertical-align: top;" rowspan="2">納品先</td>
+                                <td style="width: 30%; border: none;">{!pageData.headData.HachushoNohinsakiMei1__c}</td>
+                                <td style="width: 26%; border-style: none;"></td>
+                                <td style="width: 7%; vertical-align: top;" rowspan="2">発注元</td>
+                                <td style="width: 30%; border: none;">{!pageData.headData.HachushoMotoMei1__c}</td>
+                            </tr>
+                            <tr style="height: 22px">
+                                <td style="width: 30%;">{!pageData.headData.HachushoNohinsakiMei2__c}</td>
+                                <td style="width: 26%; border-style: none;"></td>
+                                <td style="width: 30%;">{!pageData.headData.HachushoMotoMei2__c}</td>
+                            </tr>
+                        </table>
+                        
+                        <table>
+                            
+                            <tr style="height: 22px">
+                                <td style="width: 6%; vertical-align: top;" rowspan="2">住所</td>
+                                <td style="width: 31%; border: none;">{!pageData.headData.HachushoNohinsakiJusho1__c}</td>
+                                <td style="width: 26%; border-style: none;"></td>
+                                <td style="width: 6%; vertical-align: top;" rowspan="2">菴住所</td>
+                                <td style="width: 31%; border: none;">{!pageData.headData.HachushoMotoJusho1__c}</td>
+                            </tr>
+                            <tr style="height: 22px">
+                                
+                                <td style="width: 31%;">{!pageData.headData.HachushoMotoMei2__c}</td>
+                                <td style="width: 26%; border-style: none;"></td>
+                                
+                                <td style="width: 31%;">{!pageData.headData.HachushoMotoJusho2__c}</td>
+                            </tr>
+                            
+                            <tr style="height: 28px">
+                                <td>TEL</td>
+                                <td>{!pageData.headData.HachushoNohinsakiDenwa__c}</td>
+                                <td style="border-style: none;"></td>
+                                <td>TEL</td>
+                                <td>{!pageData.headData.HachushoMotoDenwa__c}</td>
+                                
+                            </tr>
+                            <tr style="height: 28px">
+                                <td>FAX</td>
+                                <td>{!pageData.headData.HachushoNohinsakiFax__c}</td>
+                                <td style="border-style: none;"></td>
+                                <td>FAX</td>
+                                <td>{!pageData.headData.HachushoMotoFax__c}</td>
+                                
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <!--データ部分-->
+                    <div class="data" style="padding-top: 20px;">
+                        <table>
+                            <tr style="height: 28px">
+                                <td style="width: 3%;">{!pageData.headData.HachushoNoTitle__c}</td>
+                                <td style="width: 16%;">{!pageData.headData.HachushoShohinCodeTitle__c}</td>
+                                <td style="width: 16%;">{!pageData.headData.HachushoKikakuTitle__c}</td>
+                                <td style="width: 29%;">{!pageData.headData.HachushoShohinMeiTitle__c}</td>
+                                <td style="width: 8%;">{!pageData.headData.HachushoIrisuTitle__c}</td>
+                                <td style="width: 8%;">{!pageData.headData.HachushoSuryoTitle__c}</td>
+                                <td style="width: 8%;">{!pageData.headData.HachushoTaniTitle__c}</td>
+                                <td style="width: 12%;">{!pageData.headData.HachushoNokikaitoTitle__c}</td>
+                            </tr>
+                            
+                            <apex:repeat value="{!pageData.detailDatas}" var="detailData">
+                                <tr style="height: 28px">
+                                    <td style="text-align: right; padding-right: 5px;">{!rowNumber
+                                        + 1}</td>
+                                    <td>{!detailData.HachushoShohinCode__c}</td>
+                                    <td>{!detailData.HachushoKikaku__c}</td>
+                                    <td>{!detailData.HachushoShohinMei__c}</td>
+                                    <td>{!detailData.HachushoIrisu__c}</td>
+                                    <td style="text-align: right; padding-right: 5px;">{!detailData.HachushoSuryo__c}</td>
+                                    <td>{!detailData.HachushoTani__c}</td>
+                                    <td>{!detailData.HachushoNoki__c}</td>
+                                    <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                                </tr>
+                            </apex:repeat>
+                        </table>
+                    </div>
+                    
+                    <!-- フッタ部分-->
+                    <div class="memo" style="padding-top: 10px;">
+                        <p>{!pageData.headData.HachushoBikoTitle__c}</p>
+                        <table>
+                            <tr style="height: 55px">
+                                <td><apex:repeat value="{!pageData.hachushoBikos}"
+                                                 var="hachushoBiko">
+                                    {!hachushoBiko}<br />
+                                    </apex:repeat></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </body>
+            
+            <!-- 改ページ -->
+            <apex:outputPanel layout="none"
+                              rendered="{!pageData.pageNumber <> pageDatas.size}">
+                <div style="page-break-before: always;"></div>
+            </apex:outputPanel>
+        </apex:repeat>
+    </html>
+</apex:page>

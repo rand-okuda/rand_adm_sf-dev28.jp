@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>入金データ</value>
+    </caseValues>
+    <fields>
+        <label><!-- 備考 --></label>
+        <name>Biko__c</name>
+    </fields>
+    <fields>
+        <help><!-- 残金額　が無くなった場合ON。
+不明入金が請求消込に全て充当された場合ON。 --></help>
+        <label><!-- 消込充当済フラグ --></label>
+        <name>KeshikomiJutoZumiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 消込値引データの消込入金額の合計値 --></help>
+        <label><!-- 消込入金額計 --></label>
+        <name>KeshikomiKingakuKei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 消込未確定フラグ　がONの　入金充当リンク　の件数。 --></help>
+        <label><!-- ￥￥_消込未確定カウンタ --></label>
+        <name>KeshikomiMikakuteiCounter__c</name>
+    </fields>
+    <fields>
+        <label><!-- 入金日 --></label>
+        <name>NyukinBi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 入金額 --></label>
+        <name>NyukinGaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求取引先 --></label>
+        <name>SeikyuAccount__c</name>
+        <relationshipLabel><!-- 入金データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 入金額　－　消込入金額計　の残金 --></help>
+        <label><!-- 残金額 --></label>
+        <name>ZanKingaku__c</name>
+    </fields>
+    <layouts>
+        <layout>入金データレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- 備考 --></label>
+            <section>備考</section>
+        </sections>
+        <sections>
+            <label><!-- 消込情報 --></label>
+            <section>消込情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

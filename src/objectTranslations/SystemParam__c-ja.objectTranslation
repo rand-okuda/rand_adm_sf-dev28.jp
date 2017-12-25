@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>システム設定</value>
+    </caseValues>
+    <fields>
+        <label><!-- 発注書明細最大行数 --></label>
+        <name>HachushoMeisaiMaxNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- 受注明細一括追加上限 --></label>
+        <name>JuchuMeisaiIkkatsuTsuikaJogen__c</name>
+    </fields>
+    <fields>
+        <label><!-- 受注明細最大登録数（非同期引当用） --></label>
+        <name>JuchuMeisaiSaidaiHidokiTorokusu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 受注明細最大登録数 --></label>
+        <name>JuchuMeisaiSaidaiTorokusu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 納品書品名フォントサイズ --></label>
+        <name>NohinshoFontSize__c</name>
+    </fields>
+    <fields>
+        <label><!-- 納品書フッタ --></label>
+        <name>NohinshoFooter__c</name>
+    </fields>
+    <fields>
+        <label><!-- 納品書品名改行バイト数 --></label>
+        <name>NohinshoLineByteNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- 納品書明細最大行数 --></label>
+        <name>NohinshoMeisaiMaxNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求書宛先左余白調整(mm) --></label>
+        <name>SeikyushoAtesakiHidariChoseiMm__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求書宛先上余白調整(mm) --></label>
+        <name>SeikyushoAtesakiUeChoseiMm__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求書明細最大行数 --></label>
+        <name>SeikyushoMeisaiMaxNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求書タイトル下余白調整(mm) --></label>
+        <name>SeikyushoTitleShitaChoseiMm__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求書タイトル上余白調整(mm) --></label>
+        <name>SeikyushoTitleUeChoseiMm__c</name>
+    </fields>
+    <fields>
+        <label><!-- 消費税率 --></label>
+        <name>Shohizeiritsu__c</name>
+    </fields>
+</CustomObjectTranslation>

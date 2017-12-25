@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Hizuke__c</fullName>
+        <description>元日付　≧　本日　＝　元日付	
+元日付　＜　本日　＝　元日付　＋　実績反映年数　×　３５６
+元日付　＜　本日　＝　元日付　＋　実績反映月数　×　３０
+元日付　＜　本日　＝　元日付　＋　実績反映日数</description>
+        <externalId>false</externalId>
+        <formula>IF (  MotoHizuke__c  &lt;  TODAY() ,
+ MotoHizuke__c  + 
+ ShohinShizaiM__r.JissekiHaneiNissu__c +
+ ShohinShizaiM__r.JissekiHaneiTsukisu__c * 30 +
+ ShohinShizaiM__r.JissekiHaneiNensu__c * 365
+ ,
+ MotoHizuke__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>元日付が到来前
+　→　元日付（出荷予定日など）として、仮出荷引当参考値などとする。
+
+元日付の到来後
+　→　商品資材マスタの実績反映日数/月数/年数を加算し消費予測値とする。</inlineHelpText>
+        <label>消費予測日付</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>JuchuMeisaiData__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>出荷明細データ</label>
+        <referenceTo>JuchuMeisaiData__c</referenceTo>
+        <relationshipLabel>消費見込データ</relationshipLabel>
+        <relationshipName>ShukaMikomiData_JuchuMeisaiData</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>KeisuKasan__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>予測係数を個別に微調整する数値（少数）。</inlineHelpText>
+        <label>係数加算</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KijunShohisu__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>初期値
+　→　受注数量をWFRで反映。</inlineHelpText>
+        <label>基準消費数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MotoHizuke__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>出荷データの納品予定日をWFRをで反映。</inlineHelpText>
+        <label>元日付</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShohinShizaiM__c</fullName>
+        <externalId>false</externalId>
+        <label>商品資材マスタ</label>
+        <referenceTo>ShohinShizaiM__c</referenceTo>
+        <relationshipName>ShukaMikomiData_ShohinShizaiM</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>ShohinShizaiMmei__c</fullName>
+        <externalId>false</externalId>
+        <formula>ShohinShizaiM__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>商品資材マスタ名</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShohisuKasan__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>消費数量を個別に微調整する数量。</inlineHelpText>
+        <label>消費数加算</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShohisuNamachi__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>￥￥_消費数生値</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shohisu__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( JuchuMeisaiData__r.JuchuData__r.JidoHikiateFlg__c ,
+  KijunShohisu__c ,
+ ( KijunShohisu__c  +  ShohisuKasan__c )  *  (  ShohinShizaiM__r.YosokuKeisu__c  +  KeisuKasan__c  )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>受注データの引当スタンバイがONの場合。
+消費数＝基準消費数
+
+受注データの引当スタンバイがOFFの場合。
+消費数＝（基準消費数＋消費数加算）×（予測係数＋係数加算　）</inlineHelpText>
+        <label>消費数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>YosokuKeisu__c</fullName>
+        <externalId>false</externalId>
+        <formula>ShohinShizaiM__r.YosokuKeisu__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>商品資材マスタの予測係数。</inlineHelpText>
+        <label>予測係数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>YosokuTaishoFlgNamachi__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>予測対象判定のフラグをWFRにより転記。</inlineHelpText>
+        <label>￥￥_予測対象フラグ生値</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>YosokuTaishoHantei__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND( 
+ Hizuke__c &lt;= ShohinShizaiM__r.YosokuTaishoMade__c , 
+ Hizuke__c &gt;= ShohinShizaiM__r.YosokuTaishoKara__c ,
+OR(
+ ISBLANK(  JuchuMeisaiData__c  ),
+ JuchuMeisaiData__r.JuchuData__r.HikiateKanryoFlg__c,
+ JuchuMeisaiData__r.JuchuData__r.JidoHikiateFlg__c 
+))</formula>
+        <inlineHelpText>消費予測日付が　商品資材マスタの予測対象期間内
+　かつ
+
+受注明細データが空白
+　あるいは
+受注データ　の　引当成功完了ON
+　あるいは
+受注データ　の　引当スタンバイON</inlineHelpText>
+        <label>予測対象判定</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>消費見込データ</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>ShohinShizaiMmei__c</columns>
+        <columns>Hizuke__c</columns>
+        <columns>YosokuTaishoHantei__c</columns>
+        <columns>KijunShohisu__c</columns>
+        <columns>Shohisu__c</columns>
+        <columns>JuchuMeisaiData__c</columns>
+        <columns>ShohinShizaiM__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>すべて選択</label>
+    </listViews>
+    <listViews>
+        <fullName>View20170424a</fullName>
+        <columns>NAME</columns>
+        <columns>YosokuTaishoHantei__c</columns>
+        <columns>Hizuke__c</columns>
+        <columns>ShohinShizaiMmei__c</columns>
+        <columns>Shohisu__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>YosokuTaishoHantei__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>消費見込対象</label>
+    </listViews>
+    <nameField>
+        <displayFormat>消費見込-{000000000}</displayFormat>
+        <label>消費見込番号</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <searchLayouts>
+        <customTabListAdditionalFields>ShohinShizaiMmei__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>JuchuMeisaiData__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Shohisu__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Hizuke__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>YosokuTaishoHantei__c</customTabListAdditionalFields>
+        <listViewButtons>Y02_AraigaeButton</listViewButtons>
+        <lookupDialogsAdditionalFields>ShohinShizaiMmei__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>MotoHizuke__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>KijunShohisu__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>KeisuKasan__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ShohisuKasan__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ShohinShizaiMmei__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>MotoHizuke__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>KijunShohisu__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>KeisuKasan__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ShohisuKasan__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>ShohinShizaiMmei__c</searchFilterFields>
+        <searchResultsAdditionalFields>ShohinShizaiMmei__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>MotoHizuke__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>KijunShohisu__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>KeisuKasan__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ShohisuKasan__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>Y02_AraigaeButton</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>出荷見込データ洗替</masterLabel>
+        <openType>sidebar</openType>
+        <page>Y02_UpdateShukaMikomiDataButton</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+</CustomObject>

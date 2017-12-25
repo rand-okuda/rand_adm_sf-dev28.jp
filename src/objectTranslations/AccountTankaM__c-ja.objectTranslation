@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>取引条件マスタ</value>
+    </caseValues>
+    <fields>
+        <label><!-- 取引先 --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- 取引条件マスタ --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 相手の商品資材コード --></help>
+        <label><!-- 相手商品資材コード --></label>
+        <name>AiteShohinShizaiCode__c</name>
+    </fields>
+    <fields>
+        <help><!-- 相手の商品資材名 --></help>
+        <label><!-- 相手商品資材名 --></label>
+        <name>AiteShohinShizaimei__c</name>
+    </fields>
+    <fields>
+        <label><!-- 備考 --></label>
+        <name>Biko__c</name>
+    </fields>
+    <fields>
+        <help><!-- 商品資材マスタの値から調整した日数。 --></help>
+        <label><!-- 調整消費期限 --></label>
+        <name>ChoseiShohiKigen__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_現在有効フラグ生値 --></label>
+        <name>GenzaiYukoFlgNamachi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 現在有効フラグ --></label>
+        <name>GenzaiYukoFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 販売価格　－　標準原価 --></help>
+        <label><!-- 販売粗利額 --></label>
+        <name>HambaiArariGaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 販売粗利額　÷　販売価格 --></help>
+        <label><!-- 販売粗利率 --></label>
+        <name>HambaiArariRitsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 割増値引率 --></label>
+        <name>HambaiNebikiMasi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 標準売価 --></label>
+        <name>HyojunBaika__c</name>
+    </fields>
+    <fields>
+        <label><!-- 標準原価 --></label>
+        <name>HyojunGenka__c</name>
+    </fields>
+    <fields>
+        <label><!-- 並び順 --></label>
+        <name>NarabiJun__c</name>
+    </fields>
+    <fields>
+        <label><!-- 販売価格 --></label>
+        <name>NohinKakaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_インポート商品資材コード --></label>
+        <name>ShohinShizaiCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商品資材区分 --></label>
+        <name>ShohinShizaiKubun__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商品資材 --></label>
+        <name>ShohinShizaiM__c</name>
+        <relationshipLabel><!-- 取引条件マスタ --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 商品資材マスタ名 --></label>
+        <name>ShohinShizaiMmei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 出荷時に担保する必要のある消費期限の期間。
+例：販売管理期限など。
+例：納品管理期限など。 --></help>
+        <label><!-- 消費期限確保日数 --></label>
+        <name>ShomiKigenKakuhoNissu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 適用期間から --></label>
+        <name>TekiyoKikanKara__c</name>
+    </fields>
+    <fields>
+        <label><!-- 適用期間まで --></label>
+        <name>TekiyoKikanMade__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_インポート取引先コード --></label>
+        <name>TorihikisakiCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- 取引先名 --></label>
+        <name>Torihikisakimei__c</name>
+    </fields>
+    <layouts>
+        <layout>取引先単価マスタレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- 備考 --></label>
+            <section>備考</section>
+        </sections>
+        <sections>
+            <label><!-- 名称情報 --></label>
+            <section>名称情報</section>
+        </sections>
+        <sections>
+            <label><!-- 商品情報 --></label>
+            <section>商品情報</section>
+        </sections>
+        <sections>
+            <label><!-- 期間情報 --></label>
+            <section>期間情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+        <sections>
+            <label><!-- 順序情報 --></label>
+            <section>順序情報</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- J44_AraigaeButton --></label>
+        <name>J44_AraigaeButton</name>
+    </webLinks>
+</CustomObjectTranslation>

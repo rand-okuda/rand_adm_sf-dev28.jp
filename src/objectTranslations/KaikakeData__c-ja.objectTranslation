@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>買掛データ</value>
+    </caseValues>
+    <fields>
+        <label><!-- 伝票番号 --></label>
+        <name>DenpyoNo__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_買掛データ名算出 --></label>
+        <name>KaikakeDataNameSanshutsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 支払完了フラグ --></label>
+        <name>SeikyukakuteiFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- 支払完了日 --></label>
+        <name>ShiharaiKanryobi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 取引先マスタの取引債渡月数および期日と期日から自動算出。 
+
+期日＝９９ 
+　締期間まで＋取引債渡月数の月　の　最終日 
+
+期日≠９９ 
+　締期間まで＋取引債渡月数の月　の　期日 --></help>
+        <label><!-- 支払期日 --></label>
+        <name>ShiharaiKijitsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 支払先 --></label>
+        <name>Shiiresaki__c</name>
+        <relationshipLabel><!-- 買掛データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_締基準日 --></label>
+        <name>ShimeHizuke__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_締期間から生値 --></label>
+        <name>ShimeKikanKaraNamachi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 締期間から --></label>
+        <name>ShimeKikanKara__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_締期間まで生値 --></label>
+        <name>ShimeKikanMadeNamachi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 締期間まで --></label>
+        <name>ShimeKikanMade__c</name>
+    </fields>
+    <fields>
+        <help><!-- 取引先マスタの請求締期間月数が反映 --></help>
+        <label><!-- 締期間月数 --></label>
+        <name>ShimekikanTsukisu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 発注明細単位で税計算した結果の合計 --></help>
+        <label><!-- 税込支払計 --></label>
+        <name>ZeikomiShiharaiKei__c</name>
+    </fields>
+    <layouts>
+        <layout>買掛データレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- 支払情報 --></label>
+            <section>支払情報</section>
+        </sections>
+        <sections>
+            <label><!-- 締日情報 --></label>
+            <section>締日情報</section>
+        </sections>
+        <sections>
+            <label><!-- 金額情報 --></label>
+            <section>金額情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>契約明細データ</value>
+    </caseValues>
+    <fields>
+        <label><!-- 契約データ --></label>
+        <name>Keiyaku__c</name>
+        <relationshipLabel><!-- 契約明細データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 商品資材マスタ --></label>
+        <name>ShohinShizaiM__c</name>
+        <relationshipLabel><!-- 契約明細データ --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>契約明細データレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

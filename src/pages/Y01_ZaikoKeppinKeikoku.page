@@ -1,0 +1,4 @@
+<apex:page standardController="ShohinShizaiM__c"
+	extensions="Y01_ZaikoKeppinKeikokuController" action="{!init}">
+	<h1>蜃ｦ逅�荳ｭ縺ｧ縺吶�ゅ＠縺ｰ繧峨￥縺雁ｾ�縺｡縺上□縺輔＞縲�</h1>
+</apex:page>

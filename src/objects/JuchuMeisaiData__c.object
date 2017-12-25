@@ -1,0 +1,1324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>BaiTankaSanshutsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( NOT(ISBLANK( TorihikisakiTanka__c)  ), 
+ TorihikisakiTanka__r.NohinKakaku__c ,
+
+IF ( NOT(ISBLANK( ShohinShizaiM__c)  ), 
+ ShohinShizaiM__r.HyojunBaika__c,
+
+ 0
+
+) )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>取引先条件マスタが関連付けられている場合、取引先条件マスタの価格
+取引先条件マスタが関連付けられていない場合、商品資材マスタの価格</inlineHelpText>
+        <label>￥￥_商品売単価算出</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Biko__c</fullName>
+        <externalId>false</externalId>
+        <label>備考</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DenpatsuJogai__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>￥￥_金額集計除外フラグ</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>GyoArari__c</fullName>
+        <externalId>false</externalId>
+        <formula>GyoKingaku__c  -  GyoGenka__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>行原価　×　受注数</inlineHelpText>
+        <label>明細別粗利</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>GyoGenka__c</fullName>
+        <externalId>false</externalId>
+        <formula>JuchuSuryo__c  *  ShohinGenka__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>商品原価×受注数量</inlineHelpText>
+        <label>明細別原価</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>GyoKingaku__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(KingakuMinus__c,
+ShohinBaika__c  * NohinSuryo__c * (-1),
+
+IF(KingakuZero__c,
+0,
+
+ShohinBaika__c  * NohinSuryo__c
+
+))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>赤伝票＝ONの場合。
+→標準売価×納品数量×-1
+
+明細金額ゼロフラグ＝ONの場合。
+→０：ゼロ
+
+赤伝票OFF＆明細金額ゼロフラグ＝OFF
+→標準売価×納品数量</inlineHelpText>
+        <label>明細別金額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>GyoNebikiRitsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( ISBLANK( TorihikisakiTanka__c ) ,
+ &quot;&quot;,
+
+ &quot;取引条件 &quot; + 
+ TEXT(
+ ROUND( TorihikisakiTanka__r.HambaiNebikiMasi__c * 10 , 0)
+ ) + 
+ &quot;割引&quot;
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>取引先条件マスタが設定される事による値引率。</inlineHelpText>
+        <label>明細条件値引</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GyoZeigaku__c</fullName>
+        <externalId>false</externalId>
+        <formula>FLOOR(GyoKingaku__c  *  Shohizeiritsu__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>明細金額×消費税率（小数点以下切捨て）</inlineHelpText>
+        <label>明細別税額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>GyoZeikomi__c</fullName>
+        <externalId>false</externalId>
+        <formula>FLOOR(GyoKingaku__c  +  GyoZeigaku__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>明細金額＋明細税額（小数点以下切捨て）</inlineHelpText>
+        <label>明細別税込</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>GyosuChokaFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>JuchuData__r.JuchuMeisaiDataGyosu__c  &gt;  $Setup.SystemParam__c.JuchuMeisaiSaidaiTorokusu__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_行数超過フラグ</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HikiateFuyoFig__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>引当処理を行わないお場合にON。
+例）入出庫を伴わない受注。
+例）返品や赤伝票。</inlineHelpText>
+        <label>引当無</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>JuchuData__c</fullName>
+        <externalId>false</externalId>
+        <label>受注出荷データ</label>
+        <referenceTo>JuchuData__c</referenceTo>
+        <relationshipLabel>出荷明細データ</relationshipLabel>
+        <relationshipName>JuchuMeisaiData_JuchuData</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>JuchuMeisaiDataNameSanshutsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>LEFT(
+
+ JuchuData__r.Juchusaki__r.Name
+ + &quot; &quot; +
+ ShohinShizaiM__r.Name
+
+ ,80
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_受注明細データ名算出</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>JuchuSuryoCS__c</fullName>
+        <externalId>false</externalId>
+        <label>C/S数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>JuchuSuryoCT__c</fullName>
+        <externalId>false</externalId>
+        <label>C/T数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>JuchuSuryoPC__c</fullName>
+        <externalId>false</externalId>
+        <label>PC数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>JuchuSuryoSanshutsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+
+ OR(
+ JuchuSuryoPC__c &gt; 0,
+ JuchuSuryoCS__c &gt; 0,
+ JuchuSuryoCT__c &gt; 0 ) ,
+
+JuchuSuryoCT__c * ShohinShizaiM__r.BaiRitsuCT__c
+ +
+JuchuSuryoCS__c * ShohinShizaiM__r.BaiRitsuCS__c
+ + 
+JuchuSuryoPC__c,
+ 
+ 0
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>受注数量の値を受注数量親や受注数量祖をもとに計算する数式項目</inlineHelpText>
+        <label>￥￥_受注数量算出</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>JuchuSuryo__c</fullName>
+        <externalId>false</externalId>
+        <label>受注数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KariNohinshoHinban__c</fullName>
+        <externalId>false</externalId>
+        <formula>ShohinShizaiM__r.ShohinShizaiCode__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_納品書_品番</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KariNohinshoHinmei__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (
+ JuchuData__r.HikiateKanryoFlg__c ,
+
+IF (
+ ISBLANK( TorihikisakiTanka__r.AiteShohinShizaimei__c ) ,
+ LEFT( ShohinShizaiMeisho__c , 60) ,
+ LEFT(TorihikisakiTanka__r.AiteShohinShizaimei__c, 60)),
+
+IF (
+ ISBLANK( TorihikisakiTanka__r.AiteShohinShizaimei__c ) ,
+ LEFT( ShohinShizaiMeisho__c , 35) ,
+ LEFT(TorihikisakiTanka__r.AiteShohinShizaimei__c, 35))
+
+)</formula>
+        <label>￥_納品書_品名</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KariNohinshoKikakuBiko__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (  NOT(ISBLANK( Biko__c ))  ,
+ Biko__c ,
+
+IF (  NOT(JuchuData__r.HikiateKanryoFlg__c)  ,
+ NisugataSanko__c,
+
+ &quot;&quot;
+
+) )</formula>
+        <inlineHelpText>備考に記入がある場合は備考内容を出力。
+
+　でなければ
+
+引当未完了の場合は荷姿参考を出力。
+　または
+引当完了後は空白を出力。</inlineHelpText>
+        <label>￥_納品書_備考</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KingakuMinus__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>・明細金額マイナスフラグ＝TRUE　＝＞　行金額＝行金額×(-1)　行税込＝行税込×(-1)　行税額＝行税額×(-1)　
+・明細金額マイナスフラグ＝FALSE　＝＞　何もしない</description>
+        <externalId>false</externalId>
+        <inlineHelpText>・明細金額マイナスフラグ＝TRUE　＝＞　行金額＝行金額×(-1)　行税込＝行税込×(-1)　行税額＝行税額×(-1)　
+・明細金額マイナスフラグ＝FALSE　＝＞　何もしない</inlineHelpText>
+        <label>赤伝票</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>KingakuZero__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>・明細金額ゼロフラグ＝TRUE　＝＞　行金額＝0　行税込＝0　行税額＝0　
+・明細金額ゼロフラグ＝FALSE　＝＞　何もしない</description>
+        <externalId>false</externalId>
+        <inlineHelpText>・明細金額ゼロフラグ＝TRUE　＝＞　行金額＝0　行税込＝0　行税額＝0　
+・明細金額ゼロフラグ＝FALSE　＝＞　何もしない</inlineHelpText>
+        <label>金額０</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MeisaiFuseiFlagNamachi__c</fullName>
+        <externalId>false</externalId>
+        <formula>JuchuSuryo__c  &lt; 1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>数量が0個の明細と積上げ集計で選別するために使用。</inlineHelpText>
+        <label>￥￥_明細数量不正フラグ</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MeisaiJyogai__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>請求書の明細に表示しない場合にON。</inlineHelpText>
+        <label>請求隠</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MeyasuHikakuTaishoSuryo__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (
+ JuchuData__r.HikiateKanryoFlg__c  ,
+ 0 ,
+
+IF (
+ AND( JuchuData__r.NohinYoteibi__c  =  TODAY() ,
+ NOT( JuchuData__r.LotKonzaiFlg__c)  ) ,
+ ShohinShizaiM__r.HikiateMachiTanSuryo__c,
+
+IF (
+ AND( JuchuData__r.NohinYoteibi__c  =  TODAY(), 
+ JuchuData__r.LotKonzaiFlg__c) ,
+ ShohinShizaiM__r.HikiateMachiALLSuryo__c,
+
+IF (
+ AND( JuchuData__r.NohinYoteibi__c  &gt;  TODAY(),
+ NOT( JuchuData__r.LotKonzaiFlg__c) ) ,
+ ShohinShizaiM__r.HikiateMachiSaiChoHambaiKigenTanSuryo__c ,
+
+IF (
+ AND( JuchuData__r.NohinYoteibi__c  &gt;  TODAY(),
+ JuchuData__r.LotKonzaiFlg__c) ,
+ ShohinShizaiM__r.HikiateMachiSaiChoHambaiKigenALLSuryo__c ,
+
+IF (
+  JuchuData__r.NohinYoteibi__c &gt; ShohinShizaiM__r.SaiChoHambaiKigenHizuke__c  ,
+ 0 ,
+
+ 0
+
+))))))</formula>
+        <inlineHelpText>・引当成功完了＝ON　→　０：ゼロ
+・納品予定日＝本日　かつ　受注データのロット混在フラグ＝OFF　→　引当可能単ユニット数量
+・納品予定日＝本日　かつ　受注データのロット混在フラグ＝ON　→　引当可能混ユニット数量
+・納品予定日＞本日　かつ　受注データのロット混在フラグ＝OFF　→　引当可能最長販売期限単ロット数量
+・納品予定日＞本日　かつ　受注データのロット混在フラグ＝ON　→　引当可能最長販売期限単ロット数量
+・納品予定日＞最長販売期限日付　→　０：ゼロ</inlineHelpText>
+        <label>目安残数量</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MeyasuZan__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (
+  TODAY()  &gt;   JuchuData__r.NohinYoteibi__c  ,
+ &quot;過去日納品&quot;,
+
+IF (
+ JuchuData__r.HikiateKanryoFlg__c  ,
+ &quot;引当済&quot;,
+
+IF (
+ ShomiKigenShokai__c &gt; ShohinShizaiM__r.SaiChoHambaiKigenHizuke__c ,
+ &quot;期限 &quot; +  
+ TEXT( ShomiKigenShokai__c - ShohinShizaiM__r.SaiChoHambaiKigenHizuke__c ) + 
+ &quot;日超過&quot;,
+
+IF (
+ AND(
+ JuchuData__r.JidoHikiateFlg__c ,
+ JuchuSuryo__c  &lt;=  MeyasuHikakuTaishoSuryo__c 
+ ),
+ &quot;予約済&quot;,
+
+IF (
+ JuchuSuryo__c  &gt;  MeyasuHikakuTaishoSuryo__c ,
+ &quot;× &quot; +  TEXT( MeyasuHikakuTaishoSuryo__c ) ,
+
+IF (
+ JuchuSuryo__c  &lt;=  MeyasuHikakuTaishoSuryo__c ,
+ &quot;○&quot; + TEXT( MeyasuHikakuTaishoSuryo__c )  ,
+
+ &quot;不明&quot;
+
+))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>・受注データの引当成功完了＝ON　→　引当済
+・受注データの引当スタンバイ＝ON　→　予約済
+・消費期限照会＞最長販売期限日付　→　期限超過
+・受注数量＞目安残数量　→　×
+・受注数量≦目安残数量　→　○</inlineHelpText>
+        <label>目安残</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NarabiJunNamachi__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>一覧編集画面のソート順及び、帳票のソート順で使用するソートキー。
+WFRで書き込まれる。</inlineHelpText>
+        <label>￥￥_明細ソートキー生値</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NarabiJun__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+ JuchuData__r.ShohinShizaiCodeJun__c,
+LPAD(ShohinShizaiM__r.ShohinShizaiCode__c, 18, &apos;0&apos;),
+
+IF(
+ JuchuData__r.ShohinShizaiMeiJun__c,
+ShohinShizaiM__r.Name,
+
+IF(
+ JuchuData__r.JanCodeJun__c,
+LPAD(ShohinShizaiM__r.JanCode__c, 18, &apos;0&apos;),
+
+IF(
+ JuchuData__r.SakuseiJun__c,
+TEXT(CreatedDate),
+
+IF(OR(
+ ISBLANK(TorihikisakiTanka__c),  
+ ISNULL(TorihikisakiTanka__c)),
+LPAD(ShohinShizaiM__r.ShohinShizaiCode__c, 18, &apos;0&apos;),
+
+IF(OR(
+ ISBLANK(TorihikisakiTanka__r.NarabiJun__c),
+ ISNULL(TorihikisakiTanka__r.NarabiJun__c)),
+LPAD(ShohinShizaiM__r.ShohinShizaiCode__c, 18, &apos;0&apos;),
+
+LPAD(TEXT(TorihikisakiTanka__r.NarabiJun__c), 18, &apos;0&apos;)
+
+))))))</formula>
+        <inlineHelpText>一覧編集画面のソート順及び、帳票のソート順で使用するソートキー。</inlineHelpText>
+        <label>￥￥_明細ソートキー</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NeedAllLotFlgNamachi__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>￥￥_要混ロットフラグ生値</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NeedAllLot__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND(
+ NOT( JuchuData__r.HikiateKanryoFlg__c ) ,
+ JuchuSuryo__c &gt; MeyasuHikakuTaishoSuryo__c ,
+ NOT( JuchuData__r.LotKonzaiFlg__c ) 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>引当成功完了＝OFF　かつ　受注数量　＞　目安残数量　かつ　受注データのロット混在フラグ＝OFF　の場合ON。</inlineHelpText>
+        <label>要混ロット</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NeedReductionFlgNamachi__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>￥￥_要数量減フラグ生値</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NeedReduction__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND(
+ NOT( JuchuData__r.HikiateKanryoFlg__c ) ,
+ JuchuSuryo__c  &gt;  MeyasuHikakuTaishoSuryo__c ,
+ JuchuData__r.LotKonzaiFlg__c 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>引当成功完了＝OFF　かつ　受注数量　＞　目安残数量　かつ　受注データのロット混在フラグ＝ON　の場合ON。</inlineHelpText>
+        <label>要数量減</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NisugataSanko__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(JuchuSuryo__c) + 
+ ShohinShizaiM__r.TaniPC__c +
+
+IF (
+ NOT( OR( 
+ JuchuData__r.LotKonzaiFlg__c,  
+ JuchuData__r.ShomiKigenKonzaiFlg__c,
+ JuchuSuryo__c == 0)), 
+
+
+IF (
+ JuchuSuryoCT__c != 0,
+ &quot; (&quot;,
+ &quot;&quot;
+)
+
+ + 
+
+IF(JuchuSuryoCT__c != 0,
+ TEXT(ShohinShizaiM__r.BaiRitsuCT__c) + 
+  ShohinShizaiM__r.TaniPC__c +  &quot;x&quot; +
+ TEXT(JuchuSuryoCT__c) +  
+ ShohinShizaiM__r.TaniCT__c
+ ,&quot;&quot; ) 
+
+ + 
+
+IF (
+ AND(
+ JuchuSuryoCT__c != 0,  
+ JuchuSuryoCS__c != 0),
+ &quot; + &quot;,
+IF (
+ JuchuSuryoCS__c != 0,
+ &quot; (&quot;,
+ &quot;&quot;
+))
+
+
+ + 
+
+IF(JuchuSuryoCS__c != 0,
+ TEXT(ShohinShizaiM__r.BaiRitsuCS__c) + 
+ ShohinShizaiM__r.TaniPC__c +  &quot;x&quot; + 
+ TEXT(JuchuSuryoCS__c) + 
+ ShohinShizaiM__r.TaniCS__c
+ ,&quot;&quot; )
+
+ ,&quot;&quot; ) 
+
+ +
+
+IF(
+ NOT( OR( 
+ JuchuData__r.LotKonzaiFlg__c,  
+ JuchuData__r.ShomiKigenKonzaiFlg__c,
+ JuchuSuryo__c == 0 )), 
+
+IF(
+ AND(
+ JuchuSuryoPC__c != 0,
+ OR( 
+ JuchuSuryoCS__c != 0,  
+ JuchuSuryoCT__c != 0)),
+ &quot; + &quot; + 
+ TEXT(JuchuSuryoPC__c) + 
+ ShohinShizaiM__r.TaniPC__c +
+
+ &quot;)&quot;,
+
+ &quot;&quot; ),
+
+ &quot;&quot; )
+
+ +
+
+IF(
+ NOT( OR( 
+ JuchuData__r.LotKonzaiFlg__c,  
+ JuchuData__r.ShomiKigenKonzaiFlg__c,
+ JuchuSuryo__c == 0)), 
+
+IF(
+ JuchuSuryoPC__c != 0,
+
+ &quot;&quot;,
+ &quot;)&quot;
+ ),
+
+ &quot;&quot; )</formula>
+        <inlineHelpText>受注出荷データのロット混在と消費期限混在フラグが共にOFFの場合はC/S数とC/T数の組合せで出荷数を表記する。
+
+混在ONの場合はPC数で表記する。</inlineHelpText>
+        <label>荷姿参考</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NohinJogaiHantei__c</fullName>
+        <externalId>false</externalId>
+        <formula>NohinJogai__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_納品除外判定</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NohinJogai__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>納品書の明細に表示しない場合にON。</inlineHelpText>
+        <label>納品隠</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NohinSuryo__c</fullName>
+        <externalId>false</externalId>
+        <label>納品数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyuShoTaishoGai__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(JuchuData__r.UrikakeData__r.ZenMeisaiHyoji__c ,
+ FALSE,
+ MeisaiJyogai__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_請求書対象外</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SeikyushoMeisaiBiko__c</fullName>
+        <externalId>false</externalId>
+        <formula>Biko__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_明細備考</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoMeisaiKikaku__c</fullName>
+        <externalId>false</externalId>
+        <formula>LEFT(ShohinShizaiM__r.Kikaku__c,10)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_明細規格</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoMeisaiKingaku__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( JuchuData__r.UrikakeData__r.MeisaiKingakuHihyojiMode__c,
+ null,
+ GyoKingaku__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_明細金額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SeikyushoMeisaiShohinCode__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_明細商品コード</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoMeisaiShohinMei__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (
+ ISBLANK( TorihikisakiTanka__r.AiteShohinShizaimei__c ) ,
+ LEFT( ShohinShizaiMeisho__c ,25),
+ LEFT(TorihikisakiTanka__r.AiteShohinShizaimei__c, 25) 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_明細商品名</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoMeisaiSuryo__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (JuchuData__r.UrikakeData__r.MeisaiKosuHihyojiMode__c, 
+null, 
+NohinSuryo__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_明細数量</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoMeisaiTani__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (JuchuData__r.UrikakeData__r.MeisaiKosuHihyojiMode__c , 
+null, 
+ ShohinShizaiM__r.TaniPC__c 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_明細単位</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoMeisaiTanka__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( JuchuData__r.UrikakeData__r.MeisaiKingakuHihyojiMode__c,
+ null,
+ ShohinBaika__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_明細単価</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ShohinBaika__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>商品1個当たりの納品単価</inlineHelpText>
+        <label>商品売単価</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ShohinGenka__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>商品1個当たりの標準原価</inlineHelpText>
+        <label>商品原単価</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ShohinShizaiM__c</fullName>
+        <externalId>false</externalId>
+        <label>商品資材</label>
+        <referenceTo>ShohinShizaiM__c</referenceTo>
+        <relationshipLabel>出荷明細データ</relationshipLabel>
+        <relationshipName>JuchuMeisaiData_ShohinShizaiM</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>ShohinShizaiMeisho__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>各種帳票の明細に表記される。
+空白保存で商品資材マスターの標準名称にリセットされる。</inlineHelpText>
+        <label>商品資材名称</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShohinShizaiMmei__c</fullName>
+        <externalId>false</externalId>
+        <formula>ShohinShizaiM__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>商品資材名</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shohizeiritsu__c</fullName>
+        <defaultValue>$Setup.SystemParam__c.Shohizeiritsu__c</defaultValue>
+        <externalId>false</externalId>
+        <label>消費税率</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShomiKigenShokaiNamachi__c</fullName>
+        <externalId>false</externalId>
+        <label>￥￥_消費期限照会生値</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShomiKigenShokai__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (  ISBLANK(TorihikisakiTanka__c)  ,
+ JuchuData__r.NohinYoteibi__c
+ +  ShohinShizaiM__r.HanbaiKanriKigenNissu__c
+ +  JuchuData__r.HambaiKanriKigenShift__c  ,
+ JuchuData__r.NohinYoteibi__c
+ +  TorihikisakiTanka__r.ShomiKigenKakuhoNissu__c
+ +  JuchuData__r.HambaiKanriKigenShift__c 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>出荷引当を行う際に在庫の消費期限を検索する日付。
+・納品予定日に取引先条件マスタの賞味期限確保日数を加算した日付。
+・取引先条件マスタが存在しない場合は、商品資材マスタの販売期限日数を加算した日付。
+・受注データの販売管理期限シフトが設定されている場合は日数を加算（減算）。</inlineHelpText>
+        <label>消費期限照会</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SuryoBairitsuCS__c</fullName>
+        <externalId>false</externalId>
+        <formula>ShohinShizaiM__r.BaiRitsuCS__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_C/S数量倍率</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SuryoBairitsuCT__c</fullName>
+        <externalId>false</externalId>
+        <formula>ShohinShizaiM__r.BaiRitsuCT__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_C/T数量倍率</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SuryoTenkiSeigyoFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>￥￥_数量転記制御フラグ</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>TaniCS__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (SuryoBairitsuCS__c &gt; 0,
+&quot;*&quot; +  TEXT(SuryoBairitsuCS__c) +    ShohinShizaiM__r.TaniPC__c  ,
+ &quot;&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>C/S数入力用の倍率表記。</inlineHelpText>
+        <label>単位C/S</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TaniCT__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (SuryoBairitsuCT__c &gt; 0,
+&quot;*&quot;+  TEXT(SuryoBairitsuCT__c) +  ShohinShizaiM__r.TaniPC__c  ,
+ &quot;&quot;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>C/T数入力用の倍率表記。</inlineHelpText>
+        <label>単位C/T</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TaniPC__c</fullName>
+        <externalId>false</externalId>
+        <formula>&quot;*1&quot; + ShohinShizaiM__r.TaniPC__c</formula>
+        <label>単位PC</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TorihikisakiTanka__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>該当する取引先の該当商品資材マスターに設定された条件マスタが存在する場合に設定される。
+受注データの日付（納品予定日/売上計上日）により、売掛データの期間設定が考慮され設定される。</inlineHelpText>
+        <label>取引先条件</label>
+        <referenceTo>AccountTankaM__c</referenceTo>
+        <relationshipName>JuchuMeisaiData_TorihikisakiTanka</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ZaikoNashiNohimbiFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>ShomiKigenShokai__c  &gt;  ShohinShizaiM__r.SaiChoHambaiKigenHizuke__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>消費期限照会　＞　最長販売期限日付　の場合ON。</inlineHelpText>
+        <label>￥￥_在庫無納品日フラグ</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ZaikoNashiNohimbiNamachi__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>￥￥_在庫無納品日フラグ生値</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>出荷明細データ</label>
+    <listViews>
+        <fullName>ALL</fullName>
+        <columns>NAME</columns>
+        <columns>JuchuData__c</columns>
+        <columns>ShohinShizaiMmei__c</columns>
+        <columns>JuchuSuryo__c</columns>
+        <columns>NisugataSanko__c</columns>
+        <columns>TorihikisakiTanka__c</columns>
+        <columns>ShohinBaika__c</columns>
+        <columns>ShohinGenka__c</columns>
+        <columns>GyoKingaku__c</columns>
+        <columns>GyoGenka__c</columns>
+        <columns>GyoArari__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>すべて選択</label>
+    </listViews>
+    <listViews>
+        <fullName>View20150822a</fullName>
+        <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+        <columns>NAME</columns>
+        <columns>JuchuData__c</columns>
+        <columns>ShohinShizaiM__c</columns>
+        <columns>MeisaiJyogai__c</columns>
+        <columns>NohinJogai__c</columns>
+        <columns>KingakuZero__c</columns>
+        <columns>KingakuMinus__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>NohinJogai__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>MeisaiJyogai__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>KingakuZero__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>KingakuMinus__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>．明細確認（隠/０/赤）</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160418a</fullName>
+        <columns>NAME</columns>
+        <columns>MeyasuZan__c</columns>
+        <columns>NisugataSanko__c</columns>
+        <columns>JuchuSuryo__c</columns>
+        <columns>JuchuSuryoPC__c</columns>
+        <columns>JuchuSuryoCS__c</columns>
+        <columns>JuchuSuryoCT__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>．受注数量確認</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160418b</fullName>
+        <columns>NAME</columns>
+        <columns>ShohinShizaiM__c</columns>
+        <columns>MeyasuZan__c</columns>
+        <columns>NisugataSanko__c</columns>
+        <columns>JuchuSuryo__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MeyasuZan__c</field>
+            <operation>contains</operation>
+            <value>超過</value>
+        </filters>
+        <label>．受注数量確認（超過）</label>
+    </listViews>
+    <nameField>
+        <label>出荷明細名</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <searchLayouts>
+        <customTabListAdditionalFields>ShomiKigenShokai__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>MeyasuZan__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>NisugataSanko__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>ShohinShizaiMmei__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>JuchuSuryo__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>NohinSuryo__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ShohinBaika__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>GyoKingaku__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>GyoZeigaku__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Biko__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ShohinShizaiMmei__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>JuchuSuryo__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>NohinSuryo__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ShohinBaika__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>GyoKingaku__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>GyoZeigaku__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Biko__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>ShohinShizaiMmei__c</searchFilterFields>
+        <searchResultsAdditionalFields>ShohinShizaiMmei__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>JuchuSuryo__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>NohinSuryo__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ShohinBaika__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>GyoKingaku__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>GyoZeigaku__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Biko__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>RemarksCharacterRestriction</fullName>
+        <active>true</active>
+        <description>備考半角カタカナ文字制限</description>
+        <errorConditionFormula>OR(
+
+CONTAINS( Biko__c , &quot;ｱ&quot;),
+CONTAINS( Biko__c , &quot;ｲ&quot;),
+CONTAINS( Biko__c , &quot;ｳ&quot;),
+CONTAINS( Biko__c , &quot;ｴ&quot;),
+CONTAINS( Biko__c , &quot;ｵ&quot;),
+CONTAINS( Biko__c , &quot;ｶ&quot;),
+CONTAINS( Biko__c , &quot;ｷ&quot;),
+CONTAINS( Biko__c , &quot;ｸ&quot;),
+CONTAINS( Biko__c , &quot;ｹ&quot;),
+CONTAINS( Biko__c , &quot;ｺ&quot;),
+CONTAINS( Biko__c , &quot;ｻ&quot;),
+CONTAINS( Biko__c , &quot;ｼ&quot;),
+CONTAINS( Biko__c , &quot;ｽ&quot;),
+CONTAINS( Biko__c , &quot;ｾ&quot;),
+CONTAINS( Biko__c , &quot;ｿ&quot;),
+CONTAINS( Biko__c , &quot;ﾀ&quot;),
+CONTAINS( Biko__c , &quot;ﾁ&quot;),
+CONTAINS( Biko__c , &quot;ﾂ&quot;),
+CONTAINS( Biko__c , &quot;ﾃ&quot;),
+CONTAINS( Biko__c , &quot;ﾄ&quot;),
+CONTAINS( Biko__c , &quot;ﾅ&quot;),
+CONTAINS( Biko__c , &quot;ﾆ&quot;),
+CONTAINS( Biko__c , &quot;ﾇ&quot;),
+CONTAINS( Biko__c , &quot;ﾈ&quot;),
+CONTAINS( Biko__c , &quot;ﾉ&quot;),
+CONTAINS( Biko__c , &quot;ﾊ&quot;),
+CONTAINS( Biko__c , &quot;ﾋ&quot;),
+CONTAINS( Biko__c , &quot;ﾌ&quot;),
+CONTAINS( Biko__c , &quot;ﾍ&quot;),
+CONTAINS( Biko__c , &quot;ﾎ&quot;),
+CONTAINS( Biko__c , &quot;ﾏ&quot;),
+CONTAINS( Biko__c , &quot;ﾐ&quot;),
+CONTAINS( Biko__c , &quot;ﾑ&quot;),
+CONTAINS( Biko__c , &quot;ﾒ&quot;),
+CONTAINS( Biko__c , &quot;ﾓ&quot;),
+CONTAINS( Biko__c , &quot;ﾔ&quot;),
+CONTAINS( Biko__c , &quot;ﾕ&quot;),
+CONTAINS( Biko__c , &quot;ﾖ&quot;),
+CONTAINS( Biko__c , &quot;ﾗ&quot;),
+CONTAINS( Biko__c , &quot;ﾘ&quot;),
+CONTAINS( Biko__c , &quot;ﾙ&quot;),
+CONTAINS( Biko__c , &quot;ﾚ&quot;),
+CONTAINS( Biko__c , &quot;ﾛ&quot;),
+CONTAINS( Biko__c , &quot;ﾜ&quot;),
+CONTAINS( Biko__c , &quot;ｦ&quot;),
+CONTAINS( Biko__c , &quot;ﾝ&quot;)
+
+)</errorConditionFormula>
+        <errorDisplayField>Biko__c</errorDisplayField>
+        <errorMessage>出荷明細データ入力規則：明細の備考に半角カタカナは使用しないで下さい。</errorMessage>
+    </validationRules>
+</CustomObject>

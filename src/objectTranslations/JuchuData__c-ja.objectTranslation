@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>受注出荷データ</value>
+    </caseValues>
+    <fields>
+        <help><!-- 受注先　の　発注番号　などを記入。 --></help>
+        <label><!-- 相手先注文番号 --></label>
+        <name>AitesakiChumonBango__c</name>
+    </fields>
+    <fields>
+        <label><!-- 備考 --></label>
+        <name>Biko__c</name>
+    </fields>
+    <fields>
+        <help><!-- ￥￥_全画面描画フラグ＝OFF　かつ　
+￥￥_納品描画フラグ＝OFF　かつ　
+引当無フラグ＝OFF　の場合にON。 --></help>
+        <label><!-- ￥￥_描画フラグ_部分 --></label>
+        <name>BubunSaiByogaFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 帳票出力時の小計タイトルに反映されます。
+受注データ名に反映されます。
+80文字以下で入力して下さい。 --></help>
+        <label><!-- 伝票番号上書 --></label>
+        <name>DempyoBangoUwagaki__c</name>
+    </fields>
+    <fields>
+        <help><!-- 帳票出力時の小計説明に反映されます。
+120文字以下で入力して下さい。 --></help>
+        <label><!-- 請求書伝票説明 --></label>
+        <name>DempyoSetsumei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 外部連携　への出力を行う際の伝票識別のためのコード。 --></help>
+        <label><!-- 伝票識別コード --></label>
+        <name>DempyoShikibetsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 外部連携　への出力が完了している場合にチェック有り。
+チェック有りで外部連携には連携されなく成る。 --></help>
+        <label><!-- 伝票発行済フラグ --></label>
+        <name>DenpyoHakkozumiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明細別金額（税抜き）の合計 --></help>
+        <label><!-- 受注金額計 --></label>
+        <name>DenpyoKingakuKei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 伝票金額がゼロを表す。
+
+WFR記入。 --></help>
+        <label><!-- ￥￥_伝票金額ゼロフラグ --></label>
+        <name>DenpyoKingakuZeroFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- 伝票番号 --></label>
+        <name>DenpyoNo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注金額×消費税率（小数点以下切捨て） --></help>
+        <label><!-- 受注税額 --></label>
+        <name>DenpyoZeigaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注金額＋受注税額（小数点以下切捨て） --></help>
+        <label><!-- 受注税込 --></label>
+        <name>DenpyoZeikomi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明細別税込の合計 --></help>
+        <label><!-- 明細税込額計 --></label>
+        <name>GyoZeikomiKei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 販売管理期限（出荷時に消費期限を確保する日数）を調整する日数。
+受注先に設定された販売管理期限シフトが反映される。
+例：2日多めに消費期限を確保する。入力：「2」。遠隔地など流通に時間が掛かる店舗。
+例：7日少なめに消費期限を確保する。入力：「-7」。直営店舗など流通時間の短い店舗。 --></help>
+        <label><!-- 販売管理期限シフト --></label>
+        <name>HambaiKanriKigenShift__c</name>
+    </fields>
+    <fields>
+        <label><!-- 引当確定日 --></label>
+        <name>HikiateKakuteibi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当が実行可能であることを表す。
+
+本フラグがOFFの状態では引当即時確定フラグはWFRによりOFFを強制され引当が実行されない。
+
+ON条件
+・在庫引当先が選択済み。
+・全ての受注明細に受注数が1個以上入力済。
+・金額マイナスの明細が存在しない。
+・売掛与信超過していない。
+・売掛データが売掛請求ロックがOFF。
+
+
+あるいは
+・無条件引当フラグON　かつ　引当完了状態フラグOFF --></help>
+        <label><!-- 引当可能フラグ --></label>
+        <name>HikiateKanoFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 全ての商品の引当に成功した場合にON。
+引当解除と再引当を行う場合は　当フラグ　OFF　にします。 --></help>
+        <label><!-- 引当成功完了 --></label>
+        <name>HikiateKanryoFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当結果のステイタス。
+WFRでスイッチされる。 
+
+ON条件
+　引当成功完了　OFF→ON
+
+OFF条件
+　引当成功完了　ON→OFF
+　引当即時確定　ON→OFF --></help>
+        <label><!-- ￥￥_引当完了状態フラグ --></label>
+        <name>HikiateKanryoJotaiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当実行時時に不正検出された内容。 --></help>
+        <label><!-- 警告＋：引当 --></label>
+        <name>HikiateMemoALL__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当実行時時に不正検出された内容。 --></help>
+        <label><!-- 警告：引当 --></label>
+        <name>HikiateMemo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当無フラグ＝ONの場合にON。
+ONの場合引当無モードの明細一覧編集画面が描画される。 --></help>
+        <label><!-- ￥￥_描画フラグ_引当無 --></label>
+        <name>HikiateNashiByogaFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 出荷引当を行わない場合ON。
+取引先の引当無フラグからWFRで反映。 --></help>
+        <label><!-- 引当無納品モード --></label>
+        <name>HikiateNashiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 即時ではなく後ほど一括で引当を解除する場合にON。 
+
+非同期引当の解除には本フラグにより非同期に引当解除が必要。 --></help>
+        <label><!-- 引当非同期解除 --></label>
+        <name>HikiateZanjiKaijo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 即時ではなく後ほど一括引当を起動する場合にON。
+スタンバイ予約と違い納品予定日の更新は行われない。 --></help>
+        <label><!-- 引当非同期確定 --></label>
+        <name>HikiateZanjiKakutei__c</name>
+    </fields>
+    <fields>
+        <help><!-- レコード作成直後のトリガの処理実行を避けるため￥￥_伝票金額ゼロフラグOFFが必須。
+受注先と納品先の両方で個別引当実行フラグOFFが必須。 --></help>
+        <label><!-- ￥￥_標準引当実行フラグ --></label>
+        <name>HyojunHikiateJikkoFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- ON条件
+
+引当スタンバイOFF
+　かつ
+受注確定OFF
+　かつ
+売掛締切ロックOFF --></help>
+        <label><!-- ￥￥_明細一括更新ボタン表示フラグ --></label>
+        <name>IsDispUpdateButton__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注確定引当　前　に並び順を変更してください。
+受注確定引当　後　に外部連携の並び順を変更する場合は引当を解除し再引当を行ってください。
+受注確定引当　後　に並び順を変更した場合は外部連携の並び順は変えることができません。 --></help>
+        <label><!-- ソートＪＡＮコード順 --></label>
+        <name>JanCodeJun__c</name>
+    </fields>
+    <fields>
+        <help><!-- チェック有りで　後ほど　システムにより　受注確定引当　を行います。
+
+継続的に引当スタンバイ状態にする場合は　引当スタンバイ予約　も合わせて設定が必要。 --></help>
+        <label><!-- 引当スタンバイ --></label>
+        <name>JidoHikiateFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当スタンバイを特定日付移行に継続的にONとする日付。
+
+本日付移行に引当できなかった場合は納品請求日が自動的に繰上げされる。
+
+
+例）入荷し次第に納品引当する場合。
+例）未入荷の商品を先行し受注登録する場合。
+例）入荷し引当した日付を納品請求日とする場合。 --></help>
+        <label><!-- 引当スタンバイ予約 --></label>
+        <name>JidoHikiateYoyaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- ONの場合受注確定フラグがWFRによりONされる。
+
+ON条件。 
+
+・取引先マスタ　受注即確定フラグ　ON。
+　かつ
+・取引先マスタ　引当無納品モード　ON。
+　かつ
+・受注データ　受注確定判定　ON。
+
+　あるいは
+
+・受注データ　引当成功完了　ON。 --></help>
+        <label><!-- ￥￥_自動確定フラグ --></label>
+        <name>JidoNohinKakuteiFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_受注データ名算出 --></label>
+        <name>JuchuDataNameSanshutsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注内容に不正検出された内容。 --></help>
+        <label><!-- 警告：受注 --></label>
+        <name>JuchuError__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当可能フラグON　かつ　当フラグ　ON　で在庫データの引当を試みます。
+引当解除と再引当を行う場合は　引当成功完了　OFF　かつ　当フラグ　OFF　にします。 --></help>
+        <label><!-- 引当即時確定 --></label>
+        <name>JuchuKakuteiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- カスタム設定の受注明細データ行数を超えた場合に、エラーにするために使用。 --></help>
+        <label><!-- 明細数 --></label>
+        <name>JuchuMeisaiDataGyosu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 金額マイナス　の　受注は在庫の引当を行わせないために、１件以上引の金額マイナスがあれば、当可能フラグがFALESになる。 --></help>
+        <label><!-- ￥￥_売価マイナス行数カウント --></label>
+        <name>JuchuMeisaiDataKingakuMinusGyosu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 入力された数量に不正検出された内容。 --></help>
+        <label><!-- 警告：数量 --></label>
+        <name>JuchuSuryoMemo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 納品の確定と請求の確定をする場合にON。
+
+例）注文書FAXを受領し契約の意思確認が取れた。
+例）商品を発送し先方から受領書を受け取った。 --></help>
+        <label><!-- 納品請求確定フラグ --></label>
+        <name>JuchuUriageKakuteiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注確定フラグONの場合に、売掛データの締期間を検索する日付。 --></help>
+        <label><!-- 請求基準日 --></label>
+        <name>JuchuUriageKakuteibi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 受注登録日 --></label>
+        <name>Juchubi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注先の受注先重複除外モードを反映。
+
+受注明細データの登録時に受注先全体で重複した商品資材マスタの明細登録を禁止する場合ON。 
+受注データ単位で重複禁止する場合OFF。 --></help>
+        <label><!-- ￥￥_受注先重複除外モード --></label>
+        <name>JuchusakiChofukuJogaiFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- 受注先店舗 --></label>
+        <name>Juchusaki__c</name>
+        <relationshipLabel><!-- 受注出荷データ (受注先) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_伝票番号タイトル --></label>
+        <name>KariNohinshoDenpyoNoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_伝票番号 --></label>
+        <name>KariNohinshoDenpyoNo__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_フッタ --></label>
+        <name>KariNohinshoFooter__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_行タイトル --></label>
+        <name>KariNohinshoGyoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_発送日 --></label>
+        <name>KariNohinshoHassobi__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_品番タイトル --></label>
+        <name>KariNohinshoHinbanTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_品名タイトル --></label>
+        <name>KariNohinshoHinmeiTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_検タイトル --></label>
+        <name>KariNohinshoKenTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_検 --></label>
+        <name>KariNohinshoKen__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_規格備考タイトル --></label>
+        <name>KariNohinshoKikakuBikoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_納品元 --></label>
+        <name>KariNohinshoNohinMoto__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_納品日タイトル --></label>
+        <name>KariNohinshoNohinbiTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_納品日 --></label>
+        <name>KariNohinshoNohinbi__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_納品先ＣＤタイトル --></label>
+        <name>KariNohinshoNohinsakiCDTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_納品先ＣＤ --></label>
+        <name>KariNohinshoNohinsakiCD__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_納品先電話 --></label>
+        <name>KariNohinshoNohinsakiDenwa__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_納品先名１ --></label>
+        <name>KariNohinshoNohinsakiMei1__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_納品先名２ --></label>
+        <name>KariNohinshoNohinsakiMei2__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_入力者タイトル --></label>
+        <name>KariNohinshoNyuryokushaTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_入力者 --></label>
+        <name>KariNohinshoNyuryokusha__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_期限タイトル --></label>
+        <name>KariNohinshoShomiKigenTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_出タイトル --></label>
+        <name>KariNohinshoShutsuTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_出 --></label>
+        <name>KariNohinshoShutsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_数量タイトル --></label>
+        <name>KariNohinshoSuryoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_タイトル --></label>
+        <name>KariNohinshoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_得意先ＣＤタイトル --></label>
+        <name>KariNohinshoTokuisakiCDTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_納品書_得意先ＣＤ --></label>
+        <name>KariNohinshoTokuisakiCD__c</name>
+    </fields>
+    <fields>
+        <help><!-- 優先引当先の在庫先以外に取引先マスタに個別設定した在庫先から引当を行う。
+
+ON条件。
+
+受注データ　出荷引当先　空白
+　かつ
+伝票金額ゼロフラグ　OFF。
+
+　または
+
+受注先　個別引当実行フラグ　ON。
+　あるいは
+納品先　個別引当実行フラグ　ON。
+
+レコード作成直後のトリガの処理実行を避けるため伝票金額ゼロフラグOFFが必須。 --></help>
+        <label><!-- ￥￥_個別引当実行フラグ --></label>
+        <name>KobetsuHikiateJikkoFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 納品先が空白：受注先の個別引当先のID。
+納品先が選択済み：納品先の個別引当先のID。 --></help>
+        <label><!-- ￥￥_個別引当先照会 --></label>
+        <name>KobetsuHikiateSakiShokai__c</name>
+    </fields>
+    <fields>
+        <help><!-- WFRにより契約更新日を転記。 --></help>
+        <label><!-- ￥￥_契約開始日生値 --></label>
+        <name>KoshinBiNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 工程構成マスタのガイド内容が明細登録時に記入される。 --></help>
+        <label><!-- 警告＋：構成 --></label>
+        <name>KoteiKoseiMemoALL__c</name>
+    </fields>
+    <fields>
+        <help><!-- 複数の在庫データ（パレット/ユニット）を引き当てる事を許可します。
+伝票の明細に同じ賞味期限の行が複数表記される可能性があります。 --></help>
+        <label><!-- ユニット混在フラグ --></label>
+        <name>LotKonzaiFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_明細数量不正カウント --></label>
+        <name>MeisaiFuseiCount__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明細登録数が引当処理のガバナリミットを超えている事を表す。
+
+受注明細データの最大登録数を超過している場合ON。
+
+非同期引当（引当スタンバイ/引当非同期確定/引当非同期解除）がONの場合は最大登録数（非同期引当用）まで最大値を拡張し判定。 --></help>
+        <label><!-- ￥￥_明細行数超過判定フラグ --></label>
+        <name>MeisaiGyosuChokaHanteiFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_明細表示数カウント --></label>
+        <name>MeisaiHyojiSu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明細一括更新時のエラーが記入される。 --></help>
+        <label><!-- 警告＋：明細 --></label>
+        <name>MeisaiMemoALL__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当可能フラグがOFFでも引当を実行することができるようにするフラグ。
+
+引当可能フラグがOFFとなる場合に、引当即時確定がOFFとされる処理を抑止する。
+
+非同期引当（引当スタンバイ/引当非同期確定）時にバッチApexによりONにされる。 --></help>
+        <label><!-- ￥￥_無条件引当フラグ --></label>
+        <name>MuJokenHikiateFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注明細の受注数量が現在の引当て可能在庫中の最大値の数量を上回っている件数。
+つまり、ロット混在フラグ＝ONとする必要が有る場合に1以上の値になる。 --></help>
+        <label><!-- ￥￥_要混ロットカウント --></label>
+        <name>NeedAllLot__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注明細の受注数量が現在の全ての引当て可能在庫の総合計数量を上回っている件数。
+つまり、賞味期限混在フラグ＝ONとしない限り引当できない場合に1以上の値になる。 --></help>
+        <label><!-- ￥￥_要数量減カウント --></label>
+        <name>NeedReduction__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当成功完了＝ON　かつ　引当スタンバイ＝OFF　かつ　引当無フラグ＝OFF　の場合にON。 --></help>
+        <label><!-- ￥￥_描画フラグ_納品 --></label>
+        <name>NohinByogaFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注確定フラグON条件。
+・売掛データ　売掛請求ロックOFF。
+・受注データ　請求隠警告OFF。
+・受注データ　売掛与信超過OFF。
+・受注データ　伝票金額ゼロフラグOFF。 --></help>
+        <label><!-- ￥￥_受注確定判定 --></label>
+        <name>NohinKakuteiHantei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注確定フラグOFFの場合に、売掛データの締期間を検索する日付。
+
+出荷引当の試行時に、入出庫データの賞味期限を検索する日付。 --></help>
+        <label><!-- 納品請求日 --></label>
+        <name>NohinYoteibi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 納品先　を設定した場合、出荷引当の場所などに反映される。
+
+納品先が選択されていない場合は、受注先が納品先として扱われる。 --></help>
+        <label><!-- ￥￥_納品先照会 --></label>
+        <name>NohinsakiShokai__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注先　以外に　納品先を設定する場合に選択。
+出荷引当の場所などに反映される。 --></help>
+        <label><!-- 納品先 --></label>
+        <name>Nohinsaki__c</name>
+        <relationshipLabel><!-- 受注出荷データ (納品先) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 納品書印刷 --></label>
+        <name>NouhinsyoInsatsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 納品書発行を実行でON。 --></help>
+        <label><!-- 納品書出力済フラグ --></label>
+        <name>NouhinsyoShutsuryokuzumiFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_再引当誤動作防止フラグ --></label>
+        <name>SaiHikiateGodosaBoshiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 商品（サービス）の納品前に請求を行う場合にON。
+債権未発生フラグONの売掛データに集約される。
+先払請求を行う際にON。 --></help>
+        <label><!-- 先払債権無フラグ --></label>
+        <name>SaikenMihasseiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注確定引当　前　に並び順を変更してください。
+受注確定引当　後　に外部連携の並び順を変更する場合は引当を解除し再引当を行ってください。
+受注確定引当　後　に並び順を変更した場合は外部連携の並び順は変えることができません。 --></help>
+        <label><!-- ソート作成順 --></label>
+        <name>SakuseiJun__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_請求隠警告 --></label>
+        <name>SeikyuKakushiKeikoku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 売掛データの請求入金期限を表示。 --></help>
+        <label><!-- 請求入金期限 --></label>
+        <name>SeikyuNyukinKigen__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_請求先正式名称照会 --></label>
+        <name>SeikyusakiSeishikiMeishoShokai__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_請求先正式名称 --></label>
+        <name>SeikyusakiSeishikiMeisho__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_伝票説明 --></label>
+        <name>SeikyushoDempyoSetsumei__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_伝票備考 --></label>
+        <name>SeikyushoDenpyoBiko__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_伝票日付 --></label>
+        <name>SeikyushoDenpyoHizuke__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_伝票金額 --></label>
+        <name>SeikyushoDenpyoKingaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_伝票番号 --></label>
+        <name>SeikyushoDenpyoNo__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_伝票単価 --></label>
+        <name>SeikyushoDenpyoTanka__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求書に記載する納品日付を上書きする場合に記入。 --></help>
+        <label><!-- 請求書納品日付 --></label>
+        <name>SeikyushoHizuke__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注確定引当　前　に並び順を変更してください。
+受注確定引当　後　に外部連携の並び順を変更する場合は引当を解除し再引当を行ってください。
+受注確定引当　後　に並び順を変更した場合は外部連携の並び順は変えることができません。 --></help>
+        <label><!-- ソート商品資材コード順 --></label>
+        <name>ShohinShizaiCodeJun__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注確定引当　前　に並び順を変更してください。
+受注確定引当　後　に外部連携の並び順を変更する場合は引当を解除し再引当を行ってください。
+受注確定引当　後　に並び順を変更した場合は外部連携の並び順は変えることができません。 --></help>
+        <label><!-- ソート商品資材名順 --></label>
+        <name>ShohinShizaiMeiJun__c</name>
+    </fields>
+    <fields>
+        <label><!-- 消費税率 --></label>
+        <name>Shohizeiritsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 複数の賞味期限を混在した引当を許可します。
+伝票の明細に複数の賞味期限の行が複数表記される可能性があります。 --></help>
+        <label><!-- 消費期限混在フラグ --></label>
+        <name>ShomiKigenKonzaiFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_即伝種別照会 --></label>
+        <name>SokudenShubetsuShokai__c</name>
+    </fields>
+    <fields>
+        <help><!-- その他の受注データ登録時に不正検出された内容。 --></help>
+        <label><!-- 警告：その他 --></label>
+        <name>SonotaError__c</name>
+    </fields>
+    <fields>
+        <help><!-- チェックがない場合は賞味期限が近い在庫優先となります。 --></help>
+        <label><!-- 小口在庫優先フラグ --></label>
+        <name>SuryoYusenFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_当日スタンバイNG --></label>
+        <name>SutambaiFusei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 商品資材マスタの追加の示唆（推奨/禁止）内容。
+内容に応じ登録内容に参考。 --></help>
+        <label><!-- 警告＋：登録 --></label>
+        <name>TourokuMemoALL__c</name>
+    </fields>
+    <fields>
+        <help><!-- 商品資材マスタの追加時に不正検出された内容。
+不正検出された結果として明細の追加は行われない。 --></help>
+        <label><!-- 警告：登録 --></label>
+        <name>TourokuMemo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 締請求から独立した請求集計を行う際にONする。
+受注データの都度請求フラグONが集約される。
+部分請求を行う際にON。 --></help>
+        <label><!-- 都度請求フラグ --></label>
+        <name>TsudoSeikyuFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 売掛データの売上確定フラグを反映。
+
+本受注データが売上確定した売掛データに属している事を表す。 --></help>
+        <label><!-- 売上確定フラグ --></label>
+        <name>UriageKakuteiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 通常は受注確定日と同一。
+
+売上集計日は売掛データの検索に影響を与えない集計用の日付。
+例）請求や納品確認とは独立し営業成績などの集計を行う場合。
+例）経理上の売上と営業成績上の売上が同一ではない場合。 --></help>
+        <label><!-- 受注集計日 --></label>
+        <name>UriageShukeiBi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 売掛データを検索する際の基準となる日付。
+
+売掛データの新規生成時は、締期間起算日に代入される。
+
+受注確定フラグONの場合は受注確定日。
+受注確定フラグOFFの場合は提供予定日。 --></help>
+        <label><!-- ￥￥_売掛データ照会日 --></label>
+        <name>UrikakeDataShokaibi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求集計データ --></label>
+        <name>UrikakeData__c</name>
+        <relationshipLabel><!-- 受注出荷データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_売掛与信超過 --></label>
+        <name>UrikakeYoshinChoka__c</name>
+    </fields>
+    <fields>
+        <label><!-- 出荷引当先 --></label>
+        <name>ZaikoHikiateSaki__c</name>
+        <relationshipLabel><!-- 受注出荷データ (出荷引当先) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_在庫無納品日数カウント --></label>
+        <name>ZaikoNashiNohimbiSu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 引当無フラグ＝OFF　かつ　その他エラー＝ON　あるいは　警告：受注エラー＝ON　あるいは　警告：数量エラー＝ON　の場合にON。 --></help>
+        <label><!-- ￥￥_描画フラグ_全画面 --></label>
+        <name>ZenSaiByogaFlg__c</name>
+    </fields>
+    <layouts>
+        <layout>受注データレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- システム処理用 --></label>
+            <section>システム処理用</section>
+        </sections>
+        <sections>
+            <label><!-- レポート --></label>
+            <section>レポート</section>
+        </sections>
+        <sections>
+            <label><!-- 伝票情報 --></label>
+            <section>伝票情報</section>
+        </sections>
+        <sections>
+            <label><!-- 受注情報 --></label>
+            <section>受注情報</section>
+        </sections>
+        <sections>
+            <label><!-- 引当バッチ --></label>
+            <section>引当バッチ</section>
+        </sections>
+        <sections>
+            <label><!-- 引当モード --></label>
+            <section>引当モード</section>
+        </sections>
+        <sections>
+            <label><!-- 引当情報 --></label>
+            <section>引当情報</section>
+        </sections>
+        <sections>
+            <label><!-- 明細編集 --></label>
+            <section>明細編集</section>
+        </sections>
+        <sections>
+            <label><!-- 明細順変更 --></label>
+            <section>明細順変更</section>
+        </sections>
+        <sections>
+            <label><!-- 納品情報 --></label>
+            <section>納品情報</section>
+        </sections>
+        <sections>
+            <label><!-- 請求情報 --></label>
+            <section>請求情報</section>
+        </sections>
+        <sections>
+            <label><!-- 警告情報 --></label>
+            <section>警告情報</section>
+        </sections>
+        <sections>
+            <label><!-- 追記情報 --></label>
+            <section>追記情報</section>
+        </sections>
+        <sections>
+            <label><!-- 金額情報 --></label>
+            <section>金額情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- J02_SyohinIkkatuButton --></label>
+        <name>J02_SyohinIkkatuButton</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- J06_ShukkoRendoBtn --></label>
+        <name>J06_ShukkoRendoBtn</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- KariNohinshoPrint --></label>
+        <name>KariNohinshoPrint</name>
+    </webLinks>
+</CustomObjectTranslation>

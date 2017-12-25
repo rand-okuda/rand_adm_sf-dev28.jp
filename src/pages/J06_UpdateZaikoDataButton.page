@@ -1,0 +1,5 @@
+<apex:page title="ボタンアクション" standardController="JuchuData__c" extensions="J06_JuchuControllerExtension" recordSetVar="records" action="{!init}">
+    
+    <apex:outputlink value="/apexpages/setup/listAsyncApexJobs.apexp">処理中です。ジョブの確認はコチラ。</apex:outputlink>
+    
+</apex:page>

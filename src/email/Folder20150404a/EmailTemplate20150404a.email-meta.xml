@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-2022-JP</encodingKey>
+    <name>スタンバイ引当完了通知</name>
+    <style>none</style>
+    <subject>スタンバイ引当完了通知：{!JuchuData__c.CreatedBy}さん：伝票番号{!JuchuData__c.DenpyoNo__c}の引当が成功しました。</subject>
+    <type>text</type>
+</EmailTemplate>

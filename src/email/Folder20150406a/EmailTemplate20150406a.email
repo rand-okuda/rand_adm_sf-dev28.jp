@@ -1,0 +1,8 @@
+{!ZaikoData__c.ShohinShizaiM_Name__c}　の　賞味期限　{!ZaikoData__c.ShomiKigen__c}　の残り数量　を確認してください。
+
+１ケースと口割れ（{!ZaikoData__c.ZaikoSuryo__c}個ほど）が残っている模様です。
+もし　在庫数量が違う場合は　以下を確認の上で　訂正してください。
+{!ZaikoData__c.Link}
+
+{!ZaikoData__c.ShohinShizaiM_Name__c}の全体的な在庫は以下を確認して下さい。
+https://daikoku.my.salesforce.com/00O10000004lmZw?pv2={!ZaikoData__c.ShohinShizaiMId__c}

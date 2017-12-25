@@ -1,0 +1,7 @@
+<apex:page title="ボタンアクション" standardController="ShohinShizaiM__c"
+	extensions="J02_ShohinShizaiMControllerExtension"
+	recordSetVar="records" action="{!ikkatsuHensyuButton}">
+
+	<h1>処理中です。しばらくお待ちください。</h1>
+
+</apex:page>

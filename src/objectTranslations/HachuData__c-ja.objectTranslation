@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>発注データ</value>
+    </caseValues>
+    <fields>
+        <label><!-- 備考 --></label>
+        <name>Biko__c</name>
+    </fields>
+    <fields>
+        <label><!-- 発注税込金額 --></label>
+        <name>DenpyoKingaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- 伝票番号 --></label>
+        <name>DenpyoNo__c</name>
+    </fields>
+    <fields>
+        <label><!-- 発注確定フラグ --></label>
+        <name>HachuKakuteiFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- 発注日 --></label>
+        <name>Hachubi__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_備考タイトル --></label>
+        <name>HachushoBikoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_備考 --></label>
+        <name>HachushoBiko__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_伝票番号 --></label>
+        <name>HachushoDenpyoNo__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_発注日 --></label>
+        <name>HachushoHachubi__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_発行日 --></label>
+        <name>HachushoHakkobi__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_入数タイトル --></label>
+        <name>HachushoIrisuTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_規格タイトル --></label>
+        <name>HachushoKikakuTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_元電話 --></label>
+        <name>HachushoMotoDenwa__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_元ＦＡＸ --></label>
+        <name>HachushoMotoFax__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_元住所１ --></label>
+        <name>HachushoMotoJusho1__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_元住所２ --></label>
+        <name>HachushoMotoJusho2__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_元名１ --></label>
+        <name>HachushoMotoMei1__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_元名２ --></label>
+        <name>HachushoMotoMei2__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_元郵便番号 --></label>
+        <name>HachushoMotoYubinBango__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_ＮＯタイトル --></label>
+        <name>HachushoNoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_納品先電話 --></label>
+        <name>HachushoNohinsakiDenwa__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_納品先ＦＡＸ --></label>
+        <name>HachushoNohinsakiFax__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_納品先住所１ --></label>
+        <name>HachushoNohinsakiJusho1__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_納品先住所２ --></label>
+        <name>HachushoNohinsakiJusho2__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_納品先名１ --></label>
+        <name>HachushoNohinsakiMei1__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_納品先名２ --></label>
+        <name>HachushoNohinsakiMei2__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_納品先郵便番号 --></label>
+        <name>HachushoNohinsakiYubinBango__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_納期 --></label>
+        <name>HachushoNoki__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_納期回答タイトル --></label>
+        <name>HachushoNokikaitoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_仕入先コード --></label>
+        <name>HachushoShiiresakiCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_仕入先ＦＡＸ --></label>
+        <name>HachushoShiiresakiFax__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_仕入先名 --></label>
+        <name>HachushoShiiresakiMei__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_商品コードタイトル --></label>
+        <name>HachushoShohinCodeTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_商品名タイトル --></label>
+        <name>HachushoShohinMeiTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_数量タイトル --></label>
+        <name>HachushoSuryoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_単位タイトル --></label>
+        <name>HachushoTaniTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_担当者名 --></label>
+        <name>HachushoTantoshaMei__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_タイトル --></label>
+        <name>HachushoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- 発注書印刷 --></label>
+        <name>HatchushoInsatsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- K08のトランザクション考慮漏れの一時的な対応。 --></help>
+        <label><!-- ￥￥_明細数 --></label>
+        <name>MeisaiSu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 納品予定日 --></label>
+        <name>NohinYoteibi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 納品先 --></label>
+        <name>Nohinsaki__c</name>
+        <relationshipLabel><!-- 発注データ (納品先) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 仕入先 --></label>
+        <name>Shiiresaki__c</name>
+        <relationshipLabel><!-- 発注データ (仕入先) --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>発注データレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- 備考情報 --></label>
+            <section>備考情報</section>
+        </sections>
+        <sections>
+            <label><!-- 発注情報 --></label>
+            <section>発注情報</section>
+        </sections>
+        <sections>
+            <label><!-- 納品情報 --></label>
+            <section>納品情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- 発注を確定するには、納品先を選択する必要があります。 --></errorMessage>
+        <name>HachuDataHachuKakuteiFlgRule1</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- 発注明細データを１件以上登録し購入価格と発注数量を入力して下さい。 --></errorMessage>
+        <name>HachuDataHachuKakuteiFlgRule2</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- 発注を確定するには、仕入先の入力が必要です。 --></errorMessage>
+        <name>HachuDataHachuKakuteiFlgRule3</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- 明細は最大１０件までとしてください。（後日拡張予定。） --></errorMessage>
+        <name>HachuDataHachuKakuteiFlgRule4</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- RAND_MW_SDP_HachushoPrint --></label>
+        <name>RAND_MW_SDP_HachushoPrint</name>
+    </webLinks>
+</CustomObjectTranslation>

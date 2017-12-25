@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>請求調整マスタ</value>
+    </caseValues>
+    <fields>
+        <label><!-- 取引先 --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- 請求調整マスタ --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 入金データの備考に初期値として記載される。 --></help>
+        <label><!-- 備考 --></label>
+        <name>Biko__c</name>
+    </fields>
+    <fields>
+        <help><!-- 変動しない固定の金額を売掛データから差し引く金額。 --></help>
+        <label><!-- 固定金額 --></label>
+        <name>Kingaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 売掛金額に対して割合で歩引を行う場合のパーセント。 
+空白「0」は歩引なし。 --></help>
+        <label><!-- パーセント歩引 --></label>
+        <name>PasentoBubiki__c</name>
+    </fields>
+    <fields>
+        <help><!-- 売掛データ作成時点で入金確認日を設定する場合ON。 --></help>
+        <label><!-- 初期確定 --></label>
+        <name>ShokiKakutei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 入金データの備考の先頭に初期値として記載される。 --></help>
+        <label><!-- 調整区分 --></label>
+        <name>TorihikiKubun__c</name>
+        <picklistValues>
+            <masterLabel>その他</masterLabel>
+            <translation><!-- その他 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>その他手数料</masterLabel>
+            <translation><!-- その他手数料 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>値引</masterLabel>
+            <translation><!-- 値引 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>入金</masterLabel>
+            <translation><!-- 入金 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>振込手数料</masterLabel>
+            <translation><!-- 振込手数料 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>歩引</masterLabel>
+            <translation><!-- 歩引 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- 取引先名 --></label>
+        <name>Torihikisakimei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 特定の期限までで有効化させる場合の日付。 
+空白は期限なし（無期限）で有効化。 --></help>
+        <label><!-- 有効期限 --></label>
+        <name>YukoKigen__c</name>
+    </fields>
+    <fields>
+        <help><!-- 一定のしきい値以上で有効化させる場合の金額。 
+空白「0」は閾値なしで無条件有効化。 --></help>
+        <label><!-- 有効化閾値 --></label>
+        <name>YukokaShikiichi__c</name>
+    </fields>
+    <layouts>
+        <layout>入金調整マスタレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- システム処理用 --></label>
+            <section>システム処理用</section>
+        </sections>
+        <sections>
+            <label><!-- 備考 --></label>
+            <section>備考</section>
+        </sections>
+        <sections>
+            <label><!-- 調整情報 --></label>
+            <section>調整情報</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

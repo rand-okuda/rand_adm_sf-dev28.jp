@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>BikoSanshutsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(NyukinChosei__r.TorihikiKubun__c)
+ + &quot;　&quot; + 
+IF ( ISBLANK( NyukinChosei__r.YukoKigen__c ) ,
+ &quot;&quot;,
+ &quot;期限 &quot; + TEXT(NyukinChosei__r.YukoKigen__c) 
+) + &quot;　&quot; + 
+NyukinChosei__r.Biko__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_備考算出</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Biko__c</fullName>
+        <externalId>false</externalId>
+        <label>備考</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KeshikomDataNameSanshutsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>LEFT(
+
+UrikakeData__r.SeikyuAccount__r.Name + &quot;-&quot; +
+UrikakeData__r.DenpyoNo__c + &quot; &quot; +
+TEXT(NyukinChosei__r.TorihikiKubun__c) 
+
++
+
+IF ( ISBLANK( NyukinChosei__c ) ,
+ IF ( NyukinJutoFlg__c , &quot;充当&quot;, &quot;確認済&quot; ),
+ &quot;&quot;
+) 
+
+
+,80)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_消込データ名算出</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KeshikomiKakuninBi__c</fullName>
+        <externalId>false</externalId>
+        <label>消込確認日</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>KeshikomiKingaku__c</fullName>
+        <externalId>false</externalId>
+        <label>消込入金額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>NyukinChosei__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>請求調整</label>
+        <referenceTo>NyukinChoseiM__c</referenceTo>
+        <relationshipLabel>消込値引データ</relationshipLabel>
+        <relationshipName>NyukinData_NyukinChosei</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>NyukinJutoFlg__c</fullName>
+        <description>トリガ処理時の抽出条件として使用。</description>
+        <externalId>false</externalId>
+        <formula>NyukinKeshikomiCounter__c  &gt; 0</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>入金消込リンクが作成されている場合ON。
+不明入金データから充当されている場合ON。</inlineHelpText>
+        <label>入金充当フラグ</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NyukinKeshikomiCounter__c</fullName>
+        <externalId>false</externalId>
+        <label>￥￥_入金消込カウンター</label>
+        <summaryForeignKey>NyukinKeshikomiLink__c.KeshikomiData__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>NyukinKeshikomiHantei__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND(
+
+ ISBLANK( NyukinChosei__c ) ,
+ KeshikomiKingaku__c  &gt; 0 ,
+ SokuKeshikomi__c 
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>請求調整が空白
+　かつ　消込入金額　が　￥１円以上を判定。
+　かつ　自動消込チェック　が　ON。</inlineHelpText>
+        <label>￥￥_入金消込リンク判定</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NyukingakuSanshutsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (
+ AND( 
+ UrikakeData__r.ZeiBetsuGakuKei__c  -  YukokaShikiichi__c  &gt; 0 , 
+ OR(TODAY() &lt; YukoKigen__c, ISBLANK(YukoKigen__c)) ,
+ PasentoBubiki__c  &lt;=  0 ) ,
+ NyukinChosei__r.Kingaku__c ,
+
+IF (
+ AND( 
+ UrikakeData__r.ZeiBetsuGakuKei__c  -  YukokaShikiichi__c  &gt; 0 , 
+ OR(TODAY() &lt; YukoKigen__c, ISBLANK(YukoKigen__c)) ,
+ PasentoBubiki__c  &gt;=  0 ) ,
+ UrikakeData__r.ShohiZeikomiGaku__c * PasentoBubiki__c ,
+
+ null
+
+) )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>入金調整マスタの有効化閾値を売掛データの請求金額が超る場合のみ算出。
+・入金調整マスタのパーセント歩引が未設定の場合：固定金額。
+・入金調整マスタのパーセント歩引が入力済の場合：消費税込額×パーセント歩引（％）。</inlineHelpText>
+        <label>￥￥_調整マスタ消込額算出</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>PasentoBubiki__c</fullName>
+        <externalId>false</externalId>
+        <formula>NyukinChosei__r.PasentoBubiki__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_パーセント歩引</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>SeikyuMeisaiFlgNamachi__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>￥￥_済請求書消込明細有効生値</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SeikyuMeisaiFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND(
+ NOT(ISBLANK(KeshikomiKakuninBi__c)),
+ OR(
+ NyukingakuSanshutsu__c   &lt;&gt; 0,
+ KeshikomiKingaku__c   &lt;&gt; 0 ) 
+)</formula>
+        <inlineHelpText>入金確認日が入力済かつ￥￥_入金額算出が0：ゼロではない場合ON。</inlineHelpText>
+        <label>￥￥_済請求書消込明細有効</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SeikyuSakiID__c</fullName>
+        <externalId>false</externalId>
+        <formula>UrikakeData__r.SeikyuAccount__r.Id</formula>
+        <inlineHelpText>トリガ処理用　請求先ID　の取得用</inlineHelpText>
+        <label>￥￥_請求先ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoNyukinHizuke__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(YEAR( KeshikomiKakuninBi__c )) + &quot;/&quot; + TEXT(MONTH( KeshikomiKakuninBi__c )) + &quot;/&quot; + TEXT(DAY( KeshikomiKakuninBi__c ))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_消込日付</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyushoNyukinKingaku__c</fullName>
+        <externalId>false</externalId>
+        <formula>KeshikomiKingaku__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_値引金額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SeikyushoNyukinShohinMei__c</fullName>
+        <externalId>false</externalId>
+        <formula>Biko__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥_請求書_値引商品名</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShokiKakutei__c</fullName>
+        <externalId>false</externalId>
+        <formula>NyukinChosei__r.ShokiKakutei__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_初期確定</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SokuKeshikomiNyukingakuSanshutsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( 
+ UrikakeData__r.SeikyuAccount__r.FumeiNyukinZengakuNamachi__c  = 0,
+ UrikakeData__r.MikomiMikaishuZandakaNamachi__c ,
+
+IF ( 
+UrikakeData__r.MikomiMikaishuZandakaNamachi__c
+ &lt;= UrikakeData__r.SeikyuAccount__r.FumeiNyukinSaishoGakuNamachi__c , 
+UrikakeData__r.MikomiMikaishuZandaka__c, 
+
+IF (
+UrikakeData__r.MikomiMikaishuZandakaNamachi__c
+ &lt;= UrikakeData__r.SeikyuAccount__r.FumeiNyukinSaidaiGakuNamachi__c ,
+UrikakeData__r.SeikyuAccount__r.FumeiNyukinSaishoGakuNamachi__c,
+
+IF (
+UrikakeData__r.MikomiMikaishuZandakaNamachi__c
+ &gt;= UrikakeData__r.SeikyuAccount__r.FumeiNyukinSaidaiGakuNamachi__c ,
+UrikakeData__r.SeikyuAccount__r.FumeiNyukinSaidaiGakuNamachi__c ,
+
+0
+
+))))</formula>
+        <inlineHelpText>消込データを自動消込フラグONで作成した場合の処理。
+・不明入金残額計　＝　￥０　→　見込未回収額
+・予定未回収額　≦　不明入金最小額　→　予定未回収額
+・予定未回収額　≦　不明入金最大額　→　不明入金最小額
+・予定未回収額　≧　不明入金最大額　→　不明入金最大額</inlineHelpText>
+        <label>￥￥_即時消込額算出</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SokuKeshikomi__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>請求集計の未回収残高に合わせた　消込値引データを自動作成する　チェックボックス。
+
+自動作成させる場合は消込入金額を　￥０円　とした状態でONする。</inlineHelpText>
+        <label>￥￥_自動消込チェック</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>UrikakeData__c</fullName>
+        <externalId>false</externalId>
+        <label>請求集計データ</label>
+        <referenceTo>UrikakeData__c</referenceTo>
+        <relationshipLabel>消込値引データ</relationshipLabel>
+        <relationshipName>NyukinData_UrikakeData</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>YukoKigen__c</fullName>
+        <externalId>false</externalId>
+        <formula>NyukinChosei__r.YukoKigen__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_有効期限</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>YukokaShikiichi__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( NyukinChosei__r.YukokaShikiichi__c &gt; 0,
+ NyukinChosei__r.YukokaShikiichi__c,
+ null
+)</formula>
+        <label>￥￥_有効化閾値</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ZengakuSokuKeshikomiBiko__c</fullName>
+        <externalId>false</externalId>
+        <formula>UrikakeData__r.UriageKeijoTsuki__c + &quot;　&quot; +
+&quot;請求　&quot; +
+&quot;伝票番号&quot; + &quot;　&quot; +
+UrikakeData__r.DenpyoNo__c + &quot;　&quot; +
+&quot;満額お支払　確認済。&quot;</formula>
+        <inlineHelpText>WFR 全額即消込備考記入 転記用</inlineHelpText>
+        <label>￥￥_全額即消込備考</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>消込値引データ</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>KeshikomiKingaku__c</columns>
+        <columns>KeshikomiKakuninBi__c</columns>
+        <columns>Biko__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>すべて選択</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160525a</fullName>
+        <columns>NAME</columns>
+        <columns>KeshikomiKingaku__c</columns>
+        <columns>KeshikomiKakuninBi__c</columns>
+        <columns>Biko__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>NyukinChosei__c</field>
+            <operation>notEqual</operation>
+        </filters>
+        <label>．請求調整マスタ関連</label>
+    </listViews>
+    <listViews>
+        <fullName>View20160525b</fullName>
+        <columns>NAME</columns>
+        <columns>KeshikomiKingaku__c</columns>
+        <columns>KeshikomiKakuninBi__c</columns>
+        <columns>NyukinJutoFlg__c</columns>
+        <columns>Biko__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>NyukinChosei__c</field>
+            <operation>equals</operation>
+        </filters>
+        <label>．入金消込関連</label>
+    </listViews>
+    <nameField>
+        <label>消込値引名</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <searchLayouts>
+        <customTabListAdditionalFields>KeshikomiKingaku__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>KeshikomiKakuninBi__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Biko__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>KeshikomiKingaku__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>KeshikomiKakuninBi__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Biko__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>KeshikomiKingaku__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>KeshikomiKakuninBi__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Biko__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>KeshikomiKingaku__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>KeshikomiKakuninBi__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Biko__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

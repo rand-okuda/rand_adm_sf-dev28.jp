@@ -1,0 +1,278 @@
+<apex:page controller="J22_NohinshoController" action="{!doUpdate}" showHeader="false" applyHtmlTag="false" renderAs="pdf">
+    <html>
+        <head>
+            <style>
+                @page {
+                    size: 11.69in 8.27in;   /* A4 横サイズ */
+                    margin: 30px 30px 70px 30px; 
+                    @bottom-right {
+                       content: counter(page) " / " counter(pages);
+                       font-size: 10px;
+                       font-family: Arial Unicode MS;
+                    }
+                }
+
+                html{
+                    color:#000;background:#FFF;
+                }
+                body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,
+                pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+                    margin:0;padding:0;
+                }
+                table{
+                    border-collapse:collapse;border-spacing:0;
+                }
+                fieldset,img{ border:0; }
+                address,caption,cite,code,dfn,em,strong,th,var{
+                    font-style:normal;font-weight:normal;
+                }
+                li { list-style:none; } caption,th{ text-align:left; }
+                h1,h2,h3,h4,h5,h6{
+                    font-size:100%;font-weight:normal;
+                }
+                q:before,q:after{ content:''; }
+                abbr,acronym{ border:0;font-variant:normal; }
+                sup{ vertical-align:text-top; }
+                sub{ vertical-align:text-bottom; }
+                input,textarea,select{ font-family:inherit;font-size:inherit;font-weight:inherit; }
+                input,textarea,select{ *font-size:100%; }
+                legend{ color:#000; }
+                
+                body {
+                    font-family: Arial Unicode MS;
+                }
+
+                div.main {
+                    font-size: 12px;
+                }
+                                               
+                div.header table{
+                    width:100%;
+                    table-layout:fixed;
+                    border-collapse: collapse;
+                    cellspacing:0px;
+                    border:none;
+                }
+                
+                div.header td{
+                    vertical-align:middle;
+                    text-align:left;
+                    font-size:14px;
+                    border:none;
+                    padding :2px 0px 0px 2px;
+                }
+                
+                div.header3 table{
+                    width:100%;
+                    table-layout:fixed;
+                    border-collapse: collapse;
+                    cellspacing:0px;
+                    border:solid #000000 1px;
+                    margin-top:20px;
+                }
+                
+                div.header3 tr{
+                    height:22px;
+                }
+                
+                div.header3 td{
+                    vertical-align:middle;
+                    text-align:center;
+                    font-size:14px;
+                    border: solid #000000 1px;
+                    padding :2px 2px 2px 2px;
+                }
+                
+                div.detailtitle table{
+                    width:100%;
+                    table-layout:fixed;
+                    border-collapse: collapse;
+                    cellspacing:0px;
+                    border:solid #000000 1px;
+                    margin-top:20px;
+                }
+                
+                div.detailtitle td{
+                    vertical-align:middle;
+                    text-align:center;
+                    font-size:16px;
+                    border: solid #000000 1px;
+                    padding :0px 2px 0px 2px;
+                }
+                
+                
+                div.data{
+                    font-size:11px;
+                }
+                
+                div.data table{
+                    width:100%;
+                    table-layout:fixed;
+                    border-collapse: collapse;
+                    cellspacing:0px;
+                }
+                
+                div.data td{
+                    vertical-align:middle;
+                    text-align:center;
+                    font-size:12px;
+                    border: solid #000000 1px;
+                    padding :0px 2px 0px 2px;
+                }
+                
+                div.footer table{
+                    width:100%;
+                    table-layout:fixed;
+                    border-collapse: collapse;
+                    cellspacing:0px;
+                    border:solid #000000 1px;
+                }
+                
+                div.footer td{
+                    vertical-align:middle;
+                    text-align:left;
+                    font-size:14px;
+                    border:none;
+                    padding :2px 0px 0px 2px;
+                }
+
+                div.bottom {
+                    border-top: solid #000000 1px;
+                    width: 100%;
+                    text-align: center;
+                    position: fixed;
+                    top: 1049px;
+                    clear: both;
+                }
+            </style>
+        </head>
+        
+        <apex:variable value="{!0}" var="rowNumber" />
+        <apex:repeat value="{!pageDatas}" var="pageData">
+            <body>
+                <div class="main">
+                    <!--ヘッダ部分-->
+                    <div class="header">
+                        <table>
+                            <tr style="height:30px">
+                                <td style="width:33%;" ></td>
+                                <td style="width:34%; text-align:center;font-size:24px;text-decoration:underline;">
+                                    {!pageData.headData.KariNohinshoTitle__c}</td>
+                                <td style="width:33%;" ></td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr style="height:22px">
+                                <td style="width:33%;" >{!pageData.headData.KariNohinshoNohinsakiMei1__c}</td>
+                                <td style="width:34%;" ></td>
+                                <td style="width:33%;" ></td>
+                            </tr>
+                            <tr style="height:22px">
+                                <td style="width:33%;" >{!pageData.headData.KariNohinshoNohinsakiMei2__c}</td>
+                                <td style="width:34%;" ></td>
+                                <td style="width:33%;" ></td>
+                            </tr>
+                            <tr style="height:22px">
+                                <td style="width:33%;" >{!pageData.headData.KariNohinshoNohinsakiDenwa__c}</td>
+                                <td style="width:34%;" ></td>
+                                <td style="width:33%;" ></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="header3">     
+                        <table>
+                            <tr style="height:22px">
+                                <td style="width:12%;" >{!pageData.headData.KariNohinshoTokuisakiCDTitle__c}</td>
+                                <td style="width:12%;" >{!pageData.headData.KariNohinshoNohinsakiCDTitle__c}</td>
+                                <td style="width:12%;" >{!pageData.headData.KariNohinshoNohinbiTitle__c}</td>
+                                <td style="width:16%;" >{!pageData.headData.KariNohinshoDenpyoNoTitle__c}</td>
+                                <td style="width:8%;" >{!pageData.headData.KariNohinshoNyuryokushaTitle__c}</td>
+                                <td style="width:8%;" >{!pageData.headData.KariNohinshoKenTitle__c}</td>
+                                <td style="width:8%;" >{!pageData.headData.KariNohinshoShutsuTitle__c}</td>
+                                <td style="width:24%;text-align:left;vertical-align:top;" rowspan="2">{!pageData.headData.KariNohinshoHassobi__c}</td>
+                            </tr>
+                            <tr style="height:35px">
+                                <td style="width:12%;" >{!pageData.headData.KariNohinshoTokuisakiCD__c}</td>
+                                <td style="width:12%;" >{!pageData.headData.KariNohinshoNohinsakiCD__c}</td>
+                                <td style="width:12%;" >{!pageData.headData.KariNohinshoNohinbi__c}</td>
+                                <td style="width:16%;" >
+                                    {!pageData.headData.KariNohinshoDenpyoNo__c}-{!pageData.pageNumber}
+                                </td>
+                                <td style="width:8%;" >{!pageData.headData.KariNohinshoNyuryokusha__c}</td>
+                                <td style="width:8%;" >{!pageData.headData.KariNohinshoKen__c}</td>
+                                <td style="width:8%;" >{!pageData.headData.KariNohinshoShutsu__c}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    
+                    <!--データ部分-->
+                    <div class="detailtitle">
+                        <table>
+                            <tr style="height:22px">
+                                <td style="width:3%;" >{!pageData.headData.KariNohinshoGyoTitle__c}</td>
+                                <td style="width:7%;" >{!pageData.headData.KariNohinshoHinbanTitle__c}</td>
+                                <td style="width:44%;" >{!pageData.headData.KariNohinshoHinmeiTitle__c}</td>
+                                <td style="width:32%;" >{!pageData.headData.KariNohinshoKikakuBikoTitle__c}</td>
+                                <td style="width:6%;" >{!pageData.headData.KariNohinshoSuryoTitle__c}</td>
+                                <td style="width:8%;" >{!pageData.headData.KariNohinshoShomiKigenTitle__c}</td>    
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="data">
+                        <table>
+                            <apex:repeat value="{!pageData.detailDatas}" var="detailData">
+                                <apex:outputPanel rendered="{!detailData.meisaiData!=null}">
+                                    <tr >
+                                        <td style="width:3%;" >{!rowNumber + 1}</td>
+                                        <td style="width:7%;" >{!detailData.meisaiData.KariNohinshoHinban__c}</td>
+                                        <td style="width:44%;border-right: none;font-size: {!nohinshoFontSize}px;text-align:left;" >
+                                            <apex:repeat value="{!detailData.hinmeis}" var="hinmei">
+                                                {!hinmei}
+                                            </apex:repeat>
+                                        </td>
+                                        <td style="width:32%;text-align:left;border-left: none;border-right: none;" >{!detailData.meisaiData.KariNohinshoKikakuBiko__c}</td>
+                                        <td style="width:6%;border-left: none;border-right: none;" ></td>
+                                        <td style="width:8%;border-left: none;" ></td>
+                                    </tr>
+                                    <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                                </apex:outputPanel>
+                                
+                                <apex:repeat value="{!detailData.zaikoDatas}" var="zaikoData">
+                                    <tr >
+                                        <td style="width:3%;border-top-style:dotted;" >{!rowNumber + 1}</td>
+                                        <td style="width:7%;border-top-style:dotted;border-left: none;" ></td>
+                                        <td style="width:44%;text-align:left;border-top-style:dotted;border-right: none;border-left: none;" ></td>
+                                        <td style="width:32;text-align:left;border-top-style:dotted;border-right: none;border-left: none;" >{!zaikoData.KariNohinshoKikakuBiko__c}</td>
+                                        <td style="width:6%;font-size: {!nohinshoFontSize}px;border-top-style:dotted;" >{!zaikoData.KariNohinshoSuryo__c}</td>
+                                        <td style="width:8%;font-size: {!nohinshoFontSize}px;border-top-style:dotted;" >{!zaikoData.KariNohinshoShomiKigen__c}</td>    
+                                    </tr>
+                                    <apex:variable var="rowNumber" value="{!rowNumber + 1}" />
+                                </apex:repeat>
+                            </apex:repeat>
+                        </table>
+                    </div>
+                    
+                    <!-- フッタ部分-->
+                    <apex:outputPanel >
+                        <div class="footer">
+                            <table>
+                                <tr>
+                                    <td>
+                                        {!pageData.headData.KariNohinshoFooter__c}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </apex:outputPanel>
+                </div>
+            </body>
+            
+            <!-- 改ページ -->
+            <apex:outputPanel layout="none" rendered="{!pageData.pageNumber<> pageDatas.size}">
+                <div style="page-break-before: always;"></div>
+            </apex:outputPanel>
+        </apex:repeat>
+    </html>
+</apex:page>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>発注明細データ</value>
+    </caseValues>
+    <fields>
+        <label><!-- 備考 --></label>
+        <name>Biko__c</name>
+    </fields>
+    <fields>
+        <label><!-- 発注データ --></label>
+        <name>HachuData__c</name>
+        <relationshipLabel><!-- 発注明細データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_発注確定フラグ --></label>
+        <name>HachuKakuteiFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- 発注数量C/S --></label>
+        <name>HachuSuryoCS__c</name>
+    </fields>
+    <fields>
+        <label><!-- 発注数量C/T --></label>
+        <name>HachuSuryoCT__c</name>
+    </fields>
+    <fields>
+        <label><!-- 発注数量PC --></label>
+        <name>HachuSuryoPC__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_発注数量算出 --></label>
+        <name>HachuSuryoSanshutsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_入数 --></label>
+        <name>HachushoIrisu__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_規格 --></label>
+        <name>HachushoKikaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_納期 --></label>
+        <name>HachushoNoki__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_商品コード --></label>
+        <name>HachushoShohinCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_商品名 --></label>
+        <name>HachushoShohinMei__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_数量 --></label>
+        <name>HachushoSuryo__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_発注書_単位 --></label>
+        <name>HachushoTani__c</name>
+    </fields>
+    <fields>
+        <help><!-- 空白　の　場合　商品資材マスタ　の　標準原価　となる。 --></help>
+        <label><!-- 購入単価 --></label>
+        <name>KonyuKakaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 購入単価×発注数量 --></help>
+        <label><!-- 明細金額小計 --></label>
+        <name>MeisaiKingaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 行金額×消費税率（小数点以下切捨て） --></help>
+        <label><!-- 明細税額小計 --></label>
+        <name>MeisaiZeigaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明細金額小計＋明細税額小計（小数点以下切捨て） --></help>
+        <label><!-- 明細税込小計 --></label>
+        <name>MeisaiZeikomi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 納品予定日を参照するためだけの数式項目 --></help>
+        <label><!-- ￥￥_納品予定日参照 --></label>
+        <name>NohinYoteibiSansho__c</name>
+    </fields>
+    <fields>
+        <help><!-- 発注時には決まらず、納期回答があれば入力する --></help>
+        <label><!-- 納品予定日 --></label>
+        <name>NohinYoteibi__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_仕入先名生値 --></label>
+        <name>ShiiresakiMeiNamachi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 商品資材 --></label>
+        <name>ShohinShizaiM__c</name>
+        <relationshipLabel><!-- 発注明細データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- 商品資材マスタ名 --></label>
+        <name>ShohinShizaiMmei__c</name>
+    </fields>
+    <fields>
+        <label><!-- 消費税率 --></label>
+        <name>Shohizeiritsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 単位C/S --></label>
+        <name>TaniCS__c</name>
+    </fields>
+    <fields>
+        <label><!-- 単位C/T --></label>
+        <name>TaniCT__c</name>
+    </fields>
+    <fields>
+        <label><!-- 単位PC --></label>
+        <name>TaniPC__c</name>
+    </fields>
+    <layouts>
+        <layout>発注明細データレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- 備考情報 --></label>
+            <section>備考情報</section>
+        </sections>
+        <sections>
+            <label><!-- 数量入力 --></label>
+            <section>数量入力</section>
+        </sections>
+        <sections>
+            <label><!-- 金額情報 --></label>
+            <section>金額情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

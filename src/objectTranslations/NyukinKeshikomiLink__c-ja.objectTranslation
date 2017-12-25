@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>入金充当リンク</value>
+    </caseValues>
+    <fields>
+        <label><!-- 備考 --></label>
+        <name>Biko__c</name>
+    </fields>
+    <fields>
+        <label><!-- 充当先請求 --></label>
+        <name>JutoSakiSeikyu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 消込値引データ --></label>
+        <name>KeshikomiData__c</name>
+        <relationshipLabel><!-- 入金充当リンク --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_消込入金額生値 --></label>
+        <name>KeshikomiKingakuNamachi__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_消込入金額 --></label>
+        <name>KeshikomiKingaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_消込未確定数生値 --></label>
+        <name>KeshikomiMikakuteiSuNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 消込値引データ　の　消込確認日　が未入力済の場合「1」。
+充当されている消込値引データが確認されていない場合「1」。 --></help>
+        <label><!-- ￥￥_消込未確定数 --></label>
+        <name>KeshikomiMikakuteiSu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 入金データ --></label>
+        <name>NyukinData__c</name>
+        <relationshipLabel><!-- 入金充当リンク --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>入金消込リンクレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- 備考 --></label>
+            <section>備考</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

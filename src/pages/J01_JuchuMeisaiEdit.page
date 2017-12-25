@@ -1,0 +1,149 @@
+<apex:page standardController="JuchuData__c" extensions="J01_JuchuDataControllerExtension" showheader="false" sidebar="false">
+    
+    <apex:form id="form">
+        
+        <apex:pageBlock mode="inlineEdit ">
+
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton id="previousDisabled" value="< 前ページ" disabled="true" rendered="{!NOT(hasPrevious)}" rerender="form" />
+                <apex:commandButton id="previous" value="< 前ページ" action="{!previous}" rendered="{!hasPrevious}" rerender="form" />
+                <apex:commandButton id="saveButton" value="明細更新" action="{!saveButton}" rendered="{!AND(NOT(isNohinByoga),isDispUpdateButton)}" rerender="form" />
+                <apex:commandButton id="saveButtonNohin" value="納品明細一括更新" action="{!saveButton}" rendered="{!AND(isNohinByoga,isDispUpdateButton)}" rerender="form" />
+                <apex:commandButton id="reDisplay" value="再読込" action="{!reDisplay}" rerender="form" />
+                <apex:commandButton id="next" value="次ページ >" action="{!next}" rendered="{!hasNext}" rerender="form" />
+                <apex:commandButton id="nextDisabled" value="次ページ >" disabled="true" rendered="{!NOT(hasNext)}" rerender="form" />
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockTable value="{!targetMeisaiList}" var="meisai" rendered="{!NOT(isNohinByoga)}">
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.NohinJogai__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.NohinJogai__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.KingakuZero__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.KingakuZero__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.KingakuMinus__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.KingakuMinus__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.HikiateFuyoFig__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.HikiateFuyoFig__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.ShohinShizaiMeisho__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.ShohinShizaiMeisho__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.MeyasuZan__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.MeyasuZan__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.JuchuSuryo__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.JuchuSuryo__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.JuchuSuryoPC__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.JuchuSuryoPC__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.JuchuSuryoCS__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.JuchuSuryoCS__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.JuchuSuryoCT__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.JuchuSuryoCT__c}" >
+                    </apex:outputField>
+                </apex:column>
+                
+                <apex:inlineEditSupport event="ondblclick" />
+                
+            </apex:pageBlockTable>
+
+            <apex:pageBlockTable value="{!targetMeisaiList}" var="meisai" rendered="{!isNohinByoga}">
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.NohinJogai__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.NohinJogai__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.MeisaiJyogai__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.MeisaiJyogai__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.ShohinShizaiMeisho__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.ShohinShizaiMeisho__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.NohinSuryo__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.NohinSuryo__c}" >
+                    </apex:outputField>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">
+                        {!$ObjectType.JuchuMeisaiData__c.Fields.Biko__c.Label}
+                    </apex:facet>
+                    <apex:outputField value="{!meisai.Biko__c}" >
+                    </apex:outputField>
+                </apex:column>
+                
+                <apex:inlineEditSupport event="ondblclick" />
+                
+            </apex:pageBlockTable>
+            
+            <apex:pageBlockSection columns="1" title="警告" rendered="{!AlertFlg}">
+                <apex:outputField value="{!juchuData.SonotaError__c}" rendered="{!SonotaErrorFlg}"/>
+                <apex:outputField value="{!juchuData.JuchuError__c}" rendered="{!JuchuErrorFlg}"/>
+                <apex:outputField value="{!juchuData.JuchuSuryoMemo__c}" rendered="{!JuchuSuryoMemoFlg}"/>
+                <apex:outputField value="{!juchuData.TourokuMemo__c}" rendered="{!TourokuMemoFlg}"/>
+                <apex:outputField value="{!juchuData.HikiateMemo__c}" rendered="{!HikiateMemoFlg}"/>
+                <apex:outputField value="{!juchuData.TourokuMemoALL__c}" rendered="{!TourokuMemoALLFlg}"/>
+                <apex:outputField value="{!juchuData.HikiateMemoALL__c}" rendered="{!HikiateMemoALLFlg}"/>
+                <apex:outputField value="{!juchuData.KoteiKoseiMemoALL__c}" rendered="{!KoteiKoseiMemoALLFlg}"/>
+                <apex:outputField value="{!juchuData.MeisaiMemoALL__c}" rendered="{!MeisaiMemoALLFlg}"/>
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

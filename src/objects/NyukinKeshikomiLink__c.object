@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Biko__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( NyukinData__r.NyukinBi__c ) 
+
++ &quot;　ご入金の　&quot; +
+
+ TEXT( NyukinData__r.NyukinGaku__c ) 
+
++ &quot;円　から　&quot; +
+
+ TEXT( KeshikomiKingaku__c ) 
+
++ &quot;円　を充当済。&quot;</formula>
+        <label>備考</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>JutoSakiSeikyu__c</fullName>
+        <externalId>false</externalId>
+        <formula>KeshikomiData__r.UrikakeData__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>充当先請求</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KeshikomiData__c</fullName>
+        <externalId>false</externalId>
+        <label>消込値引データ</label>
+        <referenceTo>KeshikomiData__c</referenceTo>
+        <relationshipName>KeshikomiDatas</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>KeshikomiKingakuNamachi__c</fullName>
+        <externalId>false</externalId>
+        <label>￥￥_消込入金額生値</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>KeshikomiKingaku__c</fullName>
+        <externalId>false</externalId>
+        <formula>KeshikomiData__r.KeshikomiKingaku__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>￥￥_消込入金額</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>KeshikomiMikakuteiSuNamachi__c</fullName>
+        <externalId>false</externalId>
+        <label>￥￥_消込未確定数生値</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KeshikomiMikakuteiSu__c</fullName>
+        <description>不明入金データに未確定数を積み上げ集計する際に使用。</description>
+        <externalId>false</externalId>
+        <formula>IF (
+ ISBLANK( KeshikomiData__r.KeshikomiKakuninBi__c ),  
+ 1,
+ null
+)</formula>
+        <inlineHelpText>消込値引データ　の　消込確認日　が未入力済の場合「1」。
+充当されている消込値引データが確認されていない場合「1」。</inlineHelpText>
+        <label>￥￥_消込未確定数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NyukinData__c</fullName>
+        <externalId>false</externalId>
+        <label>入金データ</label>
+        <referenceTo>NyukinData__c</referenceTo>
+        <relationshipName>NyukinDatas</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>入金充当リンク</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>KeshikomiData__c</columns>
+        <columns>NyukinData__c</columns>
+        <columns>Biko__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>すべて選択</label>
+    </listViews>
+    <nameField>
+        <displayFormat>入金充当-{0000000000}</displayFormat>
+        <label>入金充当名</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <searchLayouts>
+        <customTabListAdditionalFields>JutoSakiSeikyu__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Biko__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>NyukinData__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>KeshikomiData__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>JutoSakiSeikyu__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>NyukinData__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>KeshikomiData__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>JutoSakiSeikyu__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>売掛データ</value>
+    </caseValues>
+    <fields>
+        <help><!-- 売掛データ名に反映されます。 
+80文字以下で入力して下さい --></help>
+        <label><!-- 伝票タイトル --></label>
+        <name>DempyoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- 伝票枚数 --></label>
+        <name>DenpyoMaisu__c</name>
+    </fields>
+    <fields>
+        <label><!-- 伝票番号 --></label>
+        <name>DenpyoNo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 伝票単位で税計算した結果の合計 --></help>
+        <label><!-- ￥￥_伝票税込売掛計 --></label>
+        <name>DenpyoZeikomiUrikakeKei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 売掛データを振替請求をする場合にON。
+
+締請求（都度請求フラグOFF）かつ取引先の振替可能フラグONの場合にON。 --></help>
+        <label><!-- 振替請求フラグ --></label>
+        <name>FurikaeSeikyuFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- ハイフン区切り
+例）2016/12/01→2016-12-01
+例）2016/12/01→12-01
+スラッシュ区切り
+例）2016/12/01→2016/12/01
+例）2016/12/01→12/01
+区切り無
+例）2016/12/01→20161201
+例）2016/12/01→1201
+日付部分
+例）2016/12/01→01 --></help>
+        <label><!-- ￥￥_日付マルチ検索 --></label>
+        <name>HizukeMaruchiKensaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 取引先マスタの取引債渡月数および期日と期日から自動算出。 
+
+期日＝９９
+　締期間まで＋取引債渡月数の月　の　最終日
+
+期日≠９９
+　締期間まで＋取引債渡月数の月　の　期日
+
+都度請求TRUE
+　締期間まで＋取引先の都度払債渡日数 --></help>
+        <label><!-- 標準回収期日 --></label>
+        <name>HyojunKaishuKijitsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 売掛データ作成時に任意の請求締期間を設定する場合はON。
+取引先マスタの可変請求フラグから反映される。 --></help>
+        <label><!-- 可変締期間フラグ --></label>
+        <name>KahenSeikyuFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 回収完了日を、ワークフロールールでコピー --></help>
+        <label><!-- ￥￥_回収完了日生値 --></label>
+        <name>KaishuKanryoBiNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 回収完了フラグがONの場合に　最終入金日　を回収完了日として算出。 --></help>
+        <label><!-- 回収完了日 --></label>
+        <name>KaishuKanryoBi__c</name>
+    </fields>
+    <fields>
+        <help><!-- ON条件。
+請求確定フラグ＝ON
+　かつ
+未入金売掛残高＝０円
+　かつ
+最終請求金額＞０円 --></help>
+        <label><!-- 回収完了フラグ --></label>
+        <name>KaishuKanryoFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求回収期限を前倒しする日数。
+
+例）先払時など先行して請求入金を行う場合。
+例）締め期間が長い場合やサイト期間が長い場合。 --></help>
+        <label><!-- 回収前倒日数 --></label>
+        <name>KaishuKigenShift__c</name>
+    </fields>
+    <fields>
+        <help><!-- 納品確定しているレコード（納品確定フラグ＝True）　かつ
+伝票金額がゼロでないレコード（伝票金額ゼロフラグ＝False）　をカウント --></help>
+        <label><!-- 確定伝票枚数 --></label>
+        <name>KakuteiDenpyoMaisu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 確定済の入金消込（値引）の合計額。 --></help>
+        <label><!-- 確定回収値引額 --></label>
+        <name>KakuteiKaishuNebikiGaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求確定フラグOFFの場合　￥０固定
+
+請求確定フラグONの場合　確定請求金額－値引回収済金額 --></help>
+        <label><!-- 確定未回収残高 --></label>
+        <name>KekuteiMiKaishuZandaka__c</name>
+    </fields>
+    <fields>
+        <help><!-- 消込値引登録画面に表示する対象を表す。
+
+ON条件
+　売掛確定フラグがON。
+　未入金残高が0円以外。
+　最終請求金額が0円以外。 --></help>
+        <label><!-- 消込登録対象 --></label>
+        <name>KeshikomiTaishoFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求金額　未入金売掛残高　を元に検索するための文字列を出力。
+
+1,000円切り捨て
+例）￥25,102　→　25000
+例）￥23,243　→　23000
+100円切り捨て
+例）￥25,102　→　25100
+例）￥23,243　→　23200
+10円切り捨て
+例）￥25,102　→　25100
+例）￥23,243　→　23240 --></help>
+        <label><!-- ￥￥_金額マルチ検索 --></label>
+        <name>KingakuMaruchiKensaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求書明細の金額を非表示にします。 --></help>
+        <label><!-- 明細金額非表示モード --></label>
+        <name>MeisaiKingakuHihyojiMode__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求書明細の個数を非表示にします。 --></help>
+        <label><!-- 明細個数非表示モード --></label>
+        <name>MeisaiKosuHihyojiMode__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明細別に税額を算出した額で請求する場合にON。 --></help>
+        <label><!-- 明細別税額フラグ --></label>
+        <name>MeisaibetsuZeigakuFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 未確定の入金消込（値引）の合計額。 --></help>
+        <label><!-- 予定回収値引額 --></label>
+        <name>MikomiKaishuNebikiGaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_見込未回収額生値 --></label>
+        <name>MikomiMikaishuZandakaNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 確定請求金額 － 予定回収値引 --></help>
+        <label><!-- 予定未回収額 --></label>
+        <name>MikomiMikaishuZandaka__c</name>
+    </fields>
+    <fields>
+        <help><!-- 入金充当リンクによる消込値引データの数。 --></help>
+        <label><!-- ￥￥_入金充当カウンター --></label>
+        <name>NyukinJutoCounter__c</name>
+    </fields>
+    <fields>
+        <help><!-- 入金充当リンクによる消込値引データの有無。 --></help>
+        <label><!-- 入金充当フラグ --></label>
+        <name>NyukinJutoFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 商品（サービス）の納品前に請求を行う場合にON。トリガによりONされる。
+受注データの債権未発生フラグONが集約される。 --></help>
+        <label><!-- 先払債権無フラグ --></label>
+        <name>SaikenMihasseiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 入金値引きデータの入金確認日の最大（老番）値。 --></help>
+        <label><!-- ￥￥_最終入金日 --></label>
+        <name>SaishuNyukinBi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 最終請求金額を、ワークフロールールでコピー（取引先で集計するため） --></help>
+        <label><!-- ￥￥_確定請求金額生値 --></label>
+        <name>SaishuSeikyuKingakuNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 合計額ベースの消費税か明細ベースの消費税の選択結果。
+明細別税額フラグで制御。 --></help>
+        <label><!-- 確定請求金額 --></label>
+        <name>SaishuSeikyuKingaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求取引先 --></label>
+        <name>SeikyuAccount__c</name>
+        <relationshipLabel><!-- 売掛データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_請求条件 --></label>
+        <name>SeikyuJoken__c</name>
+    </fields>
+    <fields>
+        <help><!-- 回収期日　－　請求入金期限シフト日数　で算出しWFEで請求入金期限に転記。 --></help>
+        <label><!-- ￥￥_請求回収期限算出 --></label>
+        <name>SeikyuKaishuKigenSanshutsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求書のお支払い期限に反映。
+任意の日付に書き換え可能。
+
+取引サイト月数と回収前倒日数から算出。 --></help>
+        <label><!-- 請求回収期日 --></label>
+        <name>SeikyuKaishuKigen__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求を締切ってロックする場合ON。
+NOの場合新たな受注データの納品確定が禁止。
+NOの場合請求期間内の受注確定引当が禁止。 --></help>
+        <label><!-- 請求確定フラグ --></label>
+        <name>SeikyuKakuteiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求予定（見積）書として表示します。 --></help>
+        <label><!-- 請求予定（見積）モード --></label>
+        <name>SeikyuYoteiMode__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_あいさつ --></label>
+        <name>SeikyushoAisatsu__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_備考タイトル --></label>
+        <name>SeikyushoBikoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_伝票日付タイトル --></label>
+        <name>SeikyushoDenpyoHizukeTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_伝票番号タイトル --></label>
+        <name>SeikyushoDenpyoNoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_銀行１ --></label>
+        <name>SeikyushoGinko1__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_銀行２ --></label>
+        <name>SeikyushoGinko2__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_銀行タイトル --></label>
+        <name>SeikyushoGinkoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_金額タイトル --></label>
+        <name>SeikyushoKingakuTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_下段01タイトル --></label>
+        <name>SeikyushoLower01Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_下段01 --></label>
+        <name>SeikyushoLower01__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_下段02タイトル --></label>
+        <name>SeikyushoLower02Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_下段02 --></label>
+        <name>SeikyushoLower02__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_下段03タイトル --></label>
+        <name>SeikyushoLower03Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_下段03 --></label>
+        <name>SeikyushoLower03__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_下段04タイトル --></label>
+        <name>SeikyushoLower04Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_下段04 --></label>
+        <name>SeikyushoLower04__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_下段05タイトル --></label>
+        <name>SeikyushoLower05Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_下段05 --></label>
+        <name>SeikyushoLower05__c</name>
+    </fields>
+    <fields>
+        <help><!-- 売掛請求ロックがON　かつ　請求書出力済フラグがOFF　かつ　伝票枚数が１以上　の場合にON。
+ONの場合に請求書PDFが作成される。 --></help>
+        <label><!-- ￥￥_請求書作成実行 --></label>
+        <name>SeikyushoSakuseiJikkoFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_請求先部署 --></label>
+        <name>SeikyushoSeikyusakiBusho__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_請求先住所 --></label>
+        <name>SeikyushoSeikyusakiJusho__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_請求先名 --></label>
+        <name>SeikyushoSeikyusakiMei__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_請求先郵便番号 --></label>
+        <name>SeikyushoSeikyusakiYubinBango__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_社名 --></label>
+        <name>SeikyushoShamei__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_商品名規格タイトル --></label>
+        <name>SeikyushoShohinMeiKikakuTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_数量タイトル --></label>
+        <name>SeikyushoSuryoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_単位タイトル --></label>
+        <name>SeikyushoTaniTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_単価タイトル --></label>
+        <name>SeikyushoTankaTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_タイトル --></label>
+        <name>SeikyushoTitle__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_上段01タイトル --></label>
+        <name>SeikyushoUpper01Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_上段01 --></label>
+        <name>SeikyushoUpper01__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_上段02タイトル --></label>
+        <name>SeikyushoUpper02Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_上段02 --></label>
+        <name>SeikyushoUpper02__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_上段03タイトル --></label>
+        <name>SeikyushoUpper03Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_上段03 --></label>
+        <name>SeikyushoUpper03__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_上段04タイトル --></label>
+        <name>SeikyushoUpper04Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_上段04 --></label>
+        <name>SeikyushoUpper04__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_上段05タイトル --></label>
+        <name>SeikyushoUpper05Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥_請求書_上段05 --></label>
+        <name>SeikyushoUpper05__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求書印刷 --></label>
+        <name>SeikyusyoInnsatsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求書発行を実行でON。 --></help>
+        <label><!-- 請求書出力済フラグ --></label>
+        <name>SeikyusyoShutsuryokuzumiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 締め期間算出用の基準となる日付。
+
+本日付を含む形で締期間（請求起算日～請求締日）が算出される。 --></help>
+        <label><!-- 請求起算基準日 --></label>
+        <name>ShimeHizuke__c</name>
+    </fields>
+    <fields>
+        <help><!-- 締期間までを、ワークフロールールでコピー（数式の文字数制限） --></help>
+        <label><!-- ￥￥_請求起算日生値 --></label>
+        <name>ShimeKikanKaraNamachi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求起算日（手動） --></label>
+        <name>ShimeKikanKaraShudo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 売掛データに集計される受注データの計上日範囲。
+
+可変請求ON
+　請求起算日（手動）
+　
+都度請求ON
+　請求起算基準日
+
+締日＝９９
+　締基準日の月　の　同月　の　初日
+
+締日＜締基準日
+　締基準日の月　の　同月　の　締日＋１日
+
+締日≧締基準日
+　締基準日の月　の　前月　の　締日＋１日 --></help>
+        <label><!-- 請求起算日 --></label>
+        <name>ShimeKikanKara__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_請求締日生値 --></label>
+        <name>ShimeKikanMadeNamachi__c</name>
+    </fields>
+    <fields>
+        <label><!-- 請求締日（手動） --></label>
+        <name>ShimeKikanMadeShudo__c</name>
+    </fields>
+    <fields>
+        <help><!-- 売掛データに集計される受注データの計上日範囲。
+
+可変請求ON
+　請求締日（手動）
+　
+都度請求ON
+　請求起算基準日
+
+締日＝９９
+　締期間から＋締期間月数の月－１ヶ月　の　最終日
+
+締日≠９９
+　締期間から＋締期間月数の月　の　締日 --></help>
+        <label><!-- 請求締日 --></label>
+        <name>ShimeKikanMade__c</name>
+    </fields>
+    <fields>
+        <help><!-- 取引先マスタの締め期間月数から標準値が反映
+１以上をの設定が必須 --></help>
+        <label><!-- 締期間月数 --></label>
+        <name>ShimekikanTsukisu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 税別額計×消費税率（少数切捨） --></help>
+        <label><!-- 消費税額 --></label>
+        <name>ShohiZeiGaku__c</name>
+    </fields>
+    <fields>
+        <help><!-- 税別額計＋消費税額（小数切捨） --></help>
+        <label><!-- 消費税込額 --></label>
+        <name>ShohiZeikomiGaku__c</name>
+    </fields>
+    <fields>
+        <label><!-- 消費税率 --></label>
+        <name>Shohizeiritsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求書明細の伝票単位小計を非表示にします。 --></help>
+        <label><!-- 小計金額非表示モード --></label>
+        <name>ShokeiKingakuHihyojiMode__c</name>
+    </fields>
+    <fields>
+        <help><!-- 請求書出力時の宛先に反映する取引先責任者。 --></help>
+        <label><!-- 請求書宛先担当者 --></label>
+        <name>Tantosha__c</name>
+        <relationshipLabel><!-- 売掛データ --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- 請求入金期限を過ぎ回収完了していない　かつ　先払ではない（債権無フラグOFF）　かつ　未回収残高が￥１円以上　場合にON。 --></help>
+        <label><!-- 督促警告フラグ --></label>
+        <name>TokusokuAlertFlg__c</name>
+    </fields>
+    <fields>
+        <label><!-- ￥￥_督促アラート生値 --></label>
+        <name>TokusokuAlertNamachi__c</name>
+    </fields>
+    <fields>
+        <help><!-- 締請求から独立した請求集計を行う際にONされる。トリガによりONされる。
+受注データの都度請求フラグONが集約される。 --></help>
+        <label><!-- 都度請求フラグ --></label>
+        <name>TsudoSeikyuFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 売上確定している場合にONとなる。
+
+先払：売掛確定フラグONかつ回収完了フラグON。
+後払：売掛確定フラグON。 --></help>
+        <label><!-- 売上確定フラグ --></label>
+        <name>UriageKakuteiFlg__c</name>
+    </fields>
+    <fields>
+        <help><!-- 先払の場合は、回収完了日。
+後払の場合は、締期間の最終日（締期間まで）。 --></help>
+        <label><!-- 売上計上月 --></label>
+        <name>UriageKeijoTsuki__c</name>
+    </fields>
+    <fields>
+        <help><!-- 伝票タイトル　に記載が有った場合は　月表を上書き。 --></help>
+        <label><!-- ￥￥_売掛データ名算出 --></label>
+        <name>UrikakeDataNameSanshutsu__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明細別の税抜額の合計 --></help>
+        <label><!-- 税別額計 --></label>
+        <name>ZeiBetsuGakuKei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 明細別の税込額の合計 --></help>
+        <label><!-- 明細税込額計 --></label>
+        <name>ZeiKomiGakuKei__c</name>
+    </fields>
+    <fields>
+        <help><!-- 受注明細データ個別の請求隠を無視してすべての明細を表示します。 --></help>
+        <label><!-- 全明細表示モード --></label>
+        <name>ZenMeisaiHyoji__c</name>
+    </fields>
+    <layouts>
+        <layout>売掛データレイアウト</layout>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+        <sections>
+            <label><!-- システム処理用 --></label>
+            <section>システム処理用</section>
+        </sections>
+        <sections>
+            <label><!-- レポート情報 --></label>
+            <section>レポート情報</section>
+        </sections>
+        <sections>
+            <label><!-- 予定情報 --></label>
+            <section>予定情報</section>
+        </sections>
+        <sections>
+            <label><!-- 伝票情報 --></label>
+            <section>伝票情報</section>
+        </sections>
+        <sections>
+            <label><!-- 売上情報 --></label>
+            <section>売上情報</section>
+        </sections>
+        <sections>
+            <label><!-- 帳票制御 --></label>
+            <section>帳票制御</section>
+        </sections>
+        <sections>
+            <label><!-- 期日情報 --></label>
+            <section>期日情報</section>
+        </sections>
+        <sections>
+            <label><!-- 期間制御 --></label>
+            <section>期間制御</section>
+        </sections>
+        <sections>
+            <label><!-- 期間情報 --></label>
+            <section>期間情報</section>
+        </sections>
+        <sections>
+            <label><!-- 条件情報 --></label>
+            <section>条件情報</section>
+        </sections>
+        <sections>
+            <label><!-- 請求情報 --></label>
+            <section>請求情報</section>
+        </sections>
+        <sections>
+            <label><!-- 金額情報 --></label>
+            <section>金額情報</section>
+        </sections>
+        <sections>
+            <label><!-- 開発 --></label>
+            <section>開発</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- SeikyushoPrint --></label>
+        <name>SeikyushoPrint</name>
+    </webLinks>
+</CustomObjectTranslation>

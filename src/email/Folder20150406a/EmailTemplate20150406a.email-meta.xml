@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-2022-JP</encodingKey>
+    <name>随時棚卸アラート</name>
+    <style>none</style>
+    <subject>{!ZaikoData__c.ShohinShizaiM_Name__c}　の　賞味期限　{!ZaikoData__c.ShomiKigen__c}　の残り数量　を確認してください。</subject>
+    <type>text</type>
+</EmailTemplate>

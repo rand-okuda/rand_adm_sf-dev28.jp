@@ -1,0 +1,228 @@
+<apex:page title="消込値引登録" controller="N07_NyukinIkkatsuTourokuController" id="keshikomiPage">
+
+    <apex:pageMessages />
+    
+    <apex:form >
+        
+        <table class="broad_header">
+            <tr>
+                <td style="text-align: center;">
+                    <apex:inputText value="{!RefineString}" />
+                </td>
+                <td>
+                    <apex:commandButton value="名称" id="init_buttonName" action="{!initButton}" />
+                </td>
+                <td style="text-align: left;">
+                    <apex:inputText value="{!RefineDate}" />
+                </td>
+                <td>
+                    <apex:commandButton value="期日" id="init_buttonDate" action="{!initButton}" />
+                </td>
+                <td style="text-align: left;">
+                    <apex:inputText value="{!RefineValue}" />
+                </td>
+                <td>
+                    <apex:commandButton value="金額" id="init_buttonValue" action="{!initButton}" />
+                </td>
+                <td style="text-align: right;">
+                    <apex:commandButton value="締払" id="init_buttonShimeBarai" action="{!initButtonShimeBarai}" />
+                </td>
+                <td style="text-align: left;">
+                    <apex:inputCheckbox value="{!ShimeBarai}" /> 
+                </td>                    
+                <td style="text-align: right;">
+                    <apex:commandButton value="都度" id="init_buttonTsudoBarai" action="{!initButtonTsudoBarai}" />
+                </td>
+                <td style="text-align: left;">
+                    <apex:inputCheckbox value="{!TsudoBarai}" /> 
+                </td>                    
+                <td style="text-align: right;">
+                    <apex:commandButton value="先払" id="init_buttonSakiBarai" action="{!initButtonSakiBarai}" />
+                </td>
+                <td style="text-align: left;">
+                    <apex:inputCheckbox value="{!SakiBarai}" /> 
+                </td>                    
+                <td style="text-align: right;">
+                    <apex:commandButton value="督促" id="init_buttonTokusokuTaisho" action="{!initButtonTokusokuTaisho}" />
+                </td>
+                <td style="text-align: left;">
+                    <apex:inputCheckbox value="{!TokusokuTaisho}" /> 
+                </td>                    
+                <td style="text-align: right;">
+                    <apex:commandButton value="充当" id="init_buttonJutoTaisho" action="{!initButtonJutoTaisho}" />
+                </td>
+                <td style="text-align: left;">
+                    <apex:inputCheckbox value="{!JutoTaisho}" /> 
+                </td>                    
+                <td style="text-align: right;">
+                    <apex:commandButton value="全件" id="init_buttonFull" action="{!initButtonFull}" />
+                </td>
+                <td style="text-align: left;">
+                    <apex:commandButton value="保存" id="save_button" action="{!saveButtonAll}" rendered="{!SaveOk}" />
+                </td>
+            </tr>
+        </table>
+        
+        <apex:repeat value="{!accUrikakeList}" var="accUrikake" id="accountRepeat">
+            <table class="broad_table">
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="text-align: left; width: 200px; font-weight: bolder; font-size: 110%">
+                                    <apex:outputLink value="/{!accUrikake.acc.Id}" target="_blank">{!accUrikake.acc.SeishikiMeisho__c}</apex:outputLink>
+                                </td>
+                                <td style="text-align: right; width: 170px;">
+                                </td>
+                                <td style="text-align: right; width: 170px;">
+                                </td>
+                                <td style="text-align: left; width: 170px;">
+                                    <apex:outputText value="{!$ObjectType.Account.Fields.MinyukinZandakaSokei__c.Label}" />
+                                    <apex:outputField value="{!accUrikake.acc.MinyukinZandakaSokei__c}" />
+                                </td>
+                                <td style="text-align: right; width: 170px;">
+                                    <apex:outputText value="{!$ObjectType.Account.Fields.NyukinZengaku__c.Label}" />
+                                    <apex:outputField value="{!accUrikake.acc.NyukinZengaku__c}" />
+                                </td>
+                            </tr>
+                        </table>
+                        <apex:repeat value="{!accUrikake.urikakeKeshikomi}" var="urikake" id="urikakeRepeat">
+                            <table class="urikake_table">
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td class="urikake_table_detail" style="width: 150px;">
+                                                    <apex:outputLink value="/{!urikake.urikake.Id}" target="_blank">{!urikake.urikake.SeikyuJoken__c}</apex:outputLink>
+                                                </td>
+                                                <td class="urikake_table_detail" style="width: 240px;">
+                                                    <apex:outputText value="{!$ObjectType.UrikakeData__c.Fields.SeikyuKaishuKigen__c.Label}" />
+                                                    <apex:outputField value="{!urikake.urikake.SeikyuKaishuKigen__c}" />
+                                                </td>
+                                                <td class="urikake_table_detail" style="width: 170px;">
+                                                    <apex:outputText value="{!$ObjectType.UrikakeData__c.Fields.SaishuSeikyuKingaku__c.Label}" />
+                                                    <apex:outputField value="{!urikake.urikake.SaishuSeikyuKingaku__c}" />
+                                                </td>
+                                                <td class="urikake_table_detail" style="width: 170px;">
+                                                    <apex:outputText value="{!$ObjectType.UrikakeData__c.Fields.MikomiKaishuNebikiGaku__c.Label}" />
+                                                    <apex:outputField value="{!urikake.urikake.MikomiKaishuNebikiGaku__c}" />
+                                                </td>
+                                                <td class="urikake_table_detail" style="width: 170px;">
+                                                    <apex:outputText value="{!$ObjectType.UrikakeData__c.Fields.MikomiMikaishuZandaka__c.Label}" style=" font-weight:normal" />
+                                                    <apex:outputField value="{!urikake.urikake.MikomiMikaishuZandaka__c}" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table class="keshikomi_table_head">
+                                            <tr>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <apex:repeat value="{!urikake.keshikomi}" var="keshikomi" id="keshikomiRepeat">
+                                            <table class="keshikomi_table_body">
+                                                <tr>
+                                                    <td style="width: 130px;">
+                                                    </td>
+                                                    <td class="keshikomibi">
+                                                        <apex:inputField style="text-align:right; width:100px;" value="{!keshikomi.KeshikomiKakuninBi__c}" />
+                                                    </td>
+                                                    <td class="bikou">
+                                                        <apex:inputField style="width:470px;" value="{!keshikomi.Biko__c}" />
+                                                    </td>
+                                                    <td class="keshikomigaku">
+                                                        <apex:inputField style="text-align:right; width:120px;" value="{!keshikomi.KeshikomiKingaku__c}" />
+                                                    </td>
+                                                    <td class="SokuKeshikomi">
+                                                        <apex:inputField value="{!keshikomi.SokuKeshikomi__c}" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </apex:repeat>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:repeat>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td style="width: 680px; text-align: right;">
+                    </td>
+                </tr>
+                
+            </table>
+            
+        </apex:repeat>
+        
+    </apex:form>
+
+    <style type="text/css">
+        span.dateFormat {
+        display: none;
+        }
+        
+        .broad_header {
+        width: 850px;
+        text-align: center;
+        margin:auto;
+        }
+        
+        .broad_table {
+        background-color: MintCream;
+        border: 2px solid lightgray;
+        width: 900px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        }
+        
+        .urikake_table {
+        background-color: LightYellow;
+        border: 1.5px solid lightgray;
+        width: 880px;
+        margin-top: 8px;
+        margin-bottom: 2px;
+        margin-right: auto;
+        margin-left: auto;
+        }
+        
+        .urikake_table_detail {
+        font-size: 95%
+        }
+        
+        .keshikomi_table_head {
+        background-color: LightCyan;
+        border-collapse: collapse;
+        margin-bottom: 1px;
+        }
+        
+        .keshikomi_table_body {
+        background-color: Seashell;
+        border-collapse: collapse;
+        margin-bottom: 1px;
+        }
+        
+        .keshikomibi {
+        width: 90px;
+        border: 0px solid gray;
+        }
+        
+        .bikou {
+        width: 470px;
+        border: 0px solid gray;
+        }
+        
+        .keshikomigaku {
+        width: 120px;
+        border: 0px solid gray;
+        }
+        
+        .SokuKeshikomi {
+        width: 20px;
+        border: 0px solid gray;
+        }
+    </style>
+    
+</apex:page>

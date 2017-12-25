@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>JikaiKeiyakuKaishiBi__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (  KeiyakuKikanTsukiSu__c &gt; 12,
+
+ null,
+
+IF( KeiyakuSaki__r.KeiyakuBi__c  &lt; 1
+,
+
+IF( MONTH( KeiyakuKaishiBiNamachi__c ) + KeiyakuKikanTsukiSu__c &gt; 12,
+
+ DATE(YEAR(KeiyakuKaishiBiNamachi__c )+1,MONTH(KeiyakuKaishiBiNamachi__c )+KeiyakuKikanTsukiSu__c -12,1),
+
+ DATE(YEAR(KeiyakuKaishiBiNamachi__c ),MONTH(KeiyakuKaishiBiNamachi__c )+KeiyakuKikanTsukiSu__c,1)
+
+)
+,
+
+IF( MONTH( KeiyakuKaishiBiNamachi__c ) + KeiyakuKikanTsukiSu__c &gt; 12,
+
+ DATE(YEAR(KeiyakuKaishiBiNamachi__c )+1,MONTH(KeiyakuKaishiBiNamachi__c )+KeiyakuKikanTsukiSu__c -12,KeiyakuSaki__r.KeiyakuBi__c),
+
+ DATE(YEAR(KeiyakuKaishiBiNamachi__c ),MONTH(KeiyakuKaishiBiNamachi__c )+KeiyakuKikanTsukiSu__c,KeiyakuSaki__r.KeiyakuBi__c)
+
+)
+
+)
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>次回の契約の開始日。
+
+契約開始日　＋　契約期間月数　の　月初　あるいは　受注先の契約日付を反映。</inlineHelpText>
+        <label>次回契約開始日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>KeiyakuBango__c</fullName>
+        <externalId>false</externalId>
+        <label>契約番号</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>KeiyakuData__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>契約データ（前世代）</label>
+        <referenceTo>KeiyakuData__c</referenceTo>
+        <relationshipLabel>契約データ（ 更新 / 追加・変更 ）</relationshipLabel>
+        <relationshipName>KeiyakuDataKoshins</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>KeiyakuKaishiBiNamachi__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>WFRにより契約更新日を転記。</inlineHelpText>
+        <label>￥￥_契約開始日生値</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>KeiyakuKaishiBi__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( KeiyakuKikanTsukiSu__c &lt; 1 ,
+
+ null,
+
+IF( KeiyakuSaki__r.KeiyakuBi__c  &lt; 1
+,
+
+IF( MONTH(  KeiyakuKijunBi__c ) = 12,
+
+ DATE( YEAR( KeiyakuKijunBi__c )+1, 1, 1 ),
+
+ DATE( YEAR( KeiyakuKijunBi__c ), MONTH (  KeiyakuKijunBi__c )+1, 1 ) 
+
+)
+
+,
+
+IF( MONTH(  KeiyakuKijunBi__c ) = 12,
+
+ DATE( YEAR( KeiyakuKijunBi__c )+1, 1, KeiyakuSaki__r.KeiyakuBi__c  ),
+
+ DATE( YEAR( KeiyakuKijunBi__c ), MONTH (  KeiyakuKijunBi__c )+1 , KeiyakuSaki__r.KeiyakuBi__c ) 
+
+)
+
+)
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>契約が有効となる日付。
+
+起算日の翌月の　月初　あるいは　受注先の契約日付を反映。</inlineHelpText>
+        <label>契約開始日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>KeiyakuKakuteiFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>契約内容の合意でONに設定。
+
+例）契約条件が合意されサービスインの日程が確定した。
+例）契約の定期更新が有効化され再帰的な受注納品請求のサイクルに入った。</inlineHelpText>
+        <label>契約見積確定フラグ</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>KeiyakuKijunBiSanshutsu__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( ShokaiKeiyakuFlg__c , 
+ TODAY() , 
+
+IF ( TsuikaHenkoFlg__c ,
+ KeiyakuData__r.KeiyakuKijunBi__c ,
+
+  KeiyakuData__r.KeiyakuShuryoBi__c 
+
+))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>新規契約、更新、変更追加、各契約の基準日を算出し契約基準日にWFRで記入。
+
+初期契約フラグONの場合、本日（TODAY()）を算出。
+追加変更フラグONの場合、全世代契約データの契約基準日を算出。
+追加変更フラグOFFの場合、全世代契約データの契約終了日を算出。</inlineHelpText>
+        <label>￥￥_契約基準日算出</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>KeiyakuKijunBi__c</fullName>
+        <description>WFRで自動記入</description>
+        <externalId>false</externalId>
+        <inlineHelpText>契約開始日、終了日、次回契約開始日などの算出用の基準の日付。
+
+
+新規契約時は本日（TODAY()）が自動設定。
+契約更新時は元の契約終了日が自動設定。
+追加変更時は元の契約基準日が自動設定。</inlineHelpText>
+        <label>契約基準日</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>KeiyakuKikanTsukiSu__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>次回契約開始日を算出する　１～12　の値を入力。
+
+例）定期販売周期
+例）契約更新期間</inlineHelpText>
+        <label>契約期間月数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KeiyakuKoshinCancel__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>契約更新を実行しない場合ON。 
+
+更新実行予定日は空白となり複製が実行されない。</inlineHelpText>
+        <label>更新対象外フラグ</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>KeiyakuSaki__c</fullName>
+        <externalId>false</externalId>
+        <label>契約先</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>契約データ</relationshipLabel>
+        <relationshipName>KeiyakuSakis</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>KeiyakuShuryoBiNamachi__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>WFRにより契約終了日を転記。</inlineHelpText>
+        <label>￥￥_契約終了日生値</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>KeiyakuShuryoBi__c</fullName>
+        <externalId>false</externalId>
+        <formula>JikaiKeiyakuKaishiBi__c - 1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>次回解約開始日　の　前日。</inlineHelpText>
+        <label>契約終了日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>KoshinFukuseiFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND(
+  SeikyuIraiYoteiBi__c  &lt;=  TODAY() ,
+  KeiyakuKakuteiFlg__c ,
+  NOT(TsuikaHenkoFlg__c) ,
+  NOT( KeiyakuKoshinCancel__c ) 
+)</formula>
+        <inlineHelpText>更新の契約データを作成する場合ON。
+
+・請求依頼予定日が到来。
+・契約見積確定フラグがON。
+・追加変更フラグがOFF。
+・更新対象外フラグがOFF。</inlineHelpText>
+        <label>更新複製フラグ</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SakiBaraiFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>先払請求フラグ</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SeikyuIraiSenkoNissu__c</fullName>
+        <defaultValue>7</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>契約更新の複製処理を契約更新日から前倒しする日数を設定。
+
+例）月末の複製では事務処理が間に合わない場合。
+例）事前に更新通知を行う場合。</inlineHelpText>
+        <label>請求依頼先行日数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SeikyuIraiYoteiBi__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( KeiyakuKoshinCancel__c ,
+ null,
+   JikaiKeiyakuKaishiBi__c - SeikyuIraiSenkoNissu__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>更新請求処理の実行予定日。
+
+次回契約開始日－更新予定繰上日数で算出。
+
+契約更新キャンセルONの場合は空白を出力。</inlineHelpText>
+        <label>請求依頼予定日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ShokaiKeiyakuFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>ISBLANK( KeiyakuData__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>契約データ（前世代）が空白の場合ON。
+最初に作成された契約データを表す。</inlineHelpText>
+        <label>初回契約フラグ</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>TaishoTsuki__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (
+AND(
+KeiyakuKikanTsukiSu__c  &gt;= 2,
+NOT( ISBLANK(  TsuikaHenkoKijunBi__c ) ))  , 
+
+ TEXT(MONTH( TsuikaHenkoKijunBi__c )) + &quot;月～&quot; + 
+ TEXT(MONTH( KeiyakuShuryoBi__c )) + &quot;月分&quot;
+,
+
+IF (
+AND(
+KeiyakuKikanTsukiSu__c  &gt;= 2,
+NOT( ISBLANK( KeiyakuKijunBi__c ) ))  , 
+
+ TEXT(MONTH( KeiyakuKaishiBiNamachi__c )) + &quot;月～&quot; + 
+ TEXT(MONTH( KeiyakuShuryoBi__c )) + &quot;月分&quot;
+,
+
+IF (
+AND(
+KeiyakuKikanTsukiSu__c  = 1,
+NOT( ISBLANK( KeiyakuKijunBi__c ) ))  , 
+
+ TEXT(MONTH( KeiyakuKaishiBiNamachi__c )) + &quot;月分&quot;
+,
+ 
+ null
+
+)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>新規契約および契約更新時、契約開始日と契約終了日 から出力。
+追加変更時、追加変更基準日と契約終了日 から出力。</inlineHelpText>
+        <label>契約対象月</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TsudoSeikyuFlg__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>都度請求フラグ</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>TsuikaHenkoFlg__c</fullName>
+        <externalId>false</externalId>
+        <formula>NOT( ISBLANK( TsuikaHenkoKijunBi__c ) )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>追加変更基準日が入力済みの場合にON。</inlineHelpText>
+        <label>追加変更フラグ</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>TsuikaHenkoKijunBi__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>途中の追加変更の基準日。
+差分月数などの算出の元日付。</inlineHelpText>
+        <label>追加変更基準日</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>TsuikaHenkoSabunTsukisu__c</fullName>
+        <externalId>false</externalId>
+        <formula>YEAR(  KeiyakuShuryoBiNamachi__c )  * 12
+ -  YEAR(    TsuikaHenkoKijunBi__c ) * 12
+ +  
+MONTH( KeiyakuShuryoBiNamachi__c )
+ -  MONTH( TsuikaHenkoKijunBi__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>変更追加時の差分の契約期間の月数。
+
+契約終了日 － 追加変更基準日</inlineHelpText>
+        <label>追加変更差分月数</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UrikakeData__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>請求集計データ</label>
+        <referenceTo>UrikakeData__c</referenceTo>
+        <relationshipLabel>契約データ</relationshipLabel>
+        <relationshipName>UrikakeDatas</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>契約データ</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>KeiyakuKijunBi__c</columns>
+        <columns>KeiyakuKikanTsukiSu__c</columns>
+        <columns>KeiyakuKaishiBi__c</columns>
+        <columns>KeiyakuShuryoBi__c</columns>
+        <columns>JikaiKeiyakuKaishiBi__c</columns>
+        <columns>SeikyuIraiYoteiBi__c</columns>
+        <columns>SeikyuIraiSenkoNissu__c</columns>
+        <columns>TaishoTsuki__c</columns>
+        <columns>KeiyakuKoshinCancel__c</columns>
+        <columns>KoshinFukuseiFlg__c</columns>
+        <columns>KeiyakuKakuteiFlg__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>すべて選択</label>
+    </listViews>
+    <nameField>
+        <displayFormat>契約-{0000000000}</displayFormat>
+        <label>契約データ名</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <searchLayouts>
+        <customTabListAdditionalFields>KeiyakuKikanTsukiSu__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>KeiyakuKijunBi__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>TaishoTsuki__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>JikaiKeiyakuKaishiBi__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SeikyuIraiYoteiBi__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>TsudoSeikyuFlg__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SakiBaraiFlg__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>KeiyakuKakuteiFlg__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>KoshinFukuseiFlg__c</customTabListAdditionalFields>
+        <searchFilterFields>KeiyakuSaki__c</searchFilterFields>
+        <searchFilterFields>TaishoTsuki__c</searchFilterFields>
+        <searchFilterFields>KeiyakuKijunBi__c</searchFilterFields>
+        <searchFilterFields>KeiyakuKaishiBi__c</searchFilterFields>
+        <searchFilterFields>KeiyakuShuryoBi__c</searchFilterFields>
+        <searchFilterFields>JikaiKeiyakuKaishiBi__c</searchFilterFields>
+        <searchFilterFields>KeiyakuKoshinCancel__c</searchFilterFields>
+        <searchFilterFields>SeikyuIraiYoteiBi__c</searchFilterFields>
+        <searchFilterFields>KoshinFukuseiFlg__c</searchFilterFields>
+        <searchFilterFields>KeiyakuKakuteiFlg__c</searchFilterFields>
+        <searchResultsAdditionalFields>KeiyakuKaishiBi__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>KeiyakuShuryoBi__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TaishoTsuki__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SeikyuIraiYoteiBi__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>JikaiKeiyakuKaishiBi__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>KeiyakuKakuteiFlg__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

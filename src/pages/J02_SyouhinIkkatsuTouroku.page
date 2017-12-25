@@ -1,0 +1,68 @@
+<apex:page standardController="ShohinShizaiM__c" extensions="J02_ShohinShizaiMControllerExtension" recordSetVar="records" action="{!init}" title="受注明細一括登録">
+
+    <apex:pageBlock mode="detail">
+
+        <apex:enhancedList type="ShohinShizaiM__c" height="375" id="ShohinShizaiList" rowsPerPage="10" customizable="false"/>
+        
+        <br/>
+
+        <apex:pageBlockSection title="構成工程マスタ　指摘" showHeader="true" collapsible="true" columns="1" rendered="{!isRenderedKoteiKosei}">
+            <apex:pageBlockTable value="{!allKoteiKoseiNgList}" var="akkol">
+                <apex:column >
+                    <apex:facet name="header">{!$ObjectType.KoteiKoseiM__c.Fields.KoteiKoseiKaisetsu__c.Label}</apex:facet>
+                    <apex:outputField value="{!akkol.KoteiKoseiKaisetsu__c}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:pageBlockTable value="{!allKoteiKoseiOkList}" var="akknl">
+                <apex:column >
+                    <apex:facet name="header">{!$ObjectType.KoteiKoseiM__c.Fields.KoteiKoseiKaisetsu__c.Label}</apex:facet>
+                    <apex:outputField value="{!akknl.KoteiKoseiKaisetsu__c}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="受注出荷データ　登録済" showHeader="true" collapsible="true" columns="1" rendered="{!isRenderedJuchuMeisai}">
+            <apex:pageBlockTable value="{!partAlreadyJuchuMeisaiList}" var="passl">
+                <apex:column >
+                    <apex:facet name="header">{!$ObjectType.ShohinShizaiM__c.Fields.ShohinShizaimeiHyoji__c.Label}</apex:facet>
+                    <apex:outputField value="{!passl.ShohinShizaiM__r.ShohinShizaimeiHyoji__c}"/>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">{!$ObjectType.JuchuMeisaiData__c.Fields.NisugataSanko__c.Label}</apex:facet>
+                    <apex:outputField value="{!passl.NisugataSanko__c}"/>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">{!$ObjectType.JuchuMeisaiData__c.Fields.MeyasuZan__c.Label}</apex:facet>
+                    <apex:outputField value="{!passl.MeyasuZan__c}"/>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">{!$ObjectType.JuchuMeisaiData__c.Fields.Biko__c.Label}</apex:facet>
+                    <apex:outputField value="{!passl.Biko__c}"/>
+                </apex:column>                
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection title="取引先マスタ　登録済" showHeader="true" collapsible="true" columns="1" rendered="{!isRenderedShohinShizai}">
+            <apex:pageBlockTable value="{!allShohinShizaiList}" var="assl" >
+                <apex:column >
+                    <apex:facet name="header">{!$ObjectType.ShohinShizaiM__c.Fields.ShohinShizaimeiHyoji__c.Label}</apex:facet>
+                    <apex:outputField value="{!assl.ShohinShizaimeiHyoji__c}"/>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">{!$ObjectType.ShohinShizaiM__c.Fields.ShohinShizaiKubun__c.Label}</apex:facet>
+                    <apex:outputField value="{!assl.ShohinShizaiKubun__c}"/>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">{!$ObjectType.ShohinShizaiM__c.Fields.ShohinShizaiCode__c.Label}</apex:facet>
+                    <apex:outputField value="{!assl.ShohinShizaiCode__c}"/>
+                </apex:column>                                
+                <apex:column >
+                    <apex:facet name="header">{!$ObjectType.ShohinShizaiM__c.Fields.Biko__c.Label}</apex:facet>
+                    <apex:outputField value="{!assl.Biko__c}"/>
+                </apex:column>                                
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+
+</apex:page>
